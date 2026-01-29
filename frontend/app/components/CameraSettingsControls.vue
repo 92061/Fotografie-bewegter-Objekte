@@ -14,10 +14,15 @@
     >
       <UPageColumns class="column-1 md:columns-2 lg:columns-2">
         <UFormField label="Camera Mode">
+            <template #description>
+                <div class="flex flex-row gap-2">
+                    <ULink to="https://www.raspberrypi.com/documentation/accessories/camera.html#hardware-specification">Hardware</ULink>
+                    <ULink to="https://www.raspberrypi.com/documentation/computers/camera_software.html#mode">Software</ULink>
+                </div>
+            </template>
           <UInput
             v-model="state.mode"
-            disabled
-            placeholder="WIP"
+            placeholder="Set this if you know what you are doing"
             class="w-full"
           />
         </UFormField>
