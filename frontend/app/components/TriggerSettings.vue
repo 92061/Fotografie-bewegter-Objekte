@@ -3,12 +3,15 @@
     title="Trigger"
     icon="i-lucide-siren"
   >
-    <USelect
-      v-model="pinNumber"
-      :items="gpioPins"
-      :disabled="busy"
-      :loading="statusPin !== 'success'"
-    />
+    <UFormField label="GPIO Pin Number">
+      <USelect
+        v-model="pinNumber"
+        :items="gpioPins"
+        :disabled="busy"
+        :loading="statusPin !== 'success'"
+        class="w-full"
+      />
+    </UFormField>
   </UPageCard>
 </template>
 

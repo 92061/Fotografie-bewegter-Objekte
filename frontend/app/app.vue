@@ -18,9 +18,9 @@
 
     <UMain>
       <NuxtLayout>
-          <UContainer>
-              <NuxtPage />
-          </UContainer>
+        <UContainer>
+          <NuxtPage />
+        </UContainer>
       </NuxtLayout>
     </UMain>
 

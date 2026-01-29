@@ -3,18 +3,25 @@
     title="Flash"
     icon="i-lucide-zap"
   >
-    <USelect
-      v-model="pinNumber"
-      :items="gpioPins"
-      :disabled="busy"
-      :loading="statusPin !== 'success'"
-    />
-    <UInputNumber
-      v-model="delayMs"
-      :disabled="busy"
-      :loading="statusDelay !== 'success'"
-      :min="0"
-    />
+    <UFormField label="GPIO Pin Number">
+      <USelect
+        v-model="pinNumber"
+        :items="gpioPins"
+        :disabled="busy"
+        :loading="statusPin !== 'success'"
+        class="w-full"
+      />
+    </UFormField>
+
+    <UFormField label="Delay after trigger">
+      <UInputNumber
+        v-model="delayMs"
+        :disabled="busy"
+        :loading="statusDelay !== 'success'"
+        :min="0"
+        class="w-full"
+      />
+    </UFormField>
     <UButton @click="testFlash">
       Flash!
     </UButton>
