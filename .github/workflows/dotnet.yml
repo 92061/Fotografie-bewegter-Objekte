@@ -26,3 +26,13 @@ jobs:
       uses: actions/upload-artifact@v4.6.2
       with:
         path: "publish/publish/API/release_linux-arm/*"
+    - name: Create release
+      uses: Roang-zero1/github-create-release-action@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload release artifacts
+      uses: Roang-zero1/github-upload-release-artifacts-action@v2
+      with:
+        args: "publish/publish/API/release_linux-arm/*"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
