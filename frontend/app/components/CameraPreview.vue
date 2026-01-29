@@ -34,7 +34,9 @@ const refresh = () => {
 const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notifications'
 
 const signalRConnection = new HubConnectionBuilder()
-  .withUrl(signalRUrl)
+  .withUrl(signalRUrl, {
+      withCredentials: false,
+  })
   .configureLogging(LogLevel.Information)
   .build()
 
