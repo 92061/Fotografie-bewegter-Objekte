@@ -55,10 +55,8 @@ public static class Camera
     /// </summary>
     /// <param name="delay">Time to wait before taking a picutre</param>
     /// <param name="stream">Stream to write the picture to</param>
-    public static async Task TakePictureTask(Stream stream, TimeSpan? delay = null)
+    public static async Task TakePictureTask(Stream stream)
     {
-        if(delay is { } d)
-            Thread.Sleep(d);
         await proc.ExecuteAsync(_procArgs, stream);
         Console.WriteLine("Camera!");
     }

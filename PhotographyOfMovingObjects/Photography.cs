@@ -14,14 +14,9 @@ public static class Photography
     /// </summary>
     public static TimeSpan DelayCamera
     {
-        get => _delayCamera;
-        set
-        {
-            _delayCamera = value;
-            ResetTasks();
-        }
+        get => TimeSpan.FromMilliseconds(Camera.DelayMs);
+        set => Camera.DelayMs = (int)value.TotalMilliseconds;
     }
-    private static TimeSpan _delayCamera = TimeSpan.Zero;
 
     /// <summary>
     /// The delay between Trigger and the flash triggering
@@ -51,7 +46,7 @@ public static class Photography
         set
         {
             _imageStream = value;
-            _takePicture = Camera.TakePictureTask(value, DelayCamera);
+            _takePicture = Camera.TakePictureTask(value);
         }
     }
     private static Stream _imageStream = new MemoryStream(1);
@@ -86,7 +81,7 @@ public static class Photography
     
     private static void ResetTasks()
     {
-        _takePicture = Camera.TakePictureTask(ImageStream, _delayCamera);
+        _takePicture = Camera.TakePictureTask(ImageStream);
         _triggerFlash = Flash.FlashTask(_delayFlash);
     }
 }
