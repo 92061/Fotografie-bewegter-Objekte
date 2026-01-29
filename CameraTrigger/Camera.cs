@@ -9,8 +9,8 @@ public static class Camera
 {
     private static readonly AdbServer AdbServer = new();
     private static readonly AdbClient AdbClient = new();
-    private static DeviceClient? Device = null;
-    public static bool Connected => Device is not null;
+    private static DeviceClient? _device = null;
+    public static bool Connected => _device is not null;
 
     public const string DefaultCameraApp = "com.google.android.GoogleCameraEng";
     private const int CameraStartupDelayMs = 200;
@@ -35,30 +35,30 @@ public static class Camera
                 Console.WriteLine(data.Value.State);
                 return false;
         }
-        Device = new (AdbClient, (DeviceData)data);
+        _device = new (AdbClient, (DeviceData)data);
         return true;
     }
 
     public static bool StartCameraApp(string cameraAppName = DefaultCameraApp)
     {
-        if (Device is null)
+        if (_device is null)
         {
             Console.WriteLine("No device connected!");
             return false;
         }
-        Device.StartApp(cameraAppName);
+        _device.StartApp(cameraAppName);
         Thread.Sleep(CameraStartupDelayMs);
         return CameraRunning(cameraAppName);
     }
 
     public static bool CameraRunning(string cameraAppName = DefaultCameraApp)
     {
-        if (Device is null)
+        if (_device is null)
         {
             Console.WriteLine("No device connected!");
             return false;
         }
-        AppStatus appStatus = Device.GetAppStatus(cameraAppName);
+        AppStatus appStatus = _device.GetAppStatus(cameraAppName);
         return appStatus is not AppStatus.Stopped;
     }
 
@@ -75,14 +75,13 @@ public static class Camera
 
     private static bool TakePictureInternal(TimeSpan delay)
     {
-        DateTime startTime = DateTime.Now;
-        if (Device is null)
+        if (_device is null)
         {
             Console.WriteLine("No device connected!");
             return false;
         }
-        Thread.Sleep(delay.Subtract(DateTime.Now.Subtract(startTime)));
-        Device.SendKeyEvent("KEYCODE_CAMERA");
+        Thread.Sleep(delay);
+        _device.SendKeyEvent("KEYCODE_CAMERA");
         return true;
     }
 }
