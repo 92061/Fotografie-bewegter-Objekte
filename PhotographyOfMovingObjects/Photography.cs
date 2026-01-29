@@ -17,6 +17,7 @@ public static class Photography
     private static Task _triggerFlash = Flash.Trigger(DelayFlash);
 
     public static bool Armed = false;
+    public static bool ArmedAfterEveryPicture = true;
     
     static Photography()
     {
@@ -29,6 +30,7 @@ public static class Photography
             return;
         if (!Armed)
             Console.WriteLine("Triggered, but not armed!");
+        Armed = false;
         Console.WriteLine("Trigger received. Fall delay...");
         Thread.Sleep(FallDelay);
         _takePicture.Start();
@@ -54,6 +56,8 @@ public static class Photography
     {
         _takePicture = Camera.TakePicture(DelayCamera);
         _triggerFlash = Flash.Trigger(DelayFlash);
+        if (ArmedAfterEveryPicture)
+            Armed = true;
         Console.WriteLine($"Reset. Status {(Armed ? "Armed" : "Disarmed")}");
     }
 
