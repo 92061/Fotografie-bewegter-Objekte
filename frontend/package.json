@@ -19,6 +19,7 @@
     "@microsoft/signalr": "^10.0.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.4.0",
+    "@nuxtjs/i18n": "^10.2.1",
     "nuxt": "^4.2.2",
     "tailwindcss": "^4.1.18"
   },
