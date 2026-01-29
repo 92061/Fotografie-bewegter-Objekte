@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row gap-2 items-end">
-    <UFormField label="Delay after trigger">
+    <UFormField :label="$t('camera.controls.delay')">
       <UInputNumber
         v-model="delayMs"
         :disabled="busy"
@@ -19,7 +19,7 @@
       class="grow h-fit"
       @click="testCamera"
     >
-      Cheese!
+      {{ $t('camera.controls.cheese') }}
     </UButton>
   </div>
 </template>
@@ -27,6 +27,7 @@
 <script setup lang="ts">
 const { $api } = useNuxtApp()
 const toast = useToast()
+const { t } = useI18n()
 
 /**
  * Test Camera
@@ -39,7 +40,7 @@ const testCamera = async () => {
     })
     toast.add({
       icon: 'i-lucide-camera',
-      title: 'Picture taken!',
+      title: t('camera.controls.toasts.pictureTaken'),
       color: 'success'
     })
   } catch (e) {
@@ -80,7 +81,7 @@ watch(delayMs, async (newValue) => {
 
     toast.add({
       icon: 'i-lucide-camera',
-      title: 'Set Delay!',
+      title: t('camera.controls.toasts.delaySet'),
       color: 'success'
     })
   } catch (e) {

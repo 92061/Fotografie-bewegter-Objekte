@@ -23,5 +23,50 @@
       "pinSet": "GPIO Pinnummer gesetzt!",
       "delaySet": "Verzögerung gesetzt!"
     }
+  },
+  "camera": {
+    "controls": {
+      "delay": "Verzögerung",
+      "cheese": "Cheese!",
+      "toasts": {
+        "pictureTaken": "Foto aufgenommen!",
+        "delaySet": "Verzögerung gesetzt!"
+      }
+    },
+    "preview": {
+      "title": "Kamera"
+    },
+    "settings": {
+      "title": "Kameraeinstellungen",
+      "resolution": "Ausgabe Auflösung",
+      "width": "Breite",
+      "height": "Höhe",
+      "orientation": "Ausgabe Orientierung",
+      "hflip": "Horizontal spiegeln",
+      "vflip": "Vertikal spiegeln",
+      "rotate180": "Um 180 Grad drehen",
+      "encoding": "Ausgabeformat",
+      "quality": "Qualität",
+      "shutter": "Verschlusszeit",
+      "microseconds": "Mikrosekunden",
+      "gain": "Verstärkung",
+      "metering": "Messmodus",
+      "exposure": "Belichtungsmodus",
+      "awb": "Weißabgleich",
+      "brightness": "Helligkeit",
+      "contrast": "Kontrast",
+      "saturation": "Sättigung",
+      "sharpness": "Schärfe",
+      "denoise": "Rauschunterdrückung",
+      "afMode": "Autofokus-Modus",
+      "afRange": "Autofokus-Distanz",
+      "mode": "Kamera Modus",
+      "hardware": "Hardware",
+      "software": "Software",
+      "modeWarning": "Nur setzen, wenn Sie wissen was Sie tun!",
+      "toasts": {
+        "settingsUpdated": "Einstellungen gesetzt!"
+      }
+    }
   }
 }

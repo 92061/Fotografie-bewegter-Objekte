@@ -1,6 +1,6 @@
 <template>
   <UPageCard
-    title="Camera"
+    :title="$t('camera.preview.title')"
   >
     <template #leading>
       <UIcon

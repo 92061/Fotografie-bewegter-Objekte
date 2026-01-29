@@ -23,5 +23,50 @@
       "pinSet": "GPIO pin number updated!",
       "delaySet": "Delay updated!"
     }
+  },
+  "camera": {
+    "controls": {
+      "delay": "Delay",
+      "cheese": "Cheese!",
+      "toasts": {
+        "pictureTaken": "Picture taken!",
+        "delaySet": "Delay updated!"
+      }
+    },
+    "preview": {
+      "title": "Camera"
+    },
+    "settings": {
+      "title": "Camera settings",
+      "resolution": "Output resolution",
+      "width": "Width",
+      "height": "Height",
+      "orientation": "Output orientation",
+      "hflip": "Flip horizintally",
+      "vflip": "Flip vertically",
+      "rotate180": "Rotate 180 degrees",
+      "encoding": "Output encoding",
+      "quality": "Quality",
+      "shutter": "Shutter speed",
+      "microseconds": "Microseconds",
+      "gain": "Gain",
+      "metering": "Metering mode",
+      "exposure": "Exposure mode",
+      "awb": "Auto White Balance",
+      "brightness": "Brightness",
+      "contrast": "Contrast",
+      "saturation": "Saturation",
+      "sharpness": "Sharpness",
+      "denoise": "Denoise",
+      "afMode": "Autofocus mode",
+      "afRange": "Autofocus range",
+      "mode": "Camera mode",
+      "hardware": "Hardware",
+      "software": "Software",
+      "modeWarning": "Only set this if you know what you are doing.",
+      "toasts": {
+        "settingsUpdated": "Settings updated!"
+      }
+    }
   }
 }
