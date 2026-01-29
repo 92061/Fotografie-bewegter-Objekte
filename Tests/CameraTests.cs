@@ -4,23 +4,29 @@ namespace Tests;
 
 public class CameraTests
 {
+    public CameraTests()
+    {
+        Camera.Connect();
+    }
+    
     [Fact]
     public void TestAdbBridge()
     {
-        Assert.True(Camera.Connect());
+        Assert.True(Camera.Connected, "Camera not connected");
     }
 
     [Fact]
     public void TestStartCamera()
     {
-        Camera.Connect();
-        Assert.True(Camera.StartCameraApp());
+        Assert.True(Camera.StartCameraApp(), "Could not start camera");
     }
 
     [Fact]
-    public void TestTakingPicture()
+    public async Task TestTakingPicture()
     {
-        Camera.Connect();
-        Assert.True(Camera.TakePicture());
+        Task<bool> takePicture = Camera.TakePicture();
+        takePicture.Start();
+        await takePicture;
+        Assert.True(takePicture is { Result: true }, "Unable to take picture");
     }
 }
