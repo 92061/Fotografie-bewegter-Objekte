@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-row gap-2 items-end">
     <UFormField label="Delay after trigger">
       <UInputNumber
         v-model="delayMs"
@@ -10,12 +10,13 @@
           style: 'unit',
           unit: 'millisecond'
         }"
-        class="w-full"
+        class="w-fit"
       />
     </UFormField>
 
     <UButton
       :loading="busy"
+      class="grow h-fit"
       @click="testCamera"
     >
       Cheese!

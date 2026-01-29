@@ -1,6 +1,5 @@
 <template>
   <UPageCard
-    orientation="horizontal"
     title="Camera"
   >
     <template #leading>
@@ -8,9 +7,6 @@
         name="i-lucide-image"
         :class="['size-5 shrink-0 text-primary', snap ? 'animate-wiggle' : '']"
       />
-    </template>
-    <template #description>
-      <CameraSettings />
     </template>
     <div :class="['relative rounded-md', newPicture ? 'animate-highlight' : '']">
       <NuxtImg
@@ -42,6 +38,7 @@
         </UModal>
       </div>
     </div>
+      <CameraControls />
   </UPageCard>
 </template>
 
