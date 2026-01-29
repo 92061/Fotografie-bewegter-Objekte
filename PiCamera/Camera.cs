@@ -95,9 +95,16 @@ public class Camera : IDisposable
                 Thread.Sleep(1000); // TODO: Calculate or get the correct value
             else if (_args.Output is Output.File)
             {
-                Console.WriteLine(LatestFilePath);
-                while(!File.Exists(LatestFilePath) || !UnixHelper.IsWritten(LatestFilePath))
+                while (!File.Exists(LatestFilePath))
+                {
+                    Console.WriteLine($"Doesn't exist {LatestFilePath}");
                     Thread.Sleep(10);
+                }
+                while (!UnixHelper.IsWritten(LatestFilePath))
+                {
+                    Console.WriteLine($"Still writing {LatestFilePath}");
+                    Thread.Sleep(10);
+                }
             }
             else
                 Thread.Sleep(100); // TODO: Calculate or get the correct value
@@ -176,6 +183,6 @@ internal static class UnixHelper
     public static bool IsWritten(string filePath)
     {
         FileInfo fi = new (filePath);
-        return fi.LastWriteTimeUtc.Add(TimeSpan.FromMilliseconds(10)) > DateTime.UtcNow;
+        return fi.LastWriteTimeUtc.Add(TimeSpan.FromMilliseconds(10)) < DateTime.UtcNow;
     }
 }
