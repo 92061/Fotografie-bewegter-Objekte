@@ -43,6 +43,9 @@ public static class Camera
     // ReSharper disable once InconsistentNaming
     private static readonly ProcessRunner proc = new (ProcessSettings);
     private static string[] _procArgs = [];
+    
+    public static event PictureTakeEvent? PictureTaken;
+    public delegate void PictureTakeEvent(Stream stream);
 
 
     static Camera()
@@ -58,6 +61,7 @@ public static class Camera
     public static async Task TakePictureTask(Stream stream)
     {
         await proc.ExecuteAsync(_procArgs, stream);
+        PictureTaken?.Invoke(stream);
         Console.WriteLine("Camera!");
     }
 
