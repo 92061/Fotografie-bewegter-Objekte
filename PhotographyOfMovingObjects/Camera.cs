@@ -3,7 +3,7 @@ using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.DeviceCommands;
 using AdvancedSharpAdbClient.Models;
 
-namespace CameraTrigger;
+namespace PhotographyOfMovingObjects;
 
 public static class Camera
 {

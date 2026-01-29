@@ -1,15 +1,12 @@
 ﻿using System.Device.Gpio;
-using CameraTrigger;
-using FlashTrigger;
-using ImpulseReader;
 
 namespace PhotographyOfMovingObjects;
 
-public class Photography
+public static class Photography
 {
     static void Main(string[] args)
     {
-        _ = new Photography();
+        Thread.Sleep(Timeout.Infinite); //TODO Add Program-Exit
     }
     
     public static TimeSpan DelayCamera { get; private set; } = TimeSpan.FromMilliseconds(0);
@@ -19,10 +16,9 @@ public class Photography
     private static Task<bool> _takePicture = Camera.TakePicture(DelayCamera);
     private static Task _triggerFlash = Flash.Trigger(DelayFlash);
     
-    public Photography()
+    static Photography()
     {
         Trigger.Triggered += Triggered;
-        Thread.Sleep(Timeout.Infinite); //TODO Add Program-Exit
     }
 
     private static void Triggered(PinEventTypes type)

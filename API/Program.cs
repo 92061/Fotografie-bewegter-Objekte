@@ -7,7 +7,6 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<Photography>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opts =>
 {
