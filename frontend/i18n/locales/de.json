@@ -12,5 +12,16 @@
     "toasts": {
       "pinSet": "GPIO Pinnummer gesetzt!"
     }
+  },
+  "flash": {
+    "title": "Blitz",
+    "pin": "GPIO Pinnummer",
+    "delay": "Verzögerung",
+    "button": "Blitz!",
+    "toasts": {
+      "flashed": "Blitz!",
+      "pinSet": "GPIO Pinnummer gesetzt!",
+      "delaySet": "Verzögerung gesetzt!"
+    }
   }
 }

@@ -7,10 +7,21 @@
     "reconnected": "SignalR reconnected!"
   },
   "trigger": {
-    "title": "Triger",
-    "pin": "GPIO pin nummer",
+    "title": "Trigger",
+    "pin": "GPIO pin number",
     "toasts": {
       "pinSet": "GPIO pin number updated!"
+    }
+  },
+  "flash": {
+    "title": "Flash",
+    "pin": "GPIO pin number",
+    "delay": "Delay",
+    "button": "Flash!",
+    "toasts": {
+      "flashed": "Flash!",
+      "pinSet": "GPIO pin number updated!",
+      "delaySet": "Delay updated!"
     }
   }
 }

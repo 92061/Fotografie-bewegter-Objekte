@@ -1,6 +1,6 @@
 <template>
   <UPageCard
-    title="Flash"
+    :title="$t('flash.title')"
   >
     <template #leading>
       <UIcon
@@ -9,7 +9,7 @@
       />
     </template>
     <UPageColumns class="*:mb-0">
-      <UFormField label="GPIO Pin Number">
+      <UFormField :label="$t('flash.pin')">
         <USelect
           v-model="pinNumber"
           :items="gpioPins"
@@ -19,7 +19,7 @@
         />
       </UFormField>
 
-      <UFormField label="Delay after trigger">
+      <UFormField :label="$t('flash.delay')">
         <UInputNumber
           v-model="delayMs"
           :disabled="busy"
@@ -37,7 +37,7 @@
         class="w-full"
         @click="testFlash"
       >
-        Flash!
+        {{ $t('flash.button') }}
       </UButton>
     </UPageColumns>
   </UPageCard>
@@ -48,6 +48,7 @@ import type { SelectMenuItem } from '@nuxt/ui/components/SelectMenu.vue'
 
 const { $api } = useNuxtApp()
 const toast = useToast()
+const { t } = useI18n()
 
 const triggered = ref(false)
 useSignalR().addCallback('flash', () => {
@@ -66,7 +67,7 @@ const testFlash = async () => {
     })
     toast.add({
       icon: 'i-lucide-zap',
-      title: 'Flash!',
+      title: t('flash.toasts.flashed'),
       color: 'success'
     })
   } catch (e) {
@@ -113,7 +114,7 @@ watch(pinNumber, async (newValue) => {
     await refreshPin()
     toast.add({
       icon: 'i-lucide-zap',
-      title: 'Set Pin-Number!',
+      title: t('flash.toasts.pinSet'),
       color: 'success'
     })
   } catch (e) {
@@ -148,7 +149,7 @@ watch(delayMs, async (newValue) => {
 
     toast.add({
       icon: 'i-lucide-zap',
-      title: 'Set Delay!',
+      title: t('flash.toasts.delaySet'),
       color: 'success'
     })
   } catch (e) {
