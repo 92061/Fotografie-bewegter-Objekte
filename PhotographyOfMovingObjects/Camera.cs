@@ -1,89 +1,93 @@
-﻿using System.Net;
-using AdvancedSharpAdbClient;
-using AdvancedSharpAdbClient.DeviceCommands;
-using AdvancedSharpAdbClient.Models;
+﻿using Iot.Device.Camera;
+using Iot.Device.Camera.Settings;
+using Iot.Device.Common;
 
 namespace PhotographyOfMovingObjects;
 
+/// <summary>
+/// https://github.com/dotnet/iot/blob/main/src/devices/Camera/README.md
+/// </summary>
 public static class Camera
 {
-    private static readonly AdbServer AdbServer = new();
-    private static readonly AdbClient AdbClient = new();
-    private static DeviceClient? _device = null;
-    public static bool Connected => _device is not null;
+    private static readonly ProcessSettings ProcessSettings = ProcessSettingsFactory.CreateForLibcamerastillAndStderr();
 
-    public const string DefaultCameraApp = "com.google.android.GoogleCameraEng";
-    private const int CameraStartupDelayMs = 200;
+    /// <summary>
+    /// Camera to use for taking pictures
+    /// </summary>
+    public static CameraInfo? SelectedCamera
+    {
+        get => _camera;
+        set
+        {
+            _camera = value;
+            _procArgs = CreateArgs();
+        }
+    }
+    private static CameraInfo? _camera = null;
+
+    /// <summary>
+    /// Min 1ms
+    /// </summary>
+    public static int DelayMs
+    {
+        get => _delay;
+        set
+        {
+            _delay = value;
+            _procArgs = CreateArgs();
+        }
+    }
+
+    private static int _delay = 1;
+    
+    // ReSharper disable once InconsistentNaming
+    private static readonly ProcessRunner proc = new (ProcessSettings);
+    private static string[] _procArgs = [];
+
 
     static Camera()
     {
-        if (!AdbServer.Instance.GetStatus().IsRunning)
-            AdbServer.StartServer("/usr/bin/adb", false);
-        AdbClient.Connect(IPAddress.Loopback);
-        Connect();
+        SelectedCamera = GetCameras().Result.FirstOrDefault();
     }
 
-    public static bool Connect()
+    /// <summary>
+    /// Takes a picture 
+    /// </summary>
+    /// <param name="delay">Time to wait before taking a picutre</param>
+    /// <param name="stream">Stream to write the picture to</param>
+    public static async Task TakePictureTask(Stream stream, TimeSpan? delay = null)
     {
-        DeviceData? data = AdbClient.GetDevices().FirstOrDefault();
-        if (data is null)
-            return false;
-        switch (data.Value.State)
-        {
-            case DeviceState.Online:
-                break;
-            default:
-                Console.WriteLine(data.Value.State);
-                return false;
-        }
-        _device = new (AdbClient, (DeviceData)data);
-        return true;
-    }
-
-    public static bool StartCameraApp(string cameraAppName = DefaultCameraApp)
-    {
-        if (_device is null)
-        {
-            Console.WriteLine("No device connected!");
-            return false;
-        }
-        _device.StartApp(cameraAppName);
-        Thread.Sleep(CameraStartupDelayMs);
-        return CameraRunning(cameraAppName);
-    }
-
-    public static bool CameraRunning(string cameraAppName = DefaultCameraApp)
-    {
-        if (_device is null)
-        {
-            Console.WriteLine("No device connected!");
-            return false;
-        }
-        AppStatus appStatus = _device.GetAppStatus(cameraAppName);
-        return appStatus is not AppStatus.Stopped;
-    }
-
-    public static Task<bool> TakePicture(TimeSpan delay)
-    {
-        if (!CameraRunning())
-        {
-            Console.WriteLine("Camera not running!");
-            return new (() => false);
-        }
-        
-        return new Task<bool>(() => TakePictureInternal(delay));
-    }
-
-    private static bool TakePictureInternal(TimeSpan delay)
-    {
-        if (_device is null)
-        {
-            Console.WriteLine("No device connected!");
-            return false;
-        }
-        Thread.Sleep(delay);
-        _device.SendKeyEvent("KEYCODE_CAMERA");
+        if(delay is { } d)
+            Thread.Sleep(d);
+        await proc.ExecuteAsync(_procArgs, stream);
         Console.WriteLine("Camera!");
-        return true;
+    }
+
+    public static async Task<IEnumerable<CameraInfo>> GetCameras()
+    {
+        using ProcessRunner proc = new (ProcessSettings);
+        string text = await proc.ExecuteReadOutputAsStringAsync(string.Empty);
+        return await CameraInfo.From(text);
+    }
+
+    private static string[] CreateArgs()
+    {
+        if (_camera is null)
+            return [];
+
+        (int width, int height) = CameraResolution(_camera);
+
+        CommandOptionsBuilder builder = new CommandOptionsBuilder()
+            .WithCamera(_camera.Index)
+            .WithResolution(width, height)
+            .WithTimeout(_delay);
+        return builder.GetArguments();
+    }
+
+    private static (int width, int height) CameraResolution(CameraInfo info)
+    {
+        string maxRes = info.MaxResolution;
+        string[] split = maxRes.Split(',');
+        return (int.Parse(split[0]), int.Parse(split[1]));
     }
 }

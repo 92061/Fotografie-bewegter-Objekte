@@ -1,0 +1,33 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using PhotographyOfMovingObjects;
+
+namespace Project.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class CameraController : ControllerBase
+{
+    
+    /// <summary>
+    /// Returns the configured "Camera Delay".
+    /// </summary>
+    [HttpGet("Delay")]
+    [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
+    public Ok<int> GetCameraDelayMs()
+    {
+        return TypedResults.Ok((int)Photography.DelayCamera.TotalMilliseconds);
+    }
+    
+    /// <summary>
+    /// Sets the "Camera Delay"
+    /// </summary>
+    /// <param name="delayMs">Milliseconds</param>
+    [HttpPatch("Delay/{delayMs}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public Ok SetCameraDelayMs(int delayMs)
+    {
+        Photography.DelayCamera = TimeSpan.FromMilliseconds(delayMs);
+        return TypedResults.Ok();
+    }
+}

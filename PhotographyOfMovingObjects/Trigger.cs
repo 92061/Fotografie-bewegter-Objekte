@@ -24,7 +24,7 @@ public static class Trigger
     {
         _triggerPin = GpioController.OpenPin(DefaultTriggerPinNumber, PinMode.InputPullUp);
         GpioController.RegisterCallbackForPinValueChangedEvent(DefaultTriggerPinNumber, 
-            PinEventTypes.Rising,
+            PinEventTypes.Rising | PinEventTypes.Falling,
             OnPinValueChanged);
     }
     

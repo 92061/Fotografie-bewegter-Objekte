@@ -10,34 +10,36 @@ public static class Flash
 {
     private static readonly GpioController GpioController = new();
     private const int DefaultFlashPinNumber = 17; 
-    private static GpioPin _flashPin;
     private const int FlashHighTimeoutMs = 50;
 
-    public static int PinNumber => _flashPin.PinNumber;
+    public static int PinNumber
+    {
+        get => _flashPin.PinNumber;
+        set
+        {
+            _flashPin.Close();
+            _flashPin.Dispose();
+            _flashPin = GpioController.OpenPin(value, PinMode.Output);
+        }
+    }
+    private static GpioPin _flashPin;
 
     static Flash()
     {
         _flashPin = GpioController.OpenPin(DefaultFlashPinNumber, PinMode.Output);
     }
 
-    public static void SetFlashPin(int pinNumber)
+    public static Task FlashTask(TimeSpan? delay = null)
     {
-        _flashPin.Close();
-        _flashPin.Dispose();
-        _flashPin = GpioController.OpenPin(pinNumber, PinMode.Output);
-    }
-
-    public static Task Trigger(TimeSpan delay)
-    {
-        return new (() => TriggerInternal(delay));
-    }
-
-    private static void TriggerInternal(TimeSpan delay)
-    {
-        Thread.Sleep(delay);
-        _flashPin.Write(PinValue.High);
-        Console.WriteLine("Flash!");
-        Thread.Sleep(FlashHighTimeoutMs);
-        _flashPin.Write(PinValue.Low);
+        return new Task(() =>
+        {
+            if(delay is { } d)
+                Thread.Sleep(d);
+            
+            _flashPin.Write(PinValue.High);
+            Console.WriteLine("Flash!");
+            Thread.Sleep(FlashHighTimeoutMs);
+            _flashPin.Write(PinValue.Low);
+        });
     }
 }

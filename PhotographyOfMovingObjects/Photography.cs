@@ -9,61 +9,84 @@ public static class Photography
         Thread.Sleep(Timeout.Infinite); //TODO Add Program-Exit
     }
     
-    public static TimeSpan DelayCamera { get; private set; } = TimeSpan.FromMilliseconds(0);
-    public static TimeSpan DelayFlash { get; private set; } = TimeSpan.FromMilliseconds(0);
-    public static TimeSpan FallDelay { get; private set; } = TimeSpan.FromMilliseconds(100);
-    
-    private static Task<bool> _takePicture = Camera.TakePicture(DelayCamera);
-    private static Task _triggerFlash = Flash.Trigger(DelayFlash);
+    /// <summary>
+    /// The delay between Trigger and the picture being taken
+    /// </summary>
+    public static TimeSpan DelayCamera
+    {
+        get => _delayCamera;
+        set
+        {
+            _delayCamera = value;
+            ResetTasks();
+        }
+    }
+    private static TimeSpan _delayCamera = TimeSpan.Zero;
 
-    public static bool Armed = false;
-    public static bool ArmedAfterEveryPicture = true;
+    /// <summary>
+    /// The delay between Trigger and the flash triggering
+    /// </summary>
+    public static TimeSpan DelayFlash
+    {
+        get => _delayFlash;
+        set
+        {
+            _delayFlash = value;
+            ResetTasks();
+        }
+    }
+    private static TimeSpan _delayFlash = TimeSpan.Zero;
+
+    /// <summary>
+    /// On which flank of the GPIO input do we Trigger
+    /// </summary>
+    public static PinEventTypes TriggerOn = PinEventTypes.Rising;
+    
+    /// <summary>
+    /// Stream to output the captured Image to
+    /// </summary>
+    public static Stream ImageStream
+    {
+        get => _imageStream;
+        set
+        {
+            _imageStream = value;
+            _takePicture = Camera.TakePictureTask(value, DelayCamera);
+        }
+    }
+    private static Stream _imageStream = new MemoryStream(1);
+
+    private static Task _takePicture = Camera.TakePictureTask(_imageStream);
+    private static Task _triggerFlash = Flash.FlashTask();
+    
     
     static Photography()
     {
         Trigger.Triggered += Triggered;
     }
 
+    /// <summary>
+    /// Handles the GPIO Trigger event
+    /// </summary>
+    /// <param name="type"></param>
     private static void Triggered(PinEventTypes type)
     {
-        if (type is not PinEventTypes.Rising)
-            return;
-        if (!Armed)
+        if (type != TriggerOn)
         {
-            Console.WriteLine("Triggered, but not armed!");
+            Console.WriteLine("Wrong flank!");
             return;
         }
-        Armed = false;
-        Console.WriteLine("Trigger received. Fall delay...");
-        Thread.Sleep(FallDelay);
+        
         _takePicture.Start();
         _triggerFlash.Start();
-        while(_takePicture.IsCompleted == false && _triggerFlash.IsCompleted == false)
-            Thread.Sleep(10);
+        Console.WriteLine("Triggered!");
+        Task.WaitAll(_takePicture, _triggerFlash);
         ResetTasks();
     }
-
-    public static void SetFallDelay(TimeSpan fallDelay) => FallDelay = fallDelay;
-    public static void SetCameraDelay(TimeSpan delay)
-    {
-        DelayCamera = delay;
-        ResetTasks();
-    }
-    public static void SetFlashDelay(TimeSpan delay)
-    {
-        DelayFlash = delay;
-        ResetTasks();
-    }
-
+    
     private static void ResetTasks()
     {
-        _takePicture = Camera.TakePicture(DelayCamera);
-        _triggerFlash = Flash.Trigger(DelayFlash);
-        if (ArmedAfterEveryPicture)
-            Armed = true;
-        Console.WriteLine($"Reset. Status {(Armed ? "Armed" : "Disarmed")}");
+        _takePicture = Camera.TakePictureTask(ImageStream, _delayCamera);
+        _triggerFlash = Flash.FlashTask(_delayFlash);
     }
-
-    public static void Arm() => Armed = true;
-    public static void Disarm() => Armed = false;
 }
