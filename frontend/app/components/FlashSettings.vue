@@ -8,35 +8,38 @@
         :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
       />
     </template>
-    <UFormField label="GPIO Pin Number">
-      <USelect
-        v-model="pinNumber"
-        :items="gpioPins"
-        :disabled="busy"
-        :loading="statusPin !== 'success'"
-        class="w-full"
-      />
-    </UFormField>
+    <UPageColumns>
+      <UFormField label="GPIO Pin Number">
+        <USelect
+          v-model="pinNumber"
+          :items="gpioPins"
+          :disabled="busy"
+          :loading="statusPin !== 'success'"
+          class="w-full"
+        />
+      </UFormField>
 
-    <UFormField label="Delay after trigger">
-      <UInputNumber
-        v-model="delayMs"
-        :disabled="busy"
-        :loading="statusDelay !== 'success'"
-        :min="0"
-        :format-options="{
-          style: 'unit',
-          unit: 'millisecond'
-        }"
+      <UFormField label="Delay after trigger">
+        <UInputNumber
+          v-model="delayMs"
+          :disabled="busy"
+          :loading="statusDelay !== 'success'"
+          :min="0"
+          :format-options="{
+            style: 'unit',
+            unit: 'millisecond'
+          }"
+          class="w-full"
+        />
+      </UFormField>
+      <UButton
+        :loading="busy"
         class="w-full"
-      />
-    </UFormField>
-    <UButton
-      :loading="busy"
-      @click="testFlash"
-    >
-      Flash!
-    </UButton>
+        @click="testFlash"
+      >
+        Flash!
+      </UButton>
+    </UPageColumns>
   </UPageCard>
 </template>
 

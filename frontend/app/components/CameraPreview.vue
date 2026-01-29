@@ -38,7 +38,7 @@
         </UModal>
       </div>
     </div>
-      <CameraControls />
+    <CameraControls />
   </UPageCard>
 </template>
 
@@ -55,8 +55,8 @@ useSignalR().addCallback('snap', () => {
 })
 const newPicture = ref(false)
 useSignalR().addCallback('picture', () => {
-    refresh();
-    newPicture.value = true
-    setTimeout(() => newPicture.value = false, 250)
+  refresh()
+  newPicture.value = true
+  setTimeout(() => newPicture.value = false, 250)
 })
 </script>

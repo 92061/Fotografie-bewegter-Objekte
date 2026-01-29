@@ -90,10 +90,12 @@ public class Camera : IDisposable
             _newPictureIndex++;
         
             // Wait for picture to be ready (taken and saved)
+            Console.WriteLine("Waiting for picture...");
             if(_args.Output is Output.Stream)
                 Thread.Sleep(1000); // TODO: Calculate or get the correct value
             else if (_args.Output is Output.File)
             {
+                Console.WriteLine(LatestFilePath);
                 while(!File.Exists(LatestFilePath) || !UnixHelper.IsWritten(LatestFilePath))
                     Thread.Sleep(10);
             }
