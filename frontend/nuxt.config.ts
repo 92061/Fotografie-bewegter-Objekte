@@ -2,19 +2,19 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', 'nuxt-open-fetch', '@nuxt/image', '@nuxtjs/i18n'],
 
+  ssr: false,
+
   devtools: {
     enabled: true
   },
 
-  devServer: {
-    host: '127.0.0.1'
-  },
-
   css: ['~/assets/css/main.css'],
-
-  ssr: false,
   routeRules: {
     '/': { prerender: true }
+  },
+
+  devServer: {
+    host: '127.0.0.1'
   },
 
   compatibilityDate: '2025-01-15',

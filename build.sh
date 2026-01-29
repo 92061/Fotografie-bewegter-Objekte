@@ -2,9 +2,13 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-cd frontend && npm install && npm run dist
-cd $SCRIPT_DIR
-mkdir -p API/wwwroot
-cp -r frontend/dist/* API/wwwroot/
-cd API
+# Generate Openapi definition
+cd $SCRIPT_DIR/API && dotnet build
+
+# Generate Website and copy to API
+cd $SCRIPT_DIR/frontend && npm install && npm run dist
+mkdir -p $SCRIPT_DIR/API/wwwroot && cp -r $SCRIPT_DIR/frontend/dist/* $SCRIPT_DIR/API/wwwroot/
+
+# Generate API
+cd $SCRIPT_DIR/API
 dotnet publish
