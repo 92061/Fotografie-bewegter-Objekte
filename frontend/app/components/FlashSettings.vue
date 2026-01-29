@@ -9,7 +9,10 @@
       />
     </template>
     <UPageColumns class="*:mb-0">
-      <UFormField :label="$t('flash.pin')">
+      <UFormField>
+        <template #label>
+          <ULink to="https://pinout.xyz/">{{ $t('flash.pin') }}</ULink>
+        </template>
         <USelect
           v-model="pinNumber"
           :items="gpioPins"

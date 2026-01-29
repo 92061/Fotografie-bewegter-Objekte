@@ -8,7 +8,10 @@
         :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
       />
     </template>
-    <UFormField :label="$t('trigger.pin')">
+    <UFormField>
+      <template #label>
+        <ULink to="https://pinout.xyz/">{{ $t('trigger.pin') }}</ULink>
+      </template>
       <USelect
         v-model="pinNumber"
         :items="gpioPins"
