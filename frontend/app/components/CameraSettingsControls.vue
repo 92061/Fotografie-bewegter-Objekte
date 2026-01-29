@@ -43,13 +43,14 @@
           <USelect
             v-model="state.encoding"
             :items="['Jpeg', 'Png', 'Rgb', 'Bmp', 'Yuv420']"
+            placeholder="Jpeg"
             class="w-full"
           />
         </UFormField>
         <UFormField label="Quality">
           <UInputNumber
             v-model="state.quality"
-            placeholder="JPG Quality"
+            placeholder="JPEG Quality"
             class="w-full"
             :min="0"
             :max="100"
@@ -67,12 +68,15 @@
           <UInputNumber
             v-model="state.gain"
             class="w-full"
+            placeholder="0.0"
+            :steps="0.1"
           />
         </UFormField>
         <UFormField label="Metering Mode">
           <USelect
             v-model="state.metering"
             :items="['Center', 'Spot', 'Average']"
+            placeholder="Center"
             class="w-full"
           />
         </UFormField>
@@ -80,19 +84,20 @@
           <USelect
             v-model="state.exposure"
             :items="['Sport', 'Normal', 'Long']"
+            placeholder="Normal"
             class="w-full"
           />
         </UFormField>
         <UFormField label="EV">
           <UInputNumber
             v-model="state.ev"
-            placeholder="0"
+            placeholder="0.0"
             class="w-full"
             :min="-10.0"
             :max="10.0"
             :format-options="{
               style: 'decimal',
-              signDisplay: 'always',
+              signDisplay: 'exceptZero',
               minimumFractionDigits: 1
             }"
           />
@@ -101,20 +106,21 @@
           <USelect
             v-model="state.awb"
             :items="['Auto', 'Incandescent', 'Tungsten', 'Fluorescent', 'Indoor', 'Daylight', 'Cloudy']"
+            placeholder="Auto"
             class="w-full"
           />
         </UFormField>
         <UFormField label="Brightness">
           <UInputNumber
             v-model="state.brightness"
-            placeholder="0"
+            placeholder="0.0"
             class="w-full"
             :min="-1.0"
             :max="1.0"
             :step="0.1"
             :format-options="{
               style: 'decimal',
-              signDisplay: 'always',
+              signDisplay: 'exceptZero',
               minimumFractionDigits: 1
             }"
           />
@@ -122,7 +128,7 @@
         <UFormField label="Contrast">
           <UInputNumber
             v-model="state.contrast"
-            placeholder="1"
+            placeholder="1.0"
             class="w-full"
             :min="0"
             :step="0.1"
@@ -135,7 +141,7 @@
         <UFormField label="Saturation">
           <UInputNumber
             v-model="state.saturation"
-            placeholder="1"
+            placeholder="1.0"
             class="w-full"
             :min="0"
             :step="0.1"
@@ -148,7 +154,7 @@
         <UFormField label="Sharpness">
           <UInputNumber
             v-model="state.saturation"
-            placeholder="1"
+            placeholder="1.0"
             class="w-full"
             :min="0"
             :step="0.1"
@@ -162,24 +168,25 @@
           <USelect
             v-model="state.denoise"
             :items="['Auto', 'Off', 'CdnOff', 'CdnFast', 'CdnHq']"
+            placeholder="Auto"
             class="w-full"
           />
         </UFormField>
-        <UFormField label="Autofocus">
-          <div class="flex flex-row gap-2">
-            <USelect
-              v-model="state.autofocusMode"
-              placeholder="Mode"
-              :items="['Default', 'Auto', 'Manual', 'Continous']"
-              class="w-full"
-            />
-            <USelect
-              v-model="state.autofocusRange"
-              placeholder="Range"
-              :items="['Normal', 'Macro', 'Full']"
-              class="w-full"
-            />
-          </div>
+        <UFormField label="Autofocus Mode">
+          <USelect
+            v-model="state.autofocusMode"
+            placeholder="Default"
+            :items="['Default', 'Auto', 'Manual', 'Continous']"
+            class="w-full"
+          />
+        </UFormField>
+        <UFormField label="Autofocus Range">
+          <USelect
+            v-model="state.autofocusRange"
+            placeholder="Normal"
+            :items="['Normal', 'Macro', 'Full']"
+            class="w-full"
+          />
         </UFormField>
       </UPageColumns>
       <UFormField label="Camera Mode">

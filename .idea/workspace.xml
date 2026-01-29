@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="linting">
-      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Reduce margins on form-fields">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraSettingsControls.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraSettingsControls.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,7 @@
       <workItem from="1769538148569" duration="2000000" />
       <workItem from="1769540154032" duration="8654000" />
       <workItem from="1769557003295" duration="15886000" />
-      <workItem from="1769654359397" duration="8096000" />
+      <workItem from="1769654359397" duration="8714000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -302,7 +302,31 @@
       <option name="project" value="LOCAL" />
       <updated>1769660682174</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Add toasts to signalR">
+      <option name="closed" value="true" />
+      <created>1769663455491</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1769663455491</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Change order of Camera Settings">
+      <option name="closed" value="true" />
+      <created>1769663473265</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1769663473265</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Reduce margins on form-fields">
+      <option name="closed" value="true" />
+      <created>1769663604938</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1769663604938</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,9 +344,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Frontend boilerplate" />
-    <MESSAGE value="Remove extraneous data" />
-    <MESSAGE value="Remove extraneous data&#10;Add frontend boilerplate" />
     <MESSAGE value="Add openapi-ts" />
     <MESSAGE value="Flash Card" />
     <MESSAGE value="app description and seo" />
@@ -345,6 +366,9 @@
     <MESSAGE value="Animation for new picture" />
     <MESSAGE value="Camera Settings frontend" />
     <MESSAGE value="linting" />
-    <option name="LAST_COMMIT_MESSAGE" value="linting" />
+    <MESSAGE value="Add toasts to signalR" />
+    <MESSAGE value="Change order of Camera Settings" />
+    <MESSAGE value="Reduce margins on form-fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reduce margins on form-fields" />
   </component>
 </project>
