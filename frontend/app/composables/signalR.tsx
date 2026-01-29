@@ -17,7 +17,20 @@ export function useSignalR() {
         withCredentials: false
       })
       .configureLogging(LogLevel.Information)
+      .withAutomaticReconnect()
       .build()
+
+    const toast = useToast()
+    signalRConnection.value.onreconnecting(() => toast.add({
+      icon: 'i-lucide-wifi-sync',
+      title: 'Reconnecting SignalR...',
+      color: 'warning'
+    }))
+    signalRConnection.value.onreconnected(() => toast.add({
+      icon: 'i-lucide-wifi',
+      title: 'SignalR reconnected!',
+      color: 'success'
+    }))
 
     start(signalRConnection.value)
   }
