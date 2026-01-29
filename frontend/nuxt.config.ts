@@ -38,8 +38,8 @@ export default defineNuxtConfig({
   openFetch: {
     clients: {
       api: {
-        baseURL: 'http://192.168.0.133:5000',
-        schema: 'http://192.168.0.133:5000/swagger/v1/swagger.json'
+        baseURL: 'http://127.0.0.1:5000',
+        schema: '../API/API.json'
       }
     }
   }
