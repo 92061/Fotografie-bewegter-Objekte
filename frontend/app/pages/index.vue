@@ -1,10 +1,15 @@
 <template>
   <UPage>
-    <UPageList>
-      <FlashSettings />
-      <TriggerSettings />
-    </UPageList>
+    <template #left>
+      <UPageAside>
+        <div class="flex flex-col gap-4">
+          <FlashSettings />
+          <TriggerSettings />
+        </div>
+      </UPageAside>
+    </template>
   </UPage>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
