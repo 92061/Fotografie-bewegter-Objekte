@@ -23,9 +23,10 @@ public static class Trigger
     static Trigger()
     {
         _triggerPin = GpioController.OpenPin(DefaultTriggerPinNumber, PinMode.InputPullUp);
-        GpioController.RegisterCallbackForPinValueChangedEvent(DefaultTriggerPinNumber, 
+        GpioController.RegisterCallbackForPinValueChangedEvent(_triggerPin.PinNumber, 
             PinEventTypes.Rising,
             OnPinValueChanged);
+        _triggerPin.Read();
     }
     
     public static void SetTriggerPin(int pinNumber, PinMode mode = PinMode.InputPullUp)
@@ -34,9 +35,10 @@ public static class Trigger
         _triggerPin.Dispose();
         GpioController.UnregisterCallbackForPinValueChangedEvent(_triggerPin.PinNumber, OnPinValueChanged);
         _triggerPin = GpioController.OpenPin(pinNumber, mode);
-        GpioController.RegisterCallbackForPinValueChangedEvent(DefaultTriggerPinNumber, 
+        GpioController.RegisterCallbackForPinValueChangedEvent(_triggerPin.PinNumber, 
             PinEventTypes.Rising | PinEventTypes.Falling,
             OnPinValueChanged);
+        _triggerPin.Read();
     }
 
     private static void OnPinValueChanged(object sender, PinValueChangedEventArgs e)
