@@ -15,6 +15,8 @@ public static class Photography
     
     private static Task<bool> _takePicture = Camera.TakePicture(DelayCamera);
     private static Task _triggerFlash = Flash.Trigger(DelayFlash);
+
+    public static bool Armed = false;
     
     static Photography()
     {
@@ -25,10 +27,12 @@ public static class Photography
     {
         if (type is not PinEventTypes.Rising)
             return;
+        if (!Armed)
+            Console.WriteLine("Triggered, but not armed!");
+        Console.WriteLine("Trigger received. Fall delay...");
         Thread.Sleep(FallDelay);
         _takePicture.Start();
         _triggerFlash.Start();
-        Console.WriteLine("Trigger received. Fall delay...");
         while(_takePicture.IsCompleted == false && _triggerFlash.IsCompleted == false)
             Thread.Sleep(10);
         ResetTasks();
@@ -50,6 +54,9 @@ public static class Photography
     {
         _takePicture = Camera.TakePicture(DelayCamera);
         _triggerFlash = Flash.Trigger(DelayFlash);
-        Console.WriteLine("Reset.");
+        Console.WriteLine($"Reset. Status {(Armed ? "Armed" : "Disarmed")}");
     }
+
+    public static void Arm() => Armed = true;
+    public static void Disarm() => Armed = false;
 }

@@ -90,4 +90,37 @@ public class ActionController : ControllerBase
         else
             return new StatusCodeResult(StatusCodes.Status500InternalServerError);
     }
+
+    /// <summary>
+    /// Arms the system. When trigger is received, flash and camera will go off and
+    /// </summary>
+    [HttpPost("Arm_System")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult ArmSystem()
+    {
+        Photography.Arm();
+        return Ok();
+    }
+
+    /// <summary>
+    /// Disarms the system.
+    /// </summary>
+    [HttpPost("Disarm_System")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult DisarmSystem()
+    {
+        Photography.Disarm();
+        return Ok();
+    }
+
+    /// <summary>
+    /// Gets the Arm-Status
+    /// </summary>
+    /// <response code="200">true if armed</response>
+    [HttpGet("Arm_Status")]
+    [ProducesResponseType<bool>(StatusCodes.Status200OK, "text/plain")]
+    public IActionResult GetArmStatus()
+    {
+        return Ok(Photography.Armed);
+    }
 }
