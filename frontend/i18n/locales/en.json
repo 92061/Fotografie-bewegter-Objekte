@@ -1,4 +1,9 @@
 {
   "title": "Photography of moving objects",
-  "builtWithNuxtUi": "Built with Nuxt UI"
+  "builtWithNuxtUi": "Built with Nuxt UI",
+  "signalR": {
+    "connected": "SignalR connected!",
+    "reconnecting": "SignalR reconnecting...",
+    "reconnected": "SignalR reconnected!"
+  }
 }

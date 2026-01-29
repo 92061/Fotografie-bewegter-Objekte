@@ -4,11 +4,19 @@ import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
 const signalRConnection = ref<HubConnection>()
 
 async function start(signalRConnection: HubConnection) {
+  const toast = useToast()
+  const { t } = useI18n()
   await signalRConnection.start()
-  console.log('SignalR Connected.')
+  toast.add({
+    icon: 'i-lucide-wifi',
+    title: t('signalR.connected'),
+    color: 'success'
+  })
 }
 
 export function useSignalR() {
+  const toast = useToast()
+  const { t } = useI18n()
   if (!signalRConnection.value) {
     const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notifications'
 
@@ -20,15 +28,14 @@ export function useSignalR() {
       .withAutomaticReconnect()
       .build()
 
-    const toast = useToast()
     signalRConnection.value.onreconnecting(() => toast.add({
       icon: 'i-lucide-wifi-sync',
-      title: 'Reconnecting SignalR...',
+      title: t('signalR.reconnecting'),
       color: 'warning'
     }))
     signalRConnection.value.onreconnected(() => toast.add({
       icon: 'i-lucide-wifi',
-      title: 'SignalR reconnected!',
+      title: t('signalR.reconnected'),
       color: 'success'
     }))
 

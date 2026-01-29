@@ -2,14 +2,6 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', 'nuxt-open-fetch', '@nuxt/image', '@nuxtjs/i18n'],
 
-  i18n: {
-    defaultLocale: 'en',
-    locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'de', name: 'Deutsch', file: 'de.json' }
-    ]
-  },
-
   devtools: {
     enabled: true
   },
@@ -33,6 +25,14 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'de', name: 'Deutsch', file: 'de.json' }
+    ]
   },
 
   openFetch: {

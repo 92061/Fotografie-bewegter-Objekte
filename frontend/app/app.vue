@@ -13,12 +13,12 @@
           }"
           label="Swagger"
         />
-          <UColorModeSelect />
-          <ULocaleSelect
-              :model-value="locale"
-              :locales="[en, de]"
-              @update:model-value="setLocale($event)"
-          />
+        <UColorModeSelect />
+        <ULocaleSelect
+          :model-value="locale"
+          :locales="[en, de]"
+          @update:model-value="setLocale($event)"
+        />
       </template>
     </UHeader>
 
@@ -35,7 +35,7 @@
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-            {{ $t('builtWithNuxtUi') }} • © {{ new Date().getFullYear() }}
+          {{ $t('builtWithNuxtUi') }} • © {{ new Date().getFullYear() }}
         </p>
       </template>
     </UFooter>
@@ -55,10 +55,10 @@ useHead({
   }
 })
 
-const title = "Photography of moving objects"
+const title = 'Photography of moving objects'
 
 useSeoMeta({
   title,
-  ogTitle: title,
+  ogTitle: title
 })
 </script>

@@ -1,4 +1,9 @@
 {
   "title": "Fotografie bewegter Objekte",
-  "builtWithNuxtUi": "Mit Nuxt UI erstellt"
+  "builtWithNuxtUi": "Mit Nuxt UI erstellt",
+  "signalR": {
+    "connected": "SignalR verbunden!",
+    "reconnecting": "SignalR wiederverbinden...",
+    "reconnected": "SignalR wiederverbunden!"
+  }
 }
