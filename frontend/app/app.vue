@@ -20,9 +20,7 @@
       <UPage>
         <UContainer>
           <UPageBody>
-            <NuxtLayout>
-              <NuxtPage />
-            </NuxtLayout>
+            <NuxtPage />
           </UPageBody>
         </UContainer>
       </UPage>
