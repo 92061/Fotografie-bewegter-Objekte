@@ -2,8 +2,13 @@
   <UPageCard
     orientation="horizontal"
     title="Camera"
-    icon="i-lucide-image"
   >
+    <template #leading>
+      <UIcon
+        name="i-lucide-image"
+        :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
+      />
+    </template>
     <template #description>
       <CameraSettings />
     </template>
@@ -46,5 +51,10 @@ const refresh = () => {
   key.value = Date.now()
 }
 
+const triggered = ref(false)
+useSignalR().addCallback('picture', () => {
+  triggered.value = true
+  setTimeout(() => triggered.value = false, 250)
+})
 useSignalR().addCallback('picture', refresh)
 </script>

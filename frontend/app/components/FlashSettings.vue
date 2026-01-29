@@ -1,8 +1,13 @@
 <template>
   <UPageCard
     title="Flash"
-    icon="i-lucide-zap"
   >
+    <template #leading>
+      <UIcon
+        name="i-lucide-zap"
+        :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
+      />
+    </template>
     <UFormField label="GPIO Pin Number">
       <USelect
         v-model="pinNumber"
@@ -40,6 +45,12 @@ import type { SelectMenuItem } from '@nuxt/ui/components/SelectMenu.vue'
 
 const { $api } = useNuxtApp()
 const toast = useToast()
+
+const triggered = ref(false)
+useSignalR().addCallback('flash', () => {
+  triggered.value = true
+  setTimeout(() => triggered.value = false, 250)
+})
 
 /**
  * Test flash

@@ -59,6 +59,18 @@ Camera.PictureTaken += async data =>
         return;
     await hub.Clients.All.SendAsync("picture", data);
 };
+Trigger.Triggered += async type =>
+{
+    if (app.Services.GetService<IHubContext<NotificationHub>>() is not { } hub)
+        return;
+    await hub.Clients.All.SendAsync("trigger", type);
+};
+Flash.Triggered += async () => 
+{
+    if (app.Services.GetService<IHubContext<NotificationHub>>() is not { } hub)
+        return;
+    await hub.Clients.All.SendAsync("flash");
+};
 
 app.Run();
  

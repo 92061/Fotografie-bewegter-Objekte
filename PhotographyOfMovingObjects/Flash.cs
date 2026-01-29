@@ -11,6 +11,10 @@ public static class Flash
     private static readonly GpioController GpioController = new();
     private const int DefaultFlashPinNumber = 17; 
     private const int FlashHighTimeoutMs = 2;
+    
+    
+    public static event TriggeredEvent? Triggered;
+    public delegate void TriggeredEvent();
 
     public static int PinNumber
     {
@@ -36,6 +40,7 @@ public static class Flash
             
         _flashPin.Write(PinValue.High);
         Console.WriteLine("Flash!");
+        Triggered?.Invoke();
         Thread.Sleep(FlashHighTimeoutMs);
         _flashPin.Write(PinValue.Low);
     }
