@@ -116,4 +116,26 @@ public class ConfigurationController : ControllerBase
         Trigger.SetTriggerPin(pinNumber);
         return Ok();
     }
+
+    /// <summary>
+    /// Sets whether to re-arm the system after every picture
+    /// </summary>
+    /// <param name="toggle">true to rearm</param>
+    [HttpPatch("ArmedAfterEveryPicture/{toggle}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult ArmedAfterEveryPicture(bool toggle)
+    {
+        Photography.ArmedAfterEveryPicture = toggle;
+        return Ok();
+    }
+
+    /// <summary>
+    /// Gets whether system is rearmed after every picture
+    /// </summary>
+    [HttpGet("ArmedAfterEveryPicture")]
+    [ProducesResponseType<bool>(StatusCodes.Status200OK, "text/plain")]
+    public IActionResult GetArmedAfterEveryPicture()
+    {
+        return Ok(Photography.ArmedAfterEveryPicture);
+    }
 }
