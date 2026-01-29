@@ -2,14 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotographyOfMovingObjects", "PhotographyOfMovingObjects\PhotographyOfMovingObjects.csproj", "{46676706-9DC7-4DD4-B1B5-6D887685C5F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4604D0F2-AF17-4611-9915-0D1904272E61}"
-	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiCamera", "PiCamera\PiCamera.csproj", "{AC505A76-BAB6-40AD-BB0B-E58859594299}"
 EndProject
@@ -23,10 +18,6 @@ Global
 		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{46676706-9DC7-4DD4-B1B5-6D887685C5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46676706-9DC7-4DD4-B1B5-6D887685C5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46676706-9DC7-4DD4-B1B5-6D887685C5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU

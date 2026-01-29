@@ -1,6 +1,0 @@
-﻿services:
-  PhotographyOfMovingObjects:
-    image: photography
-    build:
-      context: .
-      dockerfile: PhotographyOfMovingObjects/Dockerfile
