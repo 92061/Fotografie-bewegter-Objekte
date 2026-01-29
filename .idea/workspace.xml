@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Fix Preview">
-      <change afterPath="$PROJECT_DIR$/API/NotificationHub.cs" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Use SignalR for Realtime Communication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Controllers/WebsocketController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/ImageWebsocketHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PiCamera/RpicamArgs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PiCamera/RpicamArgs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhotographyOfMovingObjects/Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PhotographyOfMovingObjects/Camera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhotographyOfMovingObjects/Photography.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PhotographyOfMovingObjects/Photography.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PiCamera/Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PiCamera/Camera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PiCamera/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PiCamera/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +103,7 @@
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
       <workItem from="1769540154032" duration="8654000" />
-      <workItem from="1769557003295" duration="6206000" />
+      <workItem from="1769557003295" duration="9129000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -213,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769548767986</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Use SignalR for Realtime Communication">
+      <option name="closed" value="true" />
+      <created>1769563864291</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1769563864291</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +249,7 @@
     <MESSAGE value="Camera Settings and Preview" />
     <MESSAGE value="Fix imports" />
     <MESSAGE value="Fix Preview" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Preview" />
+    <MESSAGE value="Use SignalR for Realtime Communication" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use SignalR for Realtime Communication" />
   </component>
 </project>

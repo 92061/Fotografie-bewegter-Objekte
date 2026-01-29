@@ -37,9 +37,9 @@ public class CameraController : ControllerBase
     /// <response code="200">Photo taken</response>
     [HttpPost("TakePicture")]
     [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
-    public async Task<FileContentHttpResult> TakePicture()
+    public FileContentHttpResult TakePicture()
     {
-        Photography.LatestPicture = await Camera.TakePicture(HttpContext.RequestAborted);
+        Camera.TakePicture(HttpContext.RequestAborted);
         return TypedResults.File(Photography.LatestPicture, "image/jpeg");
     }
     

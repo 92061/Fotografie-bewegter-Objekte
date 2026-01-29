@@ -48,27 +48,43 @@ public class Camera : IDisposable
             _lastPicture.Position = 0;
             _lastPicture.SetLength(0);
         }
-        // https://www.raspberrypi.com/documentation/computers/camera_software.html#signal
-        bool ret = _rpiCamProc.SendSignal(Signum.SIGUSR1);
-        _newPictureIndex++;
+
+        bool ret;
+        lock (_rpiCamProc)
+        {
+            // https://www.raspberrypi.com/documentation/computers/camera_software.html#signal
+            ret = _rpiCamProc.SendSignal(Signum.SIGUSR1);
+            _newPictureIndex++;
         
-        if(_args.Output is Output.Stream)
-            Thread.Sleep(1000);
-        else if(_args.Output is Output.File)
-            while(!File.Exists(LatestFilePath))
-                Thread.Sleep(10);
-        else
-            Thread.Sleep(100);
+            if(_args.Output is Output.Stream)
+                Thread.Sleep(1000);
+            else if (_args.Output is Output.File)
+            {
+                while(!File.Exists(LatestFilePath) || !UnixHelper.IsWritten(LatestFilePath))
+                    Thread.Sleep(10);
+            }
+            else
+                Thread.Sleep(100);
+            
+            Thread.Sleep(10); //Wait for file to close and camera to be ready
+        }
+        
         return ret;
     }
 
-    public async Task<byte[]> GetPicture(CancellationToken? ct = null)
+    public byte[] GetPicture()
     {
         if (_args.Output is Output.File)
-            if(File.Exists(LatestFilePath))
-                return await File.ReadAllBytesAsync(LatestFilePath, ct ?? CancellationToken.None);
-            else
-                Console.WriteLine($"File does not exist {LatestFilePath}");
+        {
+            lock (LatestFilePath)
+            {
+                Console.WriteLine($"Getting file {LatestFilePath}");
+                if (File.Exists(LatestFilePath))
+                    return File.ReadAllBytes(LatestFilePath);
+                else
+                    Console.WriteLine($"File does not exist {LatestFilePath}");
+            }
+        }
 
         if (_args.Output is Output.Stream)
             return _lastPicture.ToArray();
@@ -111,5 +127,11 @@ internal static class UnixHelper
             Console.WriteLine(process.ExitCode);
             return false;
         }
+    }
+
+    public static bool IsWritten(string filePath)
+    {
+        FileInfo fi = new (filePath);
+        return fi.LastWriteTimeUtc.Add(TimeSpan.FromMilliseconds(10)) > DateTime.UtcNow;
     }
 }

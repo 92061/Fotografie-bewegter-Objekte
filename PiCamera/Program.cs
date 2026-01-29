@@ -7,7 +7,7 @@ camArgs.Output(Output.File, "%d");
 using Camera camera = new (RpiCameraApp.RpicamStill, camArgs);
 
 camera.TakePicture();
-File.WriteAllBytes("test.png", await camera.GetPicture());
+File.WriteAllBytes("test.png", camera.GetPicture());
 
 camera.TakePicture();
-File.WriteAllBytes("test2.png", await camera.GetPicture());
+File.WriteAllBytes("test2.png", camera.GetPicture());

@@ -38,17 +38,19 @@ public static class Camera
     /// </summary>
     /// <param name="ct">Cancellation Token</param>
     /// <param name="delay">Delay before taking the picture</param>
-    public static async Task<byte[]> TakePicture(CancellationToken? ct = null, TimeSpan? delay = null)
+    public static byte[] TakePicture(CancellationToken? ct = null, TimeSpan? delay = null)
     {
         if(delay is { } d)
             Thread.Sleep(d);
         
         _picamera.TakePicture();
-        byte[] picture = await _picamera.GetPicture(ct);
+        byte[] picture = _picamera.GetPicture();
 
         PictureTaken?.Invoke(picture);
         Console.WriteLine("Camera!");
 
         return picture;
     }
+
+    public static byte[] LatestPicture => _picamera.GetPicture();
 }

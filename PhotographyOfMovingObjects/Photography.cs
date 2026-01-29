@@ -37,18 +37,18 @@ public static class Photography
     }
     private static TimeSpan _delayFlash = TimeSpan.Zero;
 
+    public static byte[] LatestPicture => Camera.LatestPicture;
+
     /// <summary>
     /// On which flank of the GPIO input do we Trigger
     /// </summary>
     public static PinEventTypes TriggerOn = PinEventTypes.Rising;
 
-    public static byte[] LatestPicture = [];
-
     private static Task _takePicture = new (async void () =>
     {
         try
         {
-            LatestPicture = await Camera.TakePicture(CancellationToken.None, DelayCamera);
+            Camera.TakePicture(CancellationToken.None, DelayCamera);
         }
         catch (Exception e)
         {
@@ -88,7 +88,7 @@ public static class Photography
         {
             try
             {
-                LatestPicture = await Camera.TakePicture(CancellationToken.None, DelayCamera);
+                Camera.TakePicture(CancellationToken.None, DelayCamera);
             }
             catch (Exception e)
             {

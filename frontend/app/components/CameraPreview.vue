@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { HubConnectionBuilder } from '@microsoft/signalr'
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
 
 const key = ref(0)
 const refresh = () => {
@@ -35,7 +35,7 @@ const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notificat
 
 const signalRConnection = new HubConnectionBuilder()
   .withUrl(signalRUrl)
-  .withAutomaticReconnect()
+  .configureLogging(LogLevel.Information)
   .build()
 
 async function start() {
