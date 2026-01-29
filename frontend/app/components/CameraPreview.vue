@@ -41,27 +41,10 @@
 </template>
 
 <script setup lang="ts">
-import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
-
 const key = ref(0)
 const refresh = () => {
   key.value = Date.now()
 }
 
-const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notifications'
-
-const signalRConnection = new HubConnectionBuilder()
-  .withUrl(signalRUrl, {
-    withCredentials: false
-  })
-  .configureLogging(LogLevel.Information)
-  .build()
-
-async function start() {
-  await signalRConnection.start()
-  console.log('SignalR Connected.')
-}
-signalRConnection.on('picture', refresh)
-
-start()
+useSignalR().addCallback('picture', refresh)
 </script>

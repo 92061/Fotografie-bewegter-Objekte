@@ -26,7 +26,10 @@
         class="w-full"
       />
     </UFormField>
-    <UButton @click="testFlash" :loading="busy">
+    <UButton
+      :loading="busy"
+      @click="testFlash"
+    >
       Flash!
     </UButton>
   </UPageCard>

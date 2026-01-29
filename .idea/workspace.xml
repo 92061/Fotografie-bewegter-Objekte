@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Fullscreen Camera Preview">
-      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/components/FlashSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/FlashSettings.vue" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Disable buttons when loading">
+      <change afterPath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Composition API Component" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -98,7 +99,7 @@
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
       <workItem from="1769540154032" duration="8654000" />
-      <workItem from="1769557003295" duration="12319000" />
+      <workItem from="1769557003295" duration="12889000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -244,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769569658570</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Disable buttons when loading">
+      <option name="closed" value="true" />
+      <created>1769569794887</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1769569794887</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +290,7 @@
     <MESSAGE value="Fix CORS" />
     <MESSAGE value="Fix auto-loading issues&#10;Add ms to delay selectors" />
     <MESSAGE value="Fullscreen Camera Preview" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fullscreen Camera Preview" />
+    <MESSAGE value="Disable buttons when loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Disable buttons when loading" />
   </component>
 </project>

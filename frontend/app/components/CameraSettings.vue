@@ -14,7 +14,10 @@
       />
     </UFormField>
 
-    <UButton @click="testCamera" :loading="busy">
+    <UButton
+      :loading="busy"
+      @click="testCamera"
+    >
       Cheese!
     </UButton>
   </div>
