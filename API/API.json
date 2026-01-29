@@ -476,31 +476,75 @@
         }
       },
       "NullableOfAutoFocusMode": {
-        "type": "integer",
+        "enum": [
+          "Default",
+          "Auto",
+          "Manual",
+          "Continous",
+          null
+        ],
         "nullable": true
       },
       "NullableOfAutoFocusRange": {
-        "type": "integer",
+        "enum": [
+          "Normal",
+          "Macro",
+          "Full",
+          null
+        ],
         "nullable": true
       },
       "NullableOfAwbMode": {
-        "type": "integer",
+        "enum": [
+          "Auto",
+          "Incandescent",
+          "Tungsten",
+          "Fluorescent",
+          "Indoor",
+          "Daylight",
+          "Cloudy",
+          null
+        ],
         "nullable": true
       },
       "NullableOfDenoiseMode": {
-        "type": "integer",
+        "enum": [
+          "Auto",
+          "Off",
+          "CdnOff",
+          "CdnFast",
+          "CdnHq",
+          null
+        ],
         "nullable": true
       },
       "NullableOfEncoding": {
-        "type": "integer",
+        "enum": [
+          "Jpeg",
+          "Png",
+          "Rgb",
+          "Bmp",
+          "Yuv420",
+          null
+        ],
         "nullable": true
       },
       "NullableOfExposureMode": {
-        "type": "integer",
+        "enum": [
+          "Sport",
+          "Normal",
+          "Long",
+          null
+        ],
         "nullable": true
       },
       "NullableOfMeteringMode": {
-        "type": "integer",
+        "enum": [
+          "Center",
+          "Spot",
+          "Average",
+          null
+        ],
         "nullable": true
       },
       "ReadOnlyMemoryOfbyte": {

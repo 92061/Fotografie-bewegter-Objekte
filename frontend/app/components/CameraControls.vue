@@ -71,6 +71,8 @@ const {
 const delayMs = ref(delay.value)
 
 watch(delayMs, async (newValue) => {
+  if (!newValue)
+    return
   busy.value = true
   try {
     await $api('/Camera/Delay', {

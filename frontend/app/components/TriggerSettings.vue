@@ -56,6 +56,8 @@ const gpioPins: SelectMenuItem[] = [...Array(27).keys()].map((i) => {
   }
 })
 watch(pinNumber, async (newValue) => {
+  if (!newValue)
+    return
   busy.value = true
   try {
     await $api('/Trigger/PinNumber', {

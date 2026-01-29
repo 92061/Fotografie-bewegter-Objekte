@@ -105,6 +105,8 @@ const gpioPins: SelectMenuItem[] = [...Array(27).keys()].map((i) => {
   }
 })
 watch(pinNumber, async (newValue) => {
+  if (!newValue)
+    return
   busy.value = true
   try {
     await $api('/Flash/PinNumber', {
@@ -139,6 +141,8 @@ const {
 } = await useApi('/Flash/Delay')
 const delayMs = ref(delay.value)
 watch(delayMs, async (newValue) => {
+  if (!newValue)
+    return
   busy.value = true
   try {
     await $api('/Flash/Delay', {
