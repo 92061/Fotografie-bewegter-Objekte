@@ -210,7 +210,7 @@
           :loading="busy"
           @click="updateSettings"
         >
-          Update
+          {{ $t('camera.settings.update') }}
         </UButton>
       </div>
     </template>

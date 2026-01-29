@@ -64,6 +64,7 @@
       "hardware": "Hardware",
       "software": "Software",
       "modeWarning": "Nur setzen, wenn Sie wissen was Sie tun!",
+      "update": "Speichern",
       "toasts": {
         "settingsUpdated": "Einstellungen gesetzt!"
       }

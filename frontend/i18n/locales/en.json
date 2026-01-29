@@ -64,6 +64,7 @@
       "hardware": "Hardware",
       "software": "Software",
       "modeWarning": "Only set this if you know what you are doing.",
+      "update": "Update",
       "toasts": {
         "settingsUpdated": "Settings updated!"
       }
