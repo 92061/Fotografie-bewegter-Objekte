@@ -6,13 +6,13 @@
     <template #leading>
       <UIcon
         name="i-lucide-image"
-        :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
+        :class="['size-5 shrink-0 text-primary', snap ? 'animate-wiggle' : '']"
       />
     </template>
     <template #description>
       <CameraSettings />
     </template>
-    <div class="relative">
+    <div :class="['relative rounded-md', newPicture ? 'animate-highlight' : '']">
       <NuxtImg
         :src="`${useRuntimeConfig().public.openFetch.api.baseURL}/Camera/LatestPhoto?${key}`"
       />
@@ -51,10 +51,15 @@ const refresh = () => {
   key.value = Date.now()
 }
 
-const triggered = ref(false)
-useSignalR().addCallback('picture', () => {
-  triggered.value = true
-  setTimeout(() => triggered.value = false, 250)
+const snap = ref(false)
+useSignalR().addCallback('snap', () => {
+  snap.value = true
+  setTimeout(() => snap.value = false, 250)
 })
-useSignalR().addCallback('picture', refresh)
+const newPicture = ref(false)
+useSignalR().addCallback('picture', () => {
+    refresh();
+    newPicture.value = true
+    setTimeout(() => newPicture.value = false, 250)
+})
 </script>
