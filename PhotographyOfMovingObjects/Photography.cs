@@ -29,7 +29,10 @@ public static class Photography
         if (type is not PinEventTypes.Rising)
             return;
         if (!Armed)
+        {
             Console.WriteLine("Triggered, but not armed!");
+            return;
+        }
         Armed = false;
         Console.WriteLine("Trigger received. Fall delay...");
         Thread.Sleep(FallDelay);
