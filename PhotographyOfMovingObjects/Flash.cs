@@ -12,9 +12,8 @@ public static class Flash
     private const int DefaultFlashPinNumber = 17; 
     private const int FlashHighTimeoutMs = 2;
     
-    
-    public static event TriggeredEvent? Triggered;
-    public delegate void TriggeredEvent();
+    public static event FlashEvent? Triggered;
+    public delegate void FlashEvent();
 
     public static int PinNumber
     {

@@ -53,11 +53,17 @@ app.UseCors();
 app.UseHttpLogging();
 
 app.MapHub<NotificationHub>("/notifications");
-Camera.PictureTaken += async data =>
+Camera.PictureTaken += async () =>
 {
     if (app.Services.GetService<IHubContext<NotificationHub>>() is not { } hub)
         return;
-    await hub.Clients.All.SendAsync("picture", data);
+    await hub.Clients.All.SendAsync("snap");
+};
+Camera.PictureReady += async () =>
+{
+    if (app.Services.GetService<IHubContext<NotificationHub>>() is not { } hub)
+        return;
+    await hub.Clients.All.SendAsync("picture");
 };
 Trigger.Triggered += async type =>
 {

@@ -36,11 +36,11 @@ public class CameraController : ControllerBase
     /// </summary>
     /// <response code="200">Photo taken</response>
     [HttpPost("TakePicture")]
-    [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
-    public FileContentHttpResult TakePicture()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public Ok TakePicture()
     {
         Camera.TakePicture(HttpContext.RequestAborted);
-        return TypedResults.File(Photography.LatestPicture, "image/jpeg");
+        return TypedResults.Ok();
     }
     
     /// <summary>

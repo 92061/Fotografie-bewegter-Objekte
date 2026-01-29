@@ -7,21 +7,21 @@ namespace PhotographyOfMovingObjects;
 /// </summary>
 public static class Camera
 {
-    public static event PictureTakeEvent? PictureTaken;
-    public delegate void PictureTakeEvent(byte[] data);
+    public static event PiCamera.Camera.CameraEvent? PictureTaken;
+    public static event PiCamera.Camera.CameraEvent? PictureReady;
 
-    private static PiCamera.Camera _picamera;
+    private static PiCamera.Camera _picamera = null!;
     public static RpicamArgs CameraArgs
     {
         get => _args;
         set
         {
             _args = value;
-            _picamera = new PiCamera.Camera(RpiCameraApp.RpicamStill, CameraArgs);
+            CreateCamera();
         }
     }
 
-    private static RpicamArgs _args;
+    private static RpicamArgs _args = null!;
 
 
     static Camera()
@@ -29,8 +29,14 @@ public static class Camera
         RpicamArgs a = new();
         a.Encoding(Encoding.Jpeg);
         a.Output(Output.File, "%d.jpg");
-        _args = a;
+        CameraArgs = a;
+    }
+
+    private static void CreateCamera()
+    {
         _picamera = new (RpiCameraApp.RpicamStill, CameraArgs);
+        _picamera.PictureTaken += () => PictureTaken?.Invoke();
+        _picamera.PictureReady += () => PictureReady?.Invoke();
     }
 
     /// <summary>
@@ -45,8 +51,7 @@ public static class Camera
         
         _picamera.TakePicture();
         byte[] picture = _picamera.GetPicture();
-
-        PictureTaken?.Invoke(picture);
+        
         Console.WriteLine("Camera!");
 
         return picture;

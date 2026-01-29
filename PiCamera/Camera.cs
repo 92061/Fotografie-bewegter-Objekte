@@ -9,6 +9,10 @@ public class Camera : IDisposable
     private readonly Process _rpiCamProc = new ();
     private readonly RpicamArgs _args;
     
+    public event CameraEvent? PictureTaken;
+    public event CameraEvent? PictureReady;
+    public delegate void CameraEvent();
+    
     public Camera(RpiCameraApp app, RpicamArgs args)
     {
         this._args = args;
@@ -54,6 +58,7 @@ public class Camera : IDisposable
         {
             // https://www.raspberrypi.com/documentation/computers/camera_software.html#signal
             ret = _rpiCamProc.SendSignal(Signum.SIGUSR1);
+            PictureTaken?.Invoke();
             _newPictureIndex++;
         
             if(_args.Output is Output.Stream)
@@ -66,7 +71,7 @@ public class Camera : IDisposable
             else
                 Thread.Sleep(100);
             
-            Thread.Sleep(10); //Wait for file to close and camera to be ready
+            PictureReady?.Invoke();
         }
         
         return ret;
