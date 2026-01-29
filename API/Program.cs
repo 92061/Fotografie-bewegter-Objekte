@@ -1,9 +1,11 @@
 using System.Reflection;
 using PhotographyOfMovingObjects;
 
+//Initialize Static classes....
 Console.WriteLine($"Trigger GPIO Pin: {Trigger.PinNumber}");
 Console.WriteLine($"Flash GPIO Pin: {Flash.PinNumber}");
 Console.WriteLine($"Camera app: {Camera.DefaultCameraApp}");
+Console.WriteLine($"Delay Fall: {Photography.FallDelay} Delay Camera: {Photography.DelayCamera} Delay Flash: {Photography.DelayFlash}");
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
