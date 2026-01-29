@@ -1,3 +1,4 @@
+using System.Net.WebSockets;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using PhotographyOfMovingObjects;
@@ -17,5 +18,19 @@ public class ActionController : ControllerBase
     public FileStreamHttpResult LatestImage()
     {
         return TypedResults.File(Photography.ImageStream, "image/jpeg");
+    }
+
+    [Route("/ws")]
+    public async Task Websocket()
+    {
+        if (HttpContext.WebSockets.IsWebSocketRequest)
+        {
+            WebSocket webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+            ImageWebsocketHandler.AddSocket(webSocket);
+        }
+        else
+        {
+            HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+        }
     }
 }
