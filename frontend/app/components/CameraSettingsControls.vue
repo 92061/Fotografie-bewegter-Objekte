@@ -12,7 +12,7 @@
       :state="state"
       :disabled="busy"
     >
-      <UPageColumns class="column-1 md:columns-2 lg:columns-2">
+      <UPageColumns class="column-1 md:columns-2 lg:columns-2 *:mb-2">
         <UFormField label="Output resolution">
           <div class="flex flex-row gap-2">
             <UInputNumber

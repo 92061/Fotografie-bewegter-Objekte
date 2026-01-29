@@ -8,7 +8,7 @@
         :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
       />
     </template>
-    <UPageColumns>
+    <UPageColumns class="*:mb-0">
       <UFormField label="GPIO Pin Number">
         <USelect
           v-model="pinNumber"
