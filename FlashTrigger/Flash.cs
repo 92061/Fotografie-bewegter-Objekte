@@ -25,13 +25,14 @@ public static class Flash
         _flashPin = GpioController.OpenPin(pinNumber, PinMode.Output);
     }
 
-    public static Task Trigger()
+    public static Task Trigger(TimeSpan delay)
     {
-        return new (TriggerInternal);
+        return new (() => TriggerInternal(delay));
     }
 
-    private static void TriggerInternal()
+    private static void TriggerInternal(TimeSpan delay)
     {
+        Thread.Sleep(delay);
         _flashPin.Write(PinValue.High);
         Thread.Sleep(FlashHighTimeoutMs);
         _flashPin.Write(PinValue.Low);

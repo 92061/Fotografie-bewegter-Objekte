@@ -1,0 +1,7 @@
+﻿services:
+  fotografie bewegter objektefotografiebewegterobjekte:
+    image: fotografie bewegter objektefotografiebewegterobjekte
+    build:
+      context: .
+      dockerfile: Fotografie Bewegter Objekte/Dockerfile
+
