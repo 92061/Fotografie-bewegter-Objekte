@@ -47,6 +47,8 @@ import { en, de } from '@nuxt/ui/locale'
 
 const { locale, setLocale } = useI18n()
 
+useRuntimeConfig().public.openFetch.api.baseURL = location.protocol.concat('//').concat(window.location.host)
+
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [{ rel: 'icon', href: '/favicon.ico' }],

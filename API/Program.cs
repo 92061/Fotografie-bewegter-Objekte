@@ -46,6 +46,8 @@ app.UseSwaggerUI(options =>
 
 app.MapControllers();
 
+app.UseFileServer();
+
 app.UseCors();
 
 app.UseHttpLogging();

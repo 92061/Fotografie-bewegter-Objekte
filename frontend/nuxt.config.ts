@@ -6,14 +6,15 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
-
-  routeRules: {
-    '/': { prerender: true }
-  },
-
   devServer: {
     host: '127.0.0.1'
+  },
+
+  css: ['~/assets/css/main.css'],
+
+  ssr: false,
+  routeRules: {
+    '/': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
@@ -38,7 +39,7 @@ export default defineNuxtConfig({
   openFetch: {
     clients: {
       api: {
-        baseURL: 'http://127.0.0.1:5000',
+        baseURL: '/',
         schema: '../API/API.json'
       }
     }
