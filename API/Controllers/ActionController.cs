@@ -9,27 +9,13 @@ namespace Project.Controllers;
 public class ActionController : ControllerBase
 {
     /// <summary>
-    /// Triggers the flash.
+    /// Gets the latest captured Image
     /// </summary>
-    /// <response code="200">Flash triggered</response>
-    [HttpPost("Flash")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<Ok> Flash()
-    {
-        await PhotographyOfMovingObjects.Flash.FlashTask();
-        return TypedResults.Ok();
-    }
-
-    /// <summary>
-    /// Takes a photo.
-    /// </summary>
-    /// <response code="200">Photo taken</response>
-    [HttpPost("Photo")]
+    /// <response code="200">Latest photo</response>
+    [HttpPost("LatestPhoto")]
     [ProducesResponseType<FileStreamHttpResult>(StatusCodes.Status200OK)]
-    public async Task<FileStreamHttpResult> TakePhoto()
+    public FileStreamHttpResult LatestImage()
     {
-        MemoryStream stream = new ();
-        await Camera.TakePictureTask(stream);
-        return TypedResults.File(stream, "image/jpeg");
+        return TypedResults.File(Photography.ImageStream, "image/jpeg");
     }
 }

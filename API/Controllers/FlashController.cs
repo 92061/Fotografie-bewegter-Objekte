@@ -51,4 +51,16 @@ public class FlashController : ControllerBase
         Flash.PinNumber = pinNumber;
         return TypedResults.Ok();
     }
+    
+    /// <summary>
+    /// Triggers the flash.
+    /// </summary>
+    /// <response code="200">Flash triggered</response>
+    [HttpPost("Flash")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<Ok> Trigger()
+    {
+        await Flash.FlashTask();
+        return TypedResults.Ok();
+    }
 }
