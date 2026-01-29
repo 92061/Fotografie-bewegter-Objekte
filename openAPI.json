@@ -1,0 +1,343 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Action/Flash": {
+      "post": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Triggers the flash.",
+        "responses": {
+          "200": {
+            "description": "Flash triggered"
+          },
+          "500": {
+            "description": "Task failed!"
+          }
+        }
+      }
+    },
+    "/Action/ADB/Connect": {
+      "post": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Connects the Android Debug Brdige",
+        "responses": {
+          "200": {
+            "description": "Connected"
+          },
+          "500": {
+            "description": "Task failed!"
+          }
+        }
+      }
+    },
+    "/Action/ADB/Status": {
+      "get": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Returns the ADB connection Status",
+        "responses": {
+          "200": {
+            "description": "true if connected",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Action/StartCamera": {
+      "post": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Opens the camera app",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "App started"
+          },
+          "500": {
+            "description": "Task failed!"
+          }
+        }
+      }
+    },
+    "/Action/Photo": {
+      "post": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Takes a photo.",
+        "responses": {
+          "200": {
+            "description": "Photo taken"
+          },
+          "500": {
+            "description": "Task failed!"
+          }
+        }
+      }
+    },
+    "/Configuration/Delay": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Returns the configured \"Fall Delay\".",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Configuration/Delay/{delayMs}": {
+      "patch": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Sets the \"Fall Delay\"",
+        "parameters": [
+          {
+            "name": "delayMs",
+            "in": "path",
+            "description": "Milliseconds",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Configuration/Camera/Delay": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Returns the configured \"Camera Delay\".",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Configuration/Camera/Delay/{delayMs}": {
+      "patch": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Sets the \"Camera Delay\"",
+        "parameters": [
+          {
+            "name": "delayMs",
+            "in": "path",
+            "description": "Milliseconds",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Configuration/Flash/Delay": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Returns the configured \"Flash Delay\".",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Configuration/Flash/Delay/{delayMs}": {
+      "patch": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Sets the \"Camera Delay\"",
+        "parameters": [
+          {
+            "name": "delayMs",
+            "in": "path",
+            "description": "Milliseconds",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Configuration/Flash/PinNumber": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Returns the GPIO Pin-Number of the Flash",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Configuration/Flash/PinNumber/{pinNumber}": {
+      "patch": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Sets the GPIO Pin-Number of the Flash",
+        "parameters": [
+          {
+            "name": "pinNumber",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Configuration/Trigger/PinNumber": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Returns the GPIO Pin-Number of the Trigger",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Configuration/Trigger/PinNumber/{pinNumber}": {
+      "patch": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Sets the GPIO Pin-Number of the Trigger",
+        "parameters": [
+          {
+            "name": "pinNumber",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}
