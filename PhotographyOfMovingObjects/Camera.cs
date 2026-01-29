@@ -17,15 +17,16 @@ public static class Camera
         set
         {
             _args = value;
-            _args.Output(Output.File, "%d.jpg");
+            _args.Output(Output.File, $"{FolderName}/%d.jpg");
             CreateCamera();
         }
     }
     private static RpicamArgs _args = null!;
-
+    private static readonly string FolderName = $"pictures/{DateTime.UtcNow:yyyy-MM-dd_HH-mm-ss}";
 
     static Camera()
     {
+        Directory.CreateDirectory(FolderName);
         CameraArgs = new();
     }
 
