@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Add openapi-ts">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/app.config.ts" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Flash Card">
       <change beforePath="$PROJECT_DIR$/frontend/app/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/components/FlashSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/FlashSettings.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +96,7 @@
       <updated>1769506274896</updated>
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
-      <workItem from="1769540154032" duration="3175000" />
+      <workItem from="1769540154032" duration="3481000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -128,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769538461297</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Flash Card">
+      <option name="closed" value="true" />
+      <created>1769543602564</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1769543602564</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +152,7 @@
     <MESSAGE value="Remove extraneous data" />
     <MESSAGE value="Remove extraneous data&#10;Add frontend boilerplate" />
     <MESSAGE value="Add openapi-ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add openapi-ts" />
+    <MESSAGE value="Flash Card" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flash Card" />
   </component>
 </project>
