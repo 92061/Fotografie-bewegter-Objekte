@@ -17,11 +17,15 @@
     </UHeader>
 
     <UMain>
-      <NuxtLayout>
+      <UPage>
         <UContainer>
-          <NuxtPage />
+          <UPageBody>
+            <NuxtLayout>
+              <NuxtPage />
+            </NuxtLayout>
+          </UPageBody>
         </UContainer>
-      </NuxtLayout>
+      </UPage>
     </UMain>
 
     <UFooter>
