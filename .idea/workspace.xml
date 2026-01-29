@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Flash Card">
-      <change beforePath="$PROJECT_DIR$/frontend/app/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/app.vue" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Icon for toast">
+      <change afterPath="$PROJECT_DIR$/frontend/app/components/TriggerSettings.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/pages/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <updated>1769506274896</updated>
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
-      <workItem from="1769540154032" duration="3481000" />
+      <workItem from="1769540154032" duration="3784000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -130,7 +131,23 @@
       <option name="project" value="LOCAL" />
       <updated>1769543602564</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="app description and seo">
+      <option name="closed" value="true" />
+      <created>1769543645484</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1769543645484</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Icon for toast">
+      <option name="closed" value="true" />
+      <created>1769543892681</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1769543892681</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +170,8 @@
     <MESSAGE value="Remove extraneous data&#10;Add frontend boilerplate" />
     <MESSAGE value="Add openapi-ts" />
     <MESSAGE value="Flash Card" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flash Card" />
+    <MESSAGE value="app description and seo" />
+    <MESSAGE value="Icon for toast" />
+    <option name="LAST_COMMIT_MESSAGE" value="Icon for toast" />
   </component>
 </project>

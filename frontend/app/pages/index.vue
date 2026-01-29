@@ -2,6 +2,7 @@
   <UPage>
     <UPageList>
       <FlashSettings />
+      <TriggerSettings />
     </UPageList>
   </UPage>
 </template>
