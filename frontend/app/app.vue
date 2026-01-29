@@ -35,7 +35,7 @@
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          {{ $t('builtWithNuxtUi') }} • © {{ new Date().getFullYear() }}
+          {{ $t('builtWithNuxtUi') }} • © Johanna Bernlöhr 2026-{{ new Date().getFullYear() }}
         </p>
       </template>
     </UFooter>
