@@ -22,10 +22,9 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore --configuration Release
+    - name: Publish
+      run: dotnet publish --no-restore --configuration Release --artifacts-path API/bin/Release/net8.0/linux-arm/publish -a linux-arm
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.6.2
       with:
-        path: "**/API/**/net8.0"
-          
+        path: "**/API/**/publish"
