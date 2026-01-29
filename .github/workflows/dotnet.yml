@@ -23,7 +23,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Publish
-      run: dotnet publish --no-restore --configuration Release --self-contained --artifacts-path API/bin/Release/net8.0/linux-arm/publish -a linux-arm
+      run: dotnet publish --no-restore --configuration Release --self-contained --artifacts-path API/bin/Release/net8.0/linux-arm/publish -r linux-arm
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.6.2
       with:
