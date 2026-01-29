@@ -10,7 +10,7 @@ public static class Flash
 {
     private static readonly GpioController GpioController = new();
     private const int DefaultFlashPinNumber = 17; 
-    private const int FlashHighTimeoutMs = 2;
+    private const int FlashHighTimeoutMs = 5;
     
     public static event FlashEvent? Triggered;
     public delegate void FlashEvent();
@@ -32,6 +32,10 @@ public static class Flash
         _flashPin = GpioController.OpenPin(DefaultFlashPinNumber, PinMode.Output);
     }
 
+    /// <summary>
+    /// Set off the flash
+    /// </summary>
+    /// <param name="delay">Delay the flash by this value</param>
     public static void Trigger(TimeSpan? delay = null)
     {
         if(delay is { } d)

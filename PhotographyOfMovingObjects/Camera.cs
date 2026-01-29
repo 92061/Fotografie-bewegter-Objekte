@@ -20,7 +20,6 @@ public static class Camera
             CreateCamera();
         }
     }
-
     private static RpicamArgs _args = null!;
 
 

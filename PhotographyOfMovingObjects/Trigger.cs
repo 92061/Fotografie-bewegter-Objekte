@@ -11,12 +11,17 @@ public static class Trigger
     private static readonly GpioController GpioController = new();
     private const int DefaultTriggerPinNumber = 14; 
     private static GpioPin _triggerPin;
-    
     public static int PinNumber => _triggerPin.PinNumber;
 
-    private static readonly TimeSpan EventTimeout = TimeSpan.FromMilliseconds(500);
+    /// <summary>
+    /// Bounce-timeout
+    /// </summary>
+    private static readonly TimeSpan EventTimeout = TimeSpan.FromMilliseconds(50);
     private static DateTime _lastEventTime = DateTime.Now;
 
+    /// <summary>
+    /// Invoked when the trigger has been triggered
+    /// </summary>
     public static event TriggeredEvent? Triggered;
     public delegate void TriggeredEvent(PinEventTypes type);
     
@@ -28,11 +33,25 @@ public static class Trigger
             OnPinValueChanged);
     }
     
+    /// <summary>
+    /// Sets the pin the trigger should use.
+    /// </summary>
+    /// <param name="pinNumber"></param>
+    /// <param name="mode"></param>
+    /// <exception cref="Exception"></exception>
     public static void SetTriggerPin(int pinNumber, PinMode mode = PinMode.InputPullUp)
     {
-        _triggerPin.Close();
-        _triggerPin.Dispose();
-        GpioController.UnregisterCallbackForPinValueChangedEvent(_triggerPin.PinNumber, OnPinValueChanged);
+        if (!GpioController.IsPinModeSupported(pinNumber, mode))
+            throw new Exception($"Pin {pinNumber} doesn't support {mode}!");
+
+        // If previous pin was used, close it
+        if (GpioController.IsPinOpen(_triggerPin.PinNumber))
+        {
+            _triggerPin.Close();
+            _triggerPin.Dispose();
+            GpioController.UnregisterCallbackForPinValueChangedEvent(_triggerPin.PinNumber, OnPinValueChanged);
+        }
+        
         _triggerPin = GpioController.OpenPin(pinNumber, mode);
         GpioController.RegisterCallbackForPinValueChangedEvent(DefaultTriggerPinNumber, 
             PinEventTypes.Rising | PinEventTypes.Falling,
@@ -44,9 +63,9 @@ public static class Trigger
         if (DateTime.Now - _lastEventTime > EventTimeout)
         {
             Triggered?.Invoke(e.ChangeType);
-            Console.WriteLine("Trigger!");
             _lastEventTime = DateTime.Now;
+            Console.WriteLine($"Trigger! {e.ChangeType}");
         }else
-            Console.WriteLine("Detected, but below timeout-threshold.");
+            Console.WriteLine($"Trigger detected, but below timeout-threshold. {e.ChangeType}");
     }
 }
