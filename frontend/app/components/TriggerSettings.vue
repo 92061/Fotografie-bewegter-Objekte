@@ -61,7 +61,7 @@ const {
   status: statusPin,
   refresh: refreshPin
 } = await useApi('/Trigger/PinNumber')
-const pinNumber = ref(pinData.value)
+const pinNumber = ref<number | undefined>(pinData.value)
 
 const gpioPins: SelectMenuItem[] = [...Array(27).keys()].map((i) => {
   return {
@@ -110,7 +110,7 @@ watch(flank, async (newValue) => {
   try {
     await $api('/Trigger/Flank', {
       method: 'PATCH',
-      body: newValue
+      body: `"${newValue}"` // Bruh what is this
     })
     await refreshFlank()
     toast.add({
@@ -122,7 +122,8 @@ watch(flank, async (newValue) => {
     toast.add({
       icon: 'i-lucide-siren',
       title: 'Error',
-      description: (e as Error).message
+      description: (e as Error).message,
+      color: 'error'
     })
   } finally {
     busy.value = false
