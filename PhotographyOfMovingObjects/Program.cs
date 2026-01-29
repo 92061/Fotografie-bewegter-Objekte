@@ -7,16 +7,15 @@ namespace PhotographyOfMovingObjects;
 
 class Program
 {
-    public static TimeSpan DelayCamera;
-    public static TimeSpan DelayFlash;
+    public static TimeSpan DelayCamera { get; private set; } = TimeSpan.FromMilliseconds(0);
+    public static TimeSpan DelayFlash { get; private set; } = TimeSpan.FromMilliseconds(0);
+    public static TimeSpan FallDelay { get; private set; } = TimeSpan.FromMilliseconds(100);
     
     private static Task<bool> _takePicture = Camera.TakePicture(DelayCamera);
     private static Task _triggerFlash = Flash.Trigger(DelayFlash);
     
     public Program()
     {
-        DelayCamera = TimeSpan.FromSeconds(1);
-        DelayFlash = TimeSpan.FromSeconds(1);
         Trigger.Triggered += Triggered;
         Thread.Sleep(Timeout.Infinite); //TODO Add Program-Exit
     }
@@ -34,6 +33,7 @@ class Program
 
     private static void Triggered(PinEventTypes type)
     {
+        Thread.Sleep(FallDelay);
         _takePicture.Start();
         _triggerFlash.Start();
         while(_takePicture.IsCompleted == false && _triggerFlash.IsCompleted == false)
