@@ -28,6 +28,34 @@ public class ActionController : ControllerBase
     }
 
     /// <summary>
+    /// Connects the Android Debug Brdige
+    /// </summary>
+    /// <response code="200">Connected</response>
+    /// <response code="500">Task failed!</response>
+    [HttpPost("ADB/Connect")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult ConnectAdbDevice()
+    {
+        bool success = Camera.Connect();
+        if (success)
+            return Ok();
+        else
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+    }
+
+    /// <summary>
+    /// Returns the ADB connection Status
+    /// </summary>
+    /// <response code="200">true if connected</response>
+    [HttpGet("ADB/Status")]
+    [ProducesResponseType<bool>(StatusCodes.Status200OK, "text/plain")]
+    public IActionResult CheckAdbConnection()
+    {
+        return Ok(Camera.Connected);
+    }
+
+    /// <summary>
     /// Opens the camera app
     /// </summary>
     /// <response code="200">App started</response>
