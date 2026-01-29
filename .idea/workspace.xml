@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Wrap Fiels in UFormField">
-      <change afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Fix imports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +97,7 @@
       <updated>1769506274896</updated>
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
-      <workItem from="1769540154032" duration="7732000" />
+      <workItem from="1769540154032" duration="8476000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -185,7 +179,23 @@
       <option name="project" value="LOCAL" />
       <updated>1769545121915</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Camera Settings and Preview">
+      <option name="closed" value="true" />
+      <created>1769547972865</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1769547972865</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fix imports">
+      <option name="closed" value="true" />
+      <created>1769548050047</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1769548050047</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +224,8 @@
     <MESSAGE value="App layout" />
     <MESSAGE value="Page layout" />
     <MESSAGE value="Wrap Fiels in UFormField" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wrap Fiels in UFormField" />
+    <MESSAGE value="Camera Settings and Preview" />
+    <MESSAGE value="Fix imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix imports" />
   </component>
 </project>

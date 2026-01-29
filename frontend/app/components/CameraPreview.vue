@@ -1,9 +1,20 @@
 <template>
-  <UPageCard>
-    <NuxtImg
-      :key="key"
-      :src="`${useRuntimeConfig().public.openFetch.api.baseURL}/Camera/LatestPhoto`"
-    />
+  <UPageCard
+    icon="i-lucide-image"
+  >
+    <div class="relative">
+      <NuxtImg
+        :src="`${useRuntimeConfig().public.openFetch.api.baseURL}/Camera/LatestPhoto?${key}`"
+      />
+      <UButton
+        icon="i-lucide-refresh-cw"
+        size="sm"
+        color="neutral"
+        variant="soft"
+        class="absolute top-0 m-2 right-0"
+        @click="refresh"
+      />
+    </div>
     <UButton
       :disabled="ws.readyState === ws.OPEN"
       @click="connect"
@@ -23,6 +34,11 @@ const webSocketAddress
 
 const ws = ref(new WebSocket(webSocketAddress))
 
+const refresh = () => {
+  key.value = Date.now()
+  console.debug(key.value)
+}
+
 const connect = () => {
   ws.value = new WebSocket(webSocketAddress)
 
@@ -35,8 +51,7 @@ const connect = () => {
   }
 
   ws.value.onmessage = () => {
-    console.debug('Websocket update!')
-    key.value = Date.now()
+    refresh()
   }
 
   ws.value.onerror = () => {
