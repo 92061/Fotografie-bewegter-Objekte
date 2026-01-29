@@ -39,5 +39,6 @@ public static class Trigger
     private static void OnPinValueChanged(object sender, PinValueChangedEventArgs e)
     {
         Triggered?.Invoke(e.ChangeType);
+        Console.WriteLine($"Trigger! {e}");
     }
 }

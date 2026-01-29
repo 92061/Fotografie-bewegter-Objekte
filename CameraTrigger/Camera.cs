@@ -83,6 +83,7 @@ public static class Camera
         }
         Thread.Sleep(delay);
         _device.SendKeyEvent("KEYCODE_CAMERA");
+        Console.WriteLine("Camera!");
         return true;
     }
 }

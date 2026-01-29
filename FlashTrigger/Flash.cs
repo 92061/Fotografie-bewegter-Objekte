@@ -36,6 +36,7 @@ public static class Flash
     {
         Thread.Sleep(delay);
         _flashPin.Write(PinValue.High);
+        Console.WriteLine("Flash!");
         Thread.Sleep(FlashHighTimeoutMs);
         _flashPin.Write(PinValue.Low);
     }

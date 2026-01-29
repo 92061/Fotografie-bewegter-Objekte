@@ -51,5 +51,6 @@ public class Photography
     {
         _takePicture = Camera.TakePicture(DelayCamera);
         _triggerFlash = Flash.Trigger(DelayFlash);
+        Console.WriteLine("Reset.");
     }
 }
