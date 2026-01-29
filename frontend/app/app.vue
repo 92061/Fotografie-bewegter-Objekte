@@ -13,6 +13,7 @@
           }"
           label="Swagger"
         />
+          <UColorModeSelect />
       </template>
     </UHeader>
 
