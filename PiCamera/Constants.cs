@@ -185,11 +185,7 @@ public enum Encoding
     /// <summary>
     /// Binary dump of uncompressed RGB pixels
     /// </summary>
-    Rgb24,
-    /// <summary>
-    /// Binary dump of uncompressed RGB pixels
-    /// </summary>
-    Rgb48,
+    Rgb,
     /// <summary>
     /// BMP
     /// </summary>
@@ -295,8 +291,7 @@ public static class Helper
     {
         Encoding.Jpeg => "jpg",
         Encoding.Png => "png",
-        Encoding.Rgb24 => "rgb/rgb24",
-        Encoding.Rgb48 => "rgb/rgb48",
+        Encoding.Rgb => "rgb",
         Encoding.Bmp => "bmp",
         Encoding.Yuv420 => "yuv420",
         _ => Encoding.Jpeg.AsString()

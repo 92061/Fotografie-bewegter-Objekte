@@ -50,7 +50,7 @@
         <UFormField label="Output Encoding">
           <USelect
             v-model="state.encoding"
-            :items="['Jpeg', 'Png', 'Rgb24', 'Rgb48', 'Bmp', 'Yuv420']"
+            :items="['Jpeg', 'Png', 'Rgb', 'Bmp', 'Yuv420']"
             class="w-full"
           />
         </UFormField>
