@@ -8,51 +8,157 @@ public enum RpiCameraApp
     RpicamJpeg
 }
 
+/// <summary>
+/// Automatic Exposure/Gain Control (AEC/AGC) algorithm mode <br />
+/// <see cref="RpicamArgsBuilder.Metering"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#metering"/>
+/// </summary>
 public enum MeteringMode
 {
+    /// <summary>
+    /// centre weighted metering
+    /// </summary>
     Center,
+    /// <summary>
+    /// spot metering
+    /// </summary>
     Spot,
+    /// <summary>
+    /// average or whole frame metering
+    /// </summary>
     Average
 }
 
+/// <summary>
+/// Exposure profile. <br />
+/// <see cref="RpicamArgsBuilder.Exposure"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#exposure"/>
+/// </summary>
 public enum ExposureMode
 {
+    /// <summary>
+    /// short exposure, larger gains
+    /// </summary>
+    Sport,
+    /// <summary>
+    /// normal exposure, normal gains
+    /// </summary>
     Normal,
-    Spot
+    /// <summary>
+    /// long exposure, smaller gains
+    /// </summary>
+    Long
 }
 
+/// <summary>
+/// Auto White Balance (AWB) mode <br />
+/// <see cref="RpicamArgsBuilder.Awb"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#awb"/>
+/// </summary>
 public enum AwbMode
 {
+    /// <summary>
+    /// 2500K to 8000K
+    /// </summary>
     Auto,
+    /// <summary>
+    /// 2500K to 3000K
+    /// </summary>
     Incandescent,
+    /// <summary>
+    /// 3000K to 3500K
+    /// </summary>
     Tungsten,
+    /// <summary>
+    /// 4000K to 4700K
+    /// </summary>
     Fluorescent,
-    Indor,
+    /// <summary>
+    /// 3000K to 5000K
+    /// </summary>
+    Indoor,
+    /// <summary>
+    /// 5500K to 6500K
+    /// </summary>
     Daylight,
-    Cloudy,
-    Custom
+    /// <summary>
+    /// 7000K to 8500K
+    /// </summary>
+    Cloudy
 }
 
+/// <summary>
+/// Denoising mode <br />
+/// <see cref="RpicamArgsBuilder.Denoise"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#denoise"/>
+/// </summary>
 public enum DenoiseMode
 {
+    /// <summary>
+    /// Enables standard spatial denoise. Uses extra-fast color denoise for video, and high-quality color denoise for images. Enables no extra color denoise in the preview window.
+    /// </summary>
     Auto,
+    /// <summary>
+    /// Disables spatial and colour denoise.
+    /// </summary>
     Off,
+    /// <summary>
+    /// Disables colour denoise.
+    /// </summary>
     CdnOff,
+    /// <summary>
+    /// Uses fast colour denoise.
+    /// </summary>
     CdnFast,
+    /// <summary>
+    /// Uses high-quality color denoise. Not appropriate for video/viewfinder due to reduced throughput.
+    /// </summary>
     CdnHq
 }
 
+/// <summary>
+/// Autofocus mode <br />
+/// <see cref="RpicamArgsBuilder.AutofocusMode"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#autofocus-mode"/>
+/// </summary>
 public enum AutoFocusMode
 {
+    /// <summary>
+    /// Puts the camera into continuous autofocus mode unless lens-position or autofocus-on-capture override the mode to manual
+    /// </summary>
+    Default,
+    /// <summary>
+    /// Only moves the lens for an autofocus sweep when the camera starts or just before capture if autofocus-on-capture is also used
+    /// </summary>
     Auto,
+    /// <summary>
+    /// Does not move the lens at all unless manually configured with lens-position
+    /// </summary>
     Manual,
+    /// <summary>
+    /// Adjusts the lens position automatically as the scene changes
+    /// </summary>
     Continous
 }
 
+/// <summary>
+/// Autofocus range <br />
+/// <see cref="RpicamArgsBuilder.AutofocusRange"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#autofocus-range"/>
+/// </summary>
 public enum AutoFocusRange
 {
+    /// <summary>
+    /// Focuses from reasonably close to infinity
+    /// </summary>
     Normal,
+    /// <summary>
+    /// Focuses only on close objects, including the closest focal distances supported by the camera
+    /// </summary>
     Macro,
+    /// <summary>
+    /// Focus on the entire range, from the very closest objects to infinity
+    /// </summary>
     Full
 }
 
@@ -62,26 +168,55 @@ public enum AutoFocusSpeed
     Fast
 }
 
+/// <summary>
+/// <see cref="RpicamArgsBuilder.Encoding"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#encoding"/>
+/// </summary>
 public enum Encoding
 {
+    /// <summary>
+    /// JPEG
+    /// </summary>
     Jpeg,
+    /// <summary>
+    /// PNG
+    /// </summary>
     Png,
+    /// <summary>
+    /// Binary dump of uncompressed RGB pixels
+    /// </summary>
     Rgb24,
+    /// <summary>
+    /// Binary dump of uncompressed RGB pixels
+    /// </summary>
     Rgb48,
+    /// <summary>
+    /// BMP
+    /// </summary>
     Bmp,
+    /// <summary>
+    /// Binary dump of uncompressed YUV420 pixels
+    /// </summary>
     Yuv420
 }
 
-public enum Flicker
-{
-    Hz50,
-    Hz60
-}
-
+/// <summary>
+/// <see cref="RpicamArgsBuilder.Output"/> <br />
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#output"/>
+/// </summary>
 public enum Output
 {
+    /// <summary>
+    /// write to stdout
+    /// </summary>
     Stream,
+    /// <summary>
+    /// Include the %d directive in the file name to replace the directive with a count that increments for each opened file. This directive supports standard C format directive modifiers.
+    /// </summary>
     File,
+    /// <summary>
+    /// A network address for UDP or TCP streaming.
+    /// </summary>
     Network
 }
 
@@ -105,7 +240,8 @@ public static class Helper
     public static string AsString(this ExposureMode meteringMode) => meteringMode switch
     {
         ExposureMode.Normal => "normal",
-        ExposureMode.Spot => "spot",
+        ExposureMode.Sport => "sport",
+        ExposureMode.Long => "long",
         _ => ExposureMode.Normal.AsString()
     };
 
@@ -115,10 +251,9 @@ public static class Helper
         AwbMode.Incandescent => "incandescent",
         AwbMode.Tungsten => "tungsten",
         AwbMode.Fluorescent => "fluorescent",
-        AwbMode.Indor => "indoor",
+        AwbMode.Indoor => "indoor",
         AwbMode.Daylight => "daylight",
         AwbMode.Cloudy => "cloudy",
-        AwbMode.Custom => "custom",
         _ => AwbMode.Auto.AsString()
     };
 
@@ -134,6 +269,7 @@ public static class Helper
 
     public static string AsString(this AutoFocusMode autoFocusMode) => autoFocusMode switch
     {
+        AutoFocusMode.Default => "default",
         AutoFocusMode.Auto => "auto",
         AutoFocusMode.Manual => "manual",
         AutoFocusMode.Continous => "continous",
@@ -164,13 +300,6 @@ public static class Helper
         Encoding.Bmp => "bmp",
         Encoding.Yuv420 => "yuv420",
         _ => Encoding.Jpeg.AsString()
-    };
-
-    public static TimeSpan AsTimespan(this Flicker flicker) => flicker switch
-    {
-        Flicker.Hz50 => TimeSpan.FromMicroseconds(10000),
-        Flicker.Hz60 => TimeSpan.FromMicroseconds(8333),
-        _ => TimeSpan.Zero
     };
     
     // https://www.raspberrypi.com/documentation/computers/camera_software.html#output

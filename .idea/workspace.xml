@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Animations for Picture being taken, flash, and trigger">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Animation for new picture" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +96,7 @@
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
       <workItem from="1769540154032" duration="8654000" />
-      <workItem from="1769557003295" duration="15829000" />
+      <workItem from="1769557003295" duration="15886000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -279,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769571423637</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Animation for new picture">
+      <option name="closed" value="true" />
+      <created>1769573303837</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1769573303837</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +322,7 @@
     <MESSAGE value="Disable buttons when loading" />
     <MESSAGE value="Make SignalR composable" />
     <MESSAGE value="Animations for Picture being taken, flash, and trigger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Animations for Picture being taken, flash, and trigger" />
+    <MESSAGE value="Animation for new picture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Animation for new picture" />
   </component>
 </project>
