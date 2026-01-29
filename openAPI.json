@@ -108,6 +108,52 @@
         }
       }
     },
+    "/Action/Arm_System": {
+      "post": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Arms the system. When trigger is received, flash and camera will go off and",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Action/Disarm_System": {
+      "post": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Disarms the system.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Action/Arm_Status": {
+      "get": {
+        "tags": [
+          "Action"
+        ],
+        "summary": "Gets the Arm-Status",
+        "responses": {
+          "200": {
+            "description": "true if armed",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Configuration/Delay": {
       "get": {
         "tags": [
@@ -334,6 +380,50 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/Configuration/ArmedAfterEveryPicture/{toggle}": {
+      "patch": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Sets whether to re-arm the system after every picture",
+        "parameters": [
+          {
+            "name": "toggle",
+            "in": "path",
+            "description": "true to rearm",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Configuration/ArmedAfterEveryPicture": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Gets whether system is rearmed after every picture",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
           }
         }
       }
