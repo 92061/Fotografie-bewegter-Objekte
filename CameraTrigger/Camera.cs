@@ -10,6 +10,10 @@ public static class Camera
     private static readonly AdbServer AdbServer = new();
     private static readonly AdbClient AdbClient = new();
     private static DeviceClient? Device = null;
+    public static bool Connected => Device is not null;
+
+    public const string DefaultCameraApp = "com.google.android.GoogleCameraEng";
+    private const int CameraStartupDelayMs = 200;
 
     static Camera()
     {
@@ -23,11 +27,19 @@ public static class Camera
         DeviceData? data = AdbClient.GetDevices().FirstOrDefault();
         if (data is null)
             return false;
+        switch (data.Value.State)
+        {
+            case DeviceState.Online:
+                break;
+            default:
+                Console.WriteLine(data.Value.State);
+                return false;
+        }
         Device = new (AdbClient, (DeviceData)data);
         return true;
     }
 
-    public static bool StartCameraApp(string cameraAppName = "com.google.android.GoogleCameraEng")
+    public static bool StartCameraApp(string cameraAppName = DefaultCameraApp)
     {
         if (Device is null)
         {
@@ -35,10 +47,32 @@ public static class Camera
             return false;
         }
         Device.StartApp(cameraAppName);
-        return true;
+        Thread.Sleep(CameraStartupDelayMs);
+        return CameraRunning(cameraAppName);
     }
 
-    public static bool TakePicture()
+    public static bool CameraRunning(string cameraAppName = DefaultCameraApp)
+    {
+        if (Device is null)
+        {
+            Console.WriteLine("No device connected!");
+            return false;
+        }
+        AppStatus appStatus = Device.GetAppStatus(cameraAppName);
+        return appStatus is not AppStatus.Stopped;
+    }
+
+    public static Task<bool> TakePicture()
+    {
+        if (!CameraRunning())
+        {
+            Console.WriteLine("Camera not running!");
+            return new (() => false);
+        }
+        return new (TakePictureInternal);
+    }
+
+    private static bool TakePictureInternal()
     {
         if (Device is null)
         {
