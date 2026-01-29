@@ -17,10 +17,13 @@ public class ActionController : ControllerBase
     [ProducesResponseType<FileStreamHttpResult>(StatusCodes.Status200OK)]
     public FileStreamHttpResult LatestImage()
     {
-        return TypedResults.File(Photography.ImageStream, "image/jpeg");
+        return TypedResults.File(Photography.ImageStream, "image/png");
     }
 
-    [Route("/ws")]
+    /// <summary>
+    /// Websocket that images get published to
+    /// </summary>
+    [HttpGet("/ws")]
     public async Task Websocket()
     {
         if (HttpContext.WebSockets.IsWebSocketRequest)

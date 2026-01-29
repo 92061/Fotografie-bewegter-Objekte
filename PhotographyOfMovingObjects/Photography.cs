@@ -46,12 +46,12 @@ public static class Photography
         set
         {
             _imageStream = value;
-            _takePicture = Camera.TakePictureTask(value);
+            _takePicture = Camera.TakePictureTask(value, CancellationToken.None);
         }
     }
     private static Stream _imageStream = new MemoryStream(1);
 
-    private static Task _takePicture = Camera.TakePictureTask(_imageStream);
+    private static Task _takePicture = Camera.TakePictureTask(_imageStream, CancellationToken.None);
     private static Task _triggerFlash = Flash.FlashTask();
     
     
@@ -81,7 +81,7 @@ public static class Photography
     
     private static void ResetTasks()
     {
-        _takePicture = Camera.TakePictureTask(ImageStream);
+        _takePicture = Camera.TakePictureTask(ImageStream, CancellationToken.None);
         _triggerFlash = Flash.FlashTask(_delayFlash);
     }
 }
