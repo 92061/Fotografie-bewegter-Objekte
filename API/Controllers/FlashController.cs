@@ -33,7 +33,7 @@ public class FlashController : ControllerBase
     /// <summary>
     /// Returns the GPIO Pin-Number of the Flash
     /// </summary>
-    [HttpGet("Flash/PinNumber")]
+    [HttpGet("PinNumber")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashGpioPin()
     {
@@ -44,7 +44,7 @@ public class FlashController : ControllerBase
     /// Sets the GPIO Pin-Number of the Flash
     /// </summary>
     /// <param name="pinNumber"></param>
-    [HttpPatch("Flash/PinNumber")]
+    [HttpPatch("PinNumber")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetFlashGpioPin([FromBody]int pinNumber)
     {
