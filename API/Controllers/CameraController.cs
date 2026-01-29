@@ -42,4 +42,15 @@ public class CameraController : ControllerBase
         Photography.LatestPicture = await Camera.TakePicture(HttpContext.RequestAborted);
         return TypedResults.File(Photography.LatestPicture, "image/jpeg");
     }
+    
+    /// <summary>
+    /// Gets the latest captured Image
+    /// </summary>
+    /// <response code="200">Latest photo</response>
+    [HttpGet("LatestPhoto")]
+    [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
+    public FileContentHttpResult LatestImage()
+    {
+        return TypedResults.File(Photography.LatestPicture, "image/png");
+    }
 }
