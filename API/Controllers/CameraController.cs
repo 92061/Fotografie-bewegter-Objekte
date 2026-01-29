@@ -23,9 +23,9 @@ public class CameraController : ControllerBase
     /// Sets the "Camera Delay"
     /// </summary>
     /// <param name="delayMs">Milliseconds</param>
-    [HttpPatch("Delay/{delayMs}")]
+    [HttpPatch("Delay")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public Ok SetCameraDelayMs(int delayMs)
+    public Ok SetCameraDelayMs([FromBody]int delayMs)
     {
         Photography.DelayCamera = TimeSpan.FromMilliseconds(delayMs);
         return TypedResults.Ok();
@@ -35,12 +35,11 @@ public class CameraController : ControllerBase
     /// Takes a photo.
     /// </summary>
     /// <response code="200">Photo taken</response>
-    [HttpPost("Photo")]
+    [HttpPost("TakePicture")]
     [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
-    public async Task<FileContentHttpResult> TakePhoto()
+    public async Task<FileContentHttpResult> TakePicture()
     {
-        MemoryStream stream = new ();
-        await Camera.TakePictureTask(stream, HttpContext.RequestAborted);
-        return TypedResults.File(stream.ToArray(), "image/jpeg");
+        Photography.LatestPicture = await Camera.TakePicture(HttpContext.RequestAborted);
+        return TypedResults.File(Photography.LatestPicture, "image/jpeg");
     }
 }

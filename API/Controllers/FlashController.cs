@@ -19,12 +19,12 @@ public class FlashController : ControllerBase
     }
     
     /// <summary>
-    /// Sets the "Camera Delay"
+    /// Sets the "Flash Delay"
     /// </summary>
     /// <param name="delayMs">Milliseconds</param>
-    [HttpPatch("Delay/{delayMs}")]
+    [HttpPatch("Delay")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public Ok SetFlashDelayMs(int delayMs)
+    public Ok SetFlashDelayMs([FromBody]int delayMs)
     {
         Photography.DelayFlash = TimeSpan.FromMilliseconds(delayMs);
         return TypedResults.Ok();
@@ -44,9 +44,9 @@ public class FlashController : ControllerBase
     /// Sets the GPIO Pin-Number of the Flash
     /// </summary>
     /// <param name="pinNumber"></param>
-    [HttpPatch("Flash/PinNumber/{pinNumber}")]
+    [HttpPatch("Flash/PinNumber")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public Ok SetFlashGpioPin(int pinNumber)
+    public Ok SetFlashGpioPin([FromBody]int pinNumber)
     {
         Flash.PinNumber = pinNumber;
         return TypedResults.Ok();
@@ -58,9 +58,9 @@ public class FlashController : ControllerBase
     /// <response code="200">Flash triggered</response>
     [HttpPost("Flash")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<Ok> Trigger()
+    public Ok Trigger()
     {
-        await Flash.FlashTask();
+        Flash.Trigger();
         return TypedResults.Ok();
     }
 }

@@ -12,14 +12,12 @@ public static class ImageWebsocketHandler
 
     static ImageWebsocketHandler()
     {
-        Camera.PictureTaken += stream =>
+        Camera.PictureTaken += data =>
         {
-            byte[] buffer = new byte[stream.Length];
-            stream.ReadExactly(buffer);
             foreach (WebSocket webSocket in Sockets)
             {
                 if (webSocket.CloseStatus is null)
-                    webSocket.SendAsync(buffer, WebSocketMessageType.Binary, WebSocketMessageFlags.None, CancellationToken.None);
+                    webSocket.SendAsync(data, WebSocketMessageType.Binary, WebSocketMessageFlags.None, CancellationToken.None);
             }
         };
     }

@@ -14,9 +14,14 @@ public static class Photography
     /// </summary>
     public static TimeSpan DelayCamera
     {
-        get => TimeSpan.FromMilliseconds(Camera.DelayMs);
-        set => Camera.DelayMs = (int)value.TotalMilliseconds;
+        get => _delayCamera;
+        set
+        {
+            _delayCamera = value;
+            ResetTasks();
+        }
     }
+    private static TimeSpan _delayCamera = TimeSpan.Zero;
 
     /// <summary>
     /// The delay between Trigger and the flash triggering
@@ -36,23 +41,21 @@ public static class Photography
     /// On which flank of the GPIO input do we Trigger
     /// </summary>
     public static PinEventTypes TriggerOn = PinEventTypes.Rising;
-    
-    /// <summary>
-    /// Stream to output the captured Image to
-    /// </summary>
-    public static Stream ImageStream
-    {
-        get => _imageStream;
-        set
-        {
-            _imageStream = value;
-            _takePicture = Camera.TakePictureTask(value, CancellationToken.None);
-        }
-    }
-    private static Stream _imageStream = new MemoryStream(1);
 
-    private static Task _takePicture = Camera.TakePictureTask(_imageStream, CancellationToken.None);
-    private static Task _triggerFlash = Flash.FlashTask();
+    public static byte[] LatestPicture = [];
+
+    private static Task _takePicture = new (async void () =>
+    {
+        try
+        {
+            LatestPicture = await Camera.TakePicture(CancellationToken.None, DelayCamera);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    });
+    private static Task _triggerFlash = new (() => Flash.Trigger(DelayFlash));
     
     
     static Photography()
@@ -81,7 +84,17 @@ public static class Photography
     
     private static void ResetTasks()
     {
-        _takePicture = Camera.TakePictureTask(ImageStream, CancellationToken.None);
-        _triggerFlash = Flash.FlashTask(_delayFlash);
+        _takePicture = new (async void () =>
+        {
+            try
+            {
+                LatestPicture = await Camera.TakePicture(CancellationToken.None, DelayCamera);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        });
+        _triggerFlash = new Task(() => Flash.Trigger(DelayFlash));
     }
 }

@@ -10,7 +10,7 @@ public static class Flash
 {
     private static readonly GpioController GpioController = new();
     private const int DefaultFlashPinNumber = 17; 
-    private const int FlashHighTimeoutMs = 50;
+    private const int FlashHighTimeoutMs = 2;
 
     public static int PinNumber
     {
@@ -29,17 +29,14 @@ public static class Flash
         _flashPin = GpioController.OpenPin(DefaultFlashPinNumber, PinMode.Output);
     }
 
-    public static Task FlashTask(TimeSpan? delay = null)
+    public static void Trigger(TimeSpan? delay = null)
     {
-        return new Task(() =>
-        {
-            if(delay is { } d)
-                Thread.Sleep(d);
+        if(delay is { } d)
+            Thread.Sleep(d);
             
-            _flashPin.Write(PinValue.High);
-            Console.WriteLine("Flash!");
-            Thread.Sleep(FlashHighTimeoutMs);
-            _flashPin.Write(PinValue.Low);
-        });
+        _flashPin.Write(PinValue.High);
+        Console.WriteLine("Flash!");
+        Thread.Sleep(FlashHighTimeoutMs);
+        _flashPin.Write(PinValue.Low);
     }
 }

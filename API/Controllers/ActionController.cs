@@ -14,10 +14,10 @@ public class ActionController : ControllerBase
     /// </summary>
     /// <response code="200">Latest photo</response>
     [HttpPost("LatestPhoto")]
-    [ProducesResponseType<FileStreamHttpResult>(StatusCodes.Status200OK)]
-    public FileStreamHttpResult LatestImage()
+    [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
+    public FileContentHttpResult LatestImage()
     {
-        return TypedResults.File(Photography.ImageStream, "image/png");
+        return TypedResults.File(Photography.LatestPicture, "image/png");
     }
 
     /// <summary>

@@ -7,13 +7,8 @@ namespace PhotographyOfMovingObjects;
 /// </summary>
 public static class Camera
 {
-    /// <summary>
-    /// Min 1ms
-    /// </summary>
-    public static int DelayMs = 1;
-    
     public static event PictureTakeEvent? PictureTaken;
-    public delegate void PictureTakeEvent(Stream stream);
+    public delegate void PictureTakeEvent(byte[] data);
 
     private static PiCamera.Camera _picamera;
     public static RpicamArgs CameraArgs
@@ -41,16 +36,19 @@ public static class Camera
     /// <summary>
     /// Takes a picture 
     /// </summary>
-    /// <param name="stream">Stream to write the picture to</param>
     /// <param name="ct">Cancellation Token</param>
-    public static async Task TakePictureTask(Stream stream, CancellationToken ct)
+    /// <param name="delay">Delay before taking the picture</param>
+    public static async Task<byte[]> TakePicture(CancellationToken? ct = null, TimeSpan? delay = null)
     {
-        Thread.Sleep(DelayMs);
+        if(delay is { } d)
+            Thread.Sleep(d);
+        
         _picamera.TakePicture();
-        byte[] picture = await _picamera.GetPicture();
-        stream.Write(picture);
+        byte[] picture = await _picamera.GetPicture(ct);
 
-        PictureTaken?.Invoke(stream);
+        PictureTaken?.Invoke(picture);
         Console.WriteLine("Camera!");
+
+        return picture;
     }
 }
