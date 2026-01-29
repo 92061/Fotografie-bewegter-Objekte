@@ -67,8 +67,6 @@ public class CameraController : ControllerBase
     {
         RpicamArgs args = new();
         
-        args.Output(Output.File, "%d.jpg");
-        
         if(settings.AutofocusMode is { } autofocusMode)
             args.AutofocusMode(autofocusMode);
         if(settings.AutofocusRange is { } autofocusRange)
@@ -85,8 +83,6 @@ public class CameraController : ControllerBase
             args.Denoise(denoise);
         if(settings.Encoding is { } encoding)
             args.Encoding(encoding);
-        else
-            args.Encoding(Encoding.Jpeg);
         if(settings.Ev is { } ev)
             args.Ev(ev);
         if(settings.Exposure is { } exposure)

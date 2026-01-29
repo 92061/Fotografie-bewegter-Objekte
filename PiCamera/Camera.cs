@@ -102,6 +102,7 @@ public class Camera : IDisposable
             else
                 Thread.Sleep(100); // TODO: Calculate or get the correct value
             
+            Console.WriteLine("Picture is ready!");
             PictureReady?.Invoke();
         }
     }

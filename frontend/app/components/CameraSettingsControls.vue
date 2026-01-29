@@ -68,16 +68,10 @@
             class="w-full"
           />
         </UFormField>
-        <UFormField label="Gain">
-          <UInputNumber
-            v-model="state.gain"
-            class="w-full"
-          />
-        </UFormField>
         <UFormField label="Metering Mode">
           <USelect
             v-model="state.metering"
-            :items="['Centering', 'Spot', 'Average']"
+            :items="['Center', 'Spot', 'Average']"
             class="w-full"
           />
         </UFormField>
