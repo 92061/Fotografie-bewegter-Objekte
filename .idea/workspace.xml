@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="App language selector">
-      <change beforePath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/composables/signalR.tsx" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="SignalR translations">
+      <change beforePath="$PROJECT_DIR$/frontend/app/components/TriggerSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/TriggerSettings.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/i18n/locales/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/i18n/locales/de.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/i18n/locales/en.json" afterDir="false" />
     </list>
@@ -343,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769665023016</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="SignalR translations">
+      <option name="closed" value="true" />
+      <created>1769665289201</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1769665289201</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +369,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="app description and seo" />
     <MESSAGE value="Icon for toast" />
     <MESSAGE value="Trigger Settings" />
     <MESSAGE value="App layout" />
@@ -386,6 +393,7 @@
     <MESSAGE value="Reduce margins on form-fields" />
     <MESSAGE value="Add i18n base" />
     <MESSAGE value="App language selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="App language selector" />
+    <MESSAGE value="SignalR translations" />
+    <option name="LAST_COMMIT_MESSAGE" value="SignalR translations" />
   </component>
 </project>

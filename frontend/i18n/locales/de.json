@@ -5,5 +5,12 @@
     "connected": "SignalR verbunden!",
     "reconnecting": "SignalR wiederverbinden...",
     "reconnected": "SignalR wiederverbunden!"
+  },
+  "trigger": {
+    "title": "Auslöser",
+    "pin": "GPIO Pinnummer",
+    "toasts": {
+      "pinSet": "GPIO Pinnummer gesetzt!"
+    }
   }
 }

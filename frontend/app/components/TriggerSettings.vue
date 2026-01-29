@@ -1,6 +1,6 @@
 <template>
   <UPageCard
-    title="Trigger"
+    :title="$t('trigger.title')"
   >
     <template #leading>
       <UIcon
@@ -8,7 +8,7 @@
         :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
       />
     </template>
-    <UFormField label="GPIO Pin Number">
+    <UFormField :label="$t('trigger.pin')">
       <USelect
         v-model="pinNumber"
         :items="gpioPins"
@@ -25,6 +25,7 @@ import type { SelectMenuItem } from '@nuxt/ui/components/SelectMenu.vue'
 
 const { $api } = useNuxtApp()
 const toast = useToast()
+const { t } = useI18n()
 
 const triggered = ref(false)
 useSignalR().addCallback('trigger', () => {
@@ -64,7 +65,7 @@ watch(pinNumber, async (newValue) => {
     await refreshPin()
     toast.add({
       icon: 'i-lucide-siren',
-      title: 'Set Pin-Number!',
+      title: t('trigger.toasts.pinSet'),
       color: 'success'
     })
   } catch (e) {
