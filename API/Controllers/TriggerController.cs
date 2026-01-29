@@ -12,7 +12,7 @@ public class TriggerController : ControllerBase
     /// <summary>
     /// Returns the GPIO Pin-Number of the Trigger
     /// </summary>
-    [HttpGet("Trigger/PinNumber")]
+    [HttpGet("PinNumber")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetTriggerGpioPin()
     {
@@ -23,9 +23,9 @@ public class TriggerController : ControllerBase
     /// Sets the GPIO Pin-Number of the Trigger
     /// </summary>
     /// <param name="pinNumber"></param>
-    [HttpPatch("Trigger/PinNumber/{pinNumber}")]
+    [HttpPatch("PinNumber")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public Ok SetTriggerGpioPin(int pinNumber)
+    public Ok SetTriggerGpioPin([FromBody]int pinNumber)
     {
         Trigger.SetTriggerPin(pinNumber);
         return TypedResults.Ok();
