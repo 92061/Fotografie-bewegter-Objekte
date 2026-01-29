@@ -74,7 +74,5 @@ public static class RpicamArgsBuilder
         builder.AddArgument($"--output {output.AsString(additional)}");
         if (output is PiCamera.Output.Stream)
             builder.AddArgument("--verbose 0");
-        else if(output is PiCamera.Output.File)
-            builder.AddArgument("--flush");
     }
 }

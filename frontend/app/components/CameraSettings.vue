@@ -1,8 +1,5 @@
 <template>
-  <UPageCard
-    title="Camera"
-    icon="i-lucide-camera"
-  >
+  <div class="flex flex-col gap-2">
     <UFormField label="Delay after trigger">
       <UInputNumber
         v-model="delayMs"
@@ -16,7 +13,7 @@
     <UButton @click="testCamera">
       Cheese!
     </UButton>
-  </UPageCard>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,12 +1,11 @@
 <template>
-  <UPageColumns>
+  <div class="grid grid-cols-[30%_70%] gap-4">
     <div class="flex flex-col gap-4">
       <FlashSettings />
       <TriggerSettings />
     </div>
-    <CameraSettings />
     <CameraPreview />
-  </UPageColumns>
+  </div>
 </template>
 
 <script setup lang="ts">

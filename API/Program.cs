@@ -1,6 +1,8 @@
 using System.Reflection;
 using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.AspNetCore.SignalR;
 using PhotographyOfMovingObjects;
+using Project;
 
 //Initialize Static classes....
 Console.WriteLine($"Trigger GPIO Pin: {Trigger.PinNumber}");
@@ -23,9 +25,10 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policyBuilder =>
     {
-        policyBuilder.AllowAnyOrigin();
-        policyBuilder.AllowAnyMethod();
-        policyBuilder.AllowAnyHeader();
+        policyBuilder.AllowAnyHeader()
+            .AllowAnyMethod()
+            .SetIsOriginAllowed((host) => true)
+            .AllowCredentials();
     });
 });
 
@@ -33,6 +36,8 @@ builder.Services.AddHttpLogging(httpLoggingOptions =>
 {
     httpLoggingOptions.LoggingFields = HttpLoggingFields.Request | HttpLoggingFields.Response;
 });
+
+builder.Services.AddSignalR();
 
 WebApplication app = builder.Build();
 
@@ -44,10 +49,17 @@ app.UseSwaggerUI();
 
 app.MapControllers();
 
-app.UseWebSockets();
-
 app.UseCors();
 
 app.UseHttpLogging();
 
+app.MapHub<NotificationHub>("/notifications");
+Camera.PictureTaken += async data =>
+{
+    if (app.Services.GetService<IHubContext<NotificationHub>>() is not { } hub)
+        return;
+    await hub.Clients.All.SendAsync("picture", data);
+};
+
 app.Run();
+ 
