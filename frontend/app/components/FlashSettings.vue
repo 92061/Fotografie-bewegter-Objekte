@@ -37,11 +37,13 @@ const testFlash = async () => {
       method: 'POST'
     })
     toast.add({
+      icon: 'i-lucide-zap',
       title: 'Flash!',
       color: 'success'
     })
   } catch (e) {
     toast.add({
+      icon: 'i-lucide-zap',
       title: 'Error',
       description: (e as Error).message,
       color: 'error'
@@ -85,11 +87,13 @@ watch(pinNumber, async (newValue) => {
     })
     await refreshPin()
     toast.add({
+      icon: 'i-lucide-zap',
       title: 'Set Pin-Number!',
       color: 'success'
     })
   } catch (e) {
     toast.add({
+      icon: 'i-lucide-zap',
       title: 'Error',
       description: (e as Error).message,
       color: 'error'
@@ -100,7 +104,7 @@ watch(pinNumber, async (newValue) => {
 })
 
 /**
- * PinNumber data
+ * Flash delay data
  */
 const delayMs = ref(0)
 const {
@@ -121,11 +125,13 @@ watch(delayMs, async (newValue) => {
     await refreshDelay()
 
     toast.add({
+      icon: 'i-lucide-zap',
       title: 'Set Delay!',
       color: 'success'
     })
   } catch (e) {
     toast.add({
+      icon: 'i-lucide-zap',
       title: 'Error',
       description: (e as Error).message,
       color: 'error'
