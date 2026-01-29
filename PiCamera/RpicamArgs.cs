@@ -107,7 +107,7 @@ public static class RpicamArgsBuilder
     ///     <item><description>+10.0 applies maximum target values</description></item>
     /// </list>
     /// </param>
-    public static void Ev(this RpicamArgs builder, int ev) => builder.AddArgument($"--ev {ev}");
+    public static void Ev(this RpicamArgs builder, float ev) => builder.AddArgument($"--ev {ev}");
     
     /// <summary>
     /// Sets the Auto White Balance (AWB) mode. <br />
