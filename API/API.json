@@ -1,0 +1,546 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API | v1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/Camera/Delay": {
+      "get": {
+        "tags": [
+          "Camera"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Camera"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Camera/TakePicture": {
+      "post": {
+        "tags": [
+          "Camera"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Camera/LatestPhoto": {
+      "get": {
+        "tags": [
+          "Camera"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileContentHttpResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileContentHttpResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileContentHttpResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Camera/Settings": {
+      "post": {
+        "tags": [
+          "Camera"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CameraSettings"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CameraSettings"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CameraSettings"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Flash/Delay": {
+      "get": {
+        "tags": [
+          "Flash"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Flash"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Flash/PinNumber": {
+      "get": {
+        "tags": [
+          "Flash"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Flash"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Flash/Flash": {
+      "post": {
+        "tags": [
+          "Flash"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Trigger/PinNumber": {
+      "get": {
+        "tags": [
+          "Trigger"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Trigger"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AutofocusWindow": {
+        "required": [
+          "x",
+          "y",
+          "w",
+          "h"
+        ],
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "float"
+          },
+          "y": {
+            "type": "number",
+            "format": "float"
+          },
+          "w": {
+            "type": "number",
+            "format": "float"
+          },
+          "h": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "nullable": true
+      },
+      "CameraSettings": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "nullable": true
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "hflip": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "vflip": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "rotate180": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "shutterSpeed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gain": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "metering": {
+            "$ref": "#/components/schemas/NullableOfMeteringMode"
+          },
+          "exposure": {
+            "$ref": "#/components/schemas/NullableOfExposureMode"
+          },
+          "ev": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "awb": {
+            "$ref": "#/components/schemas/NullableOfAwbMode"
+          },
+          "brightness": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "contrast": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "saturation": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "sharpness": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "denoise": {
+            "$ref": "#/components/schemas/NullableOfDenoiseMode"
+          },
+          "autofocusMode": {
+            "$ref": "#/components/schemas/NullableOfAutoFocusMode"
+          },
+          "autofocusRange": {
+            "$ref": "#/components/schemas/NullableOfAutoFocusRange"
+          },
+          "autofocusWindow": {
+            "$ref": "#/components/schemas/AutofocusWindow"
+          },
+          "quality": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "encoding": {
+            "$ref": "#/components/schemas/NullableOfEncoding"
+          },
+          "raw": {
+            "type": "boolean",
+            "nullable": true
+          }
+        }
+      },
+      "EntityTagHeaderValue": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "$ref": "#/components/schemas/StringSegment"
+          },
+          "isWeak": {
+            "type": "boolean"
+          }
+        },
+        "nullable": true
+      },
+      "FileContentHttpResult": {
+        "type": "object",
+        "properties": {
+          "contentType": {
+            "type": "string"
+          },
+          "fileDownloadName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastModified": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "entityTag": {
+            "$ref": "#/components/schemas/EntityTagHeaderValue"
+          },
+          "enableRangeProcessing": {
+            "type": "boolean"
+          },
+          "fileLength": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "fileContents": {
+            "$ref": "#/components/schemas/ReadOnlyMemoryOfbyte"
+          }
+        }
+      },
+      "NullableOfAutoFocusMode": {
+        "type": "integer",
+        "nullable": true
+      },
+      "NullableOfAutoFocusRange": {
+        "type": "integer",
+        "nullable": true
+      },
+      "NullableOfAwbMode": {
+        "type": "integer",
+        "nullable": true
+      },
+      "NullableOfDenoiseMode": {
+        "type": "integer",
+        "nullable": true
+      },
+      "NullableOfEncoding": {
+        "type": "integer",
+        "nullable": true
+      },
+      "NullableOfExposureMode": {
+        "type": "integer",
+        "nullable": true
+      },
+      "NullableOfMeteringMode": {
+        "type": "integer",
+        "nullable": true
+      },
+      "ReadOnlyMemoryOfbyte": {
+        "type": "string"
+      },
+      "StringSegment": {
+        "type": "object",
+        "properties": {
+          "buffer": {
+            "type": "string",
+            "nullable": true
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "length": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasValue": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Camera"
+    },
+    {
+      "name": "Flash"
+    },
+    {
+      "name": "Trigger"
+    }
+  ]
+}
