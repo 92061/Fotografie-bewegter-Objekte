@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraTrigger", "CameraTrigger\CameraTrigger.csproj", "{AB466645-DF2F-4F77-A2E7-6313E4855FB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E25884CD-AB5C-4187-AC94-9B7E812BFBBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB466645-DF2F-4F77-A2E7-6313E4855FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB466645-DF2F-4F77-A2E7-6313E4855FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB466645-DF2F-4F77-A2E7-6313E4855FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB466645-DF2F-4F77-A2E7-6313E4855FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBA91A5-3569-4653-84BB-6BFB27B3EF76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
