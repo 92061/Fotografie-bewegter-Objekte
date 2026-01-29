@@ -23,6 +23,7 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.13.0",
     "eslint": "^9.39.2",
+    "nuxt-open-fetch": "^0.13.7",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.2.4"
