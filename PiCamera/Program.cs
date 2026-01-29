@@ -2,12 +2,12 @@
 
 RpicamArgs camArgs = new ();
 camArgs.Encoding(Encoding.Jpeg);
-camArgs.Output(Output.Stream);
+camArgs.Output(Output.File, "%d");
 
 using Camera camera = new (RpiCameraApp.RpicamStill, camArgs);
 
 camera.TakePicture();
-File.WriteAllBytes("test.png", await camera.GetPicture(Output.Stream));
+File.WriteAllBytes("test.png", await camera.GetPicture());
 
 camera.TakePicture();
-File.WriteAllBytes("test2.png", await camera.GetPicture(Output.Stream));
+File.WriteAllBytes("test2.png", await camera.GetPicture());

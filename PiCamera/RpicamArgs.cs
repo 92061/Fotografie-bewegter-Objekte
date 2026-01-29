@@ -7,6 +7,9 @@ public class RpicamArgs()
         "--signal 1",
         "--timeout 0"
     ];
+    
+    public Output Output { get; internal protected set; }
+    public string? OutputAdditional { get; internal protected set; }
 
     public string[] GetArgsArray => _args.ToArray();
     public string GetArgsString => string.Join(' ', _args);
@@ -66,12 +69,12 @@ public static class RpicamArgsBuilder
     
     public static void Output(this RpicamArgs builder, Output output, string? additional = null)
     {
+        builder.Output = output;
+        builder.OutputAdditional = additional;
+        builder.AddArgument($"--output {output.AsString(additional)}");
         if (output is PiCamera.Output.Stream)
-        {
             builder.AddArgument("--verbose 0");
-            builder.AddArgument($"--output {output.AsString()}");
-        }
-        else
-            builder.AddArgument($"--output {output.AsString()} {additional}");
+        else if(output is PiCamera.Output.File)
+            builder.AddArgument("--flush");
     }
 }

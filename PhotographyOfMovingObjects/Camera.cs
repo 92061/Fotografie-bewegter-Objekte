@@ -33,7 +33,7 @@ public static class Camera
     {
         RpicamArgs a = new();
         a.Encoding(Encoding.Jpeg);
-        a.Output(Output.Stream);
+        a.Output(Output.File, "%d.jpg");
         _args = a;
         _picamera = new (RpiCameraApp.RpicamStill, CameraArgs);
     }
@@ -47,7 +47,7 @@ public static class Camera
     {
         Thread.Sleep(DelayMs);
         _picamera.TakePicture();
-        byte[] picture = await _picamera.GetPicture(Output.Stream);
+        byte[] picture = await _picamera.GetPicture();
         stream.Write(picture);
 
         PictureTaken?.Invoke(stream);

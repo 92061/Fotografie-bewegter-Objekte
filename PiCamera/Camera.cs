@@ -7,9 +7,11 @@ namespace PiCamera;
 public class Camera : IDisposable
 {
     private readonly Process _rpiCamProc = new ();
+    private readonly RpicamArgs _args;
     
     public Camera(RpiCameraApp app, RpicamArgs args)
     {
+        this._args = args;
         _rpiCamProc.Exited += RpiCamProcOnExited;
         
         ProcessStartInfo cameraProcessInfo = new(app.AsString(), args.GetArgsString)
@@ -24,12 +26,14 @@ public class Camera : IDisposable
             throw new Exception("Could not start Camera process");
         else
         {
+            if(args.Output is Output.Stream)
+                _copyDataThread.Start(this);
             Console.WriteLine($"PID: {_rpiCamProc.Id}");
-            _copyDataThread.Start(this);
             Thread.Sleep(1000); //Startup delay
         }
     }
 
+    private uint _newPictureIndex = 0;
     private readonly MemoryStream _lastPicture = new();
     private readonly Thread _copyDataThread = new (o =>
     {
@@ -39,26 +43,42 @@ public class Camera : IDisposable
 
     public bool TakePicture()
     {
-        _lastPicture.Position = 0;
-        _lastPicture.SetLength(0);
+        if (_args.Output is Output.Stream)
+        {
+            _lastPicture.Position = 0;
+            _lastPicture.SetLength(0);
+        }
         // https://www.raspberrypi.com/documentation/computers/camera_software.html#signal
         bool ret = _rpiCamProc.SendSignal(Signum.SIGUSR1);
-        Thread.Sleep(200);
+        _newPictureIndex++;
+        
+        if(_args.Output is Output.Stream)
+            Thread.Sleep(1000);
+        else if(_args.Output is Output.File)
+            while(!File.Exists(LatestFilePath))
+                Thread.Sleep(10);
+        else
+            Thread.Sleep(100);
         return ret;
     }
 
-    public async Task<byte[]> GetPicture(Output output, string? additional = null, CancellationToken? ct = null)
+    public async Task<byte[]> GetPicture(CancellationToken? ct = null)
     {
-        if (output is Output.File
-            && additional is { Length: > 0 } filePath
-            && File.Exists(filePath))
-            return await File.ReadAllBytesAsync(filePath, ct ?? CancellationToken.None);
+        if (_args.Output is Output.File)
+            if(File.Exists(LatestFilePath))
+                return await File.ReadAllBytesAsync(LatestFilePath, ct ?? CancellationToken.None);
+            else
+                Console.WriteLine($"File does not exist {LatestFilePath}");
 
-        if (output is Output.Stream)
+        if (_args.Output is Output.Stream)
             return _lastPicture.ToArray();
         
         return [];
     }
+
+    private string LatestFilePath => _args.OutputAdditional is { Length: > 0 } filePath
+        ? filePath.Replace("%d", $"{_newPictureIndex - 1}")
+        : throw new ArgumentException("Missing additional argument for File-output");
 
     private void RpiCamProcOnExited(object? sender, EventArgs e)
     {
@@ -70,7 +90,8 @@ public class Camera : IDisposable
         _rpiCamProc.SendSignal(Signum.SIGUSR2);
         _rpiCamProc.WaitForExit();
         _rpiCamProc.Dispose();
-        _copyDataThread.Join();
+        if(_copyDataThread.IsAlive)
+            _copyDataThread.Join();
     }
 }
 
