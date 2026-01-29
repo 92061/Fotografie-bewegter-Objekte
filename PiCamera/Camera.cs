@@ -95,16 +95,8 @@ public class Camera : IDisposable
                 Thread.Sleep(1000); // TODO: Calculate or get the correct value
             else if (_args.Output is Output.File)
             {
-                while (!File.Exists(LatestFilePath))
-                {
-                    Console.WriteLine($"Doesn't exist {LatestFilePath}");
+                while (!File.Exists(LatestFilePath) || !UnixHelper.IsWritten(LatestFilePath))
                     Thread.Sleep(10);
-                }
-                while (!UnixHelper.IsWritten(LatestFilePath))
-                {
-                    Console.WriteLine($"Still writing {LatestFilePath}");
-                    Thread.Sleep(10);
-                }
             }
             else
                 Thread.Sleep(100); // TODO: Calculate or get the correct value
