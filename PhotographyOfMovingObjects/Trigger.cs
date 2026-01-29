@@ -1,6 +1,6 @@
 ﻿using System.Device.Gpio;
 
-namespace ImpulseReader;
+namespace PhotographyOfMovingObjects;
 
 /*
  * https://learn.microsoft.com/en-us/dotnet/iot/tutorials/gpio-input

@@ -1,4 +1,4 @@
-﻿using CameraTrigger;
+﻿using PhotographyOfMovingObjects;
 
 namespace Tests;
 

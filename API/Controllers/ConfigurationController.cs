@@ -80,7 +80,7 @@ public class ConfigurationController : ControllerBase
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public IActionResult GetFlashGpioPin()
     {
-        return Ok(FlashTrigger.Flash.FlashPinNumber);
+        return Ok(Flash.FlashPinNumber);
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class ConfigurationController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult SetFlashGpioPin(int pinNumber)
     {
-        FlashTrigger.Flash.SetFlashPin(pinNumber);
+        Flash.SetFlashPin(pinNumber);
         return Ok();
     }
 
@@ -102,7 +102,7 @@ public class ConfigurationController : ControllerBase
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public IActionResult GetTriggerGpioPin()
     {
-        return Ok(ImpulseReader.Trigger.PinNumber);
+        return Ok(Trigger.PinNumber);
     }
     
     /// <summary>
@@ -113,7 +113,7 @@ public class ConfigurationController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult SetTriggerGpioPin(int pinNumber)
     {
-        ImpulseReader.Trigger.SetTriggerPin(pinNumber);
+        Trigger.SetTriggerPin(pinNumber);
         return Ok();
     }
 }

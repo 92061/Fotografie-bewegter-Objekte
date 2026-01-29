@@ -1,6 +1,6 @@
-using CameraTrigger;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using PhotographyOfMovingObjects;
 
 namespace Project.Controllers;
 
@@ -18,7 +18,7 @@ public class ActionController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public IActionResult Flash()
     {
-        Task flash = FlashTrigger.Flash.Trigger(TimeSpan.Zero);
+        Task flash = PhotographyOfMovingObjects.Flash.Trigger(TimeSpan.Zero);
         flash.Start();
         flash.Wait();
         if (flash.IsCompletedSuccessfully)

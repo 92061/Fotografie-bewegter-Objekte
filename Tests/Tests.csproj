@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CameraTrigger\CameraTrigger.csproj" />
+      <ProjectReference Include="..\PhotographyOfMovingObjects\PhotographyOfMovingObjects.csproj" />
     </ItemGroup>
 
 </Project>
