@@ -61,6 +61,8 @@ public class CameraController : ControllerBase
     /// Change the settings of the camera
     /// </summary>
     /// <response code="200">Settings changed</response>
+    [HttpPost("Settings")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok ChangeSettings([FromBody] CameraSettings settings)
     {
         RpicamArgs args = new();
