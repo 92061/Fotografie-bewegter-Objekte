@@ -28,4 +28,6 @@ app.UseSwaggerUI();
 
 app.MapControllers();
 
+app.UseWebSockets();
+
 app.Run();
