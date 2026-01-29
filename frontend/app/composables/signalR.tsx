@@ -1,25 +1,31 @@
-import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
+import {HubConnection, HubConnectionBuilder, LogLevel} from '@microsoft/signalr'
 
-export function useSignalR() {
-  const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notifications'
+const signalRConnection = ref<HubConnection>();
 
-  const signalRConnection = new HubConnectionBuilder()
-      .withUrl(signalRUrl, {
-        withCredentials: false
-      })
-      .configureLogging(LogLevel.Information)
-      .build()
-
-  async function start() {
+async function start(signalRConnection : HubConnection) {
     await signalRConnection.start()
     console.log('SignalR Connected.')
-  }
+}
 
+export function useSignalR() {
+    
+    if (!signalRConnection.value){
+        const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notifications'
+        
+        signalRConnection.value = new HubConnectionBuilder()
+            .withUrl(signalRUrl, {
+                withCredentials: false
+            })
+            .configureLogging(LogLevel.Information)
+            .build()
+
+        start(signalRConnection.value);
+    }
+
+    
   const addCallback = (topic: string, callback: () => void) => {
-    signalRConnection.on(topic, callback)
+    signalRConnection.value?.on(topic, callback)
   }
-  
-  start();
   
   return { addCallback }
 }

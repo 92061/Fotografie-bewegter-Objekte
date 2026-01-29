@@ -26,7 +26,6 @@ public class Camera : IDisposable
     public Camera(RpiCameraApp app, RpicamArgs args)
     {
         this._rpiCamProc = new Process();
-        _rpiCamProc.Exited += RpiCamProcOnExited;
         this._args = args;
         
         ProcessStartInfo cameraProcessInfo = new(app.AsString(), args.GetArgsString)
@@ -85,7 +84,7 @@ public class Camera : IDisposable
         {
             // https://www.raspberrypi.com/documentation/computers/camera_software.html#signal
             if (!_rpiCamProc.SendSignal(Signum.SIGUSR1))
-                throw new Exception("Failed sending Signal to caputre picture");
+                throw new Exception("Failed sending Signal to capture picture");
             
             PictureTaken?.Invoke();
             _newPictureIndex++;
@@ -132,15 +131,6 @@ public class Camera : IDisposable
     private string LatestFilePath => _args.OutputAdditional is { Length: > 0 } filePath
         ? filePath.Replace("%d", $"{_newPictureIndex - 1}")
         : throw new ArgumentException("Missing additional argument for File-output");
-
-    /// <summary>
-    /// If Camera-Process exits, end this program
-    /// </summary>
-    private void RpiCamProcOnExited(object? sender, EventArgs e)
-    {
-        this.Dispose();
-        Environment.Exit(_rpiCamProc.ExitCode);
-    }
     
     public void Dispose()
     {
@@ -174,6 +164,7 @@ internal static class UnixHelper
         {
             Errno errno = Stdlib.GetLastError();
             Console.WriteLine($"Failed to send {signal}, errno = {errno} ({UnixMarshal.GetErrorDescription(errno)})");
+            Console.WriteLine(process.Id);
             Console.WriteLine(process.ExitCode);
             return false;
         }

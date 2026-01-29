@@ -60,12 +60,9 @@ public static class Trigger
 
     private static void OnPinValueChanged(object sender, PinValueChangedEventArgs e)
     {
-        if (DateTime.Now - _lastEventTime > EventTimeout)
-        {
-            Triggered?.Invoke(e.ChangeType);
-            _lastEventTime = DateTime.Now;
-            Console.WriteLine($"Trigger! {e.ChangeType}");
-        }else
-            Console.WriteLine($"Trigger detected, but below timeout-threshold. {e.ChangeType}");
+        if (DateTime.Now - _lastEventTime < EventTimeout)
+            return;
+        Triggered?.Invoke(e.ChangeType);
+        _lastEventTime = DateTime.Now;
     }
 }

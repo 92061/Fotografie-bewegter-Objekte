@@ -48,7 +48,7 @@ public static class Photography
     {
         try
         {
-            Camera.TakePicture(CancellationToken.None, DelayCamera);
+            Camera.TakePicture(DelayCamera);
         }
         catch (Exception e)
         {
@@ -88,7 +88,7 @@ public static class Photography
         {
             try
             {
-                Camera.TakePicture(CancellationToken.None, DelayCamera);
+                Camera.TakePicture(DelayCamera);
             }
             catch (Exception e)
             {

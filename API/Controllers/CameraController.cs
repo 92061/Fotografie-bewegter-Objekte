@@ -42,7 +42,7 @@ public class CameraController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok TakePicture()
     {
-        Camera.TakePicture(HttpContext.RequestAborted);
+        Camera.TakePicture();
         return TypedResults.Ok();
     }
     
@@ -67,6 +67,8 @@ public class CameraController : ControllerBase
     {
         RpicamArgs args = new();
         
+        args.Output(Output.File, "%d.jpg");
+        
         if(settings.AutofocusMode is { } autofocusMode)
             args.AutofocusMode(autofocusMode);
         if(settings.AutofocusRange is { } autofocusRange)
@@ -82,7 +84,9 @@ public class CameraController : ControllerBase
         if(settings.Denoise is { } denoise)
             args.Denoise(denoise);
         if(settings.Encoding is { } encoding)
-         args.Encoding(encoding);
+            args.Encoding(encoding);
+        else
+            args.Encoding(Encoding.Jpeg);
         if(settings.Ev is { } ev)
             args.Ev(ev);
         if(settings.Exposure is { } exposure)
