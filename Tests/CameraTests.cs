@@ -24,7 +24,7 @@ public class CameraTests
     [Fact]
     public async Task TestTakingPicture()
     {
-        Task<bool> takePicture = Camera.TakePicture();
+        Task<bool> takePicture = Camera.TakePicture(TimeSpan.FromSeconds(1));
         takePicture.Start();
         await takePicture;
         Assert.True(takePicture is { Result: true }, "Unable to take picture");

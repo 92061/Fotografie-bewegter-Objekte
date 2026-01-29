@@ -62,23 +62,26 @@ public static class Camera
         return appStatus is not AppStatus.Stopped;
     }
 
-    public static Task<bool> TakePicture()
+    public static Task<bool> TakePicture(TimeSpan delay)
     {
         if (!CameraRunning())
         {
             Console.WriteLine("Camera not running!");
             return new (() => false);
         }
-        return new (TakePictureInternal);
+        
+        return new Task<bool>(() => TakePictureInternal(delay));
     }
 
-    private static bool TakePictureInternal()
+    private static bool TakePictureInternal(TimeSpan delay)
     {
+        DateTime startTime = DateTime.Now;
         if (Device is null)
         {
             Console.WriteLine("No device connected!");
             return false;
         }
+        Thread.Sleep(delay.Subtract(DateTime.Now.Subtract(startTime)));
         Device.SendKeyEvent("KEYCODE_CAMERA");
         return true;
     }
