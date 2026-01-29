@@ -5,8 +5,13 @@ Camera is an Android Smartphone connected via [ADB](https://developer.android.co
 
 ### Flash
 Flash is connected via GPIO pin and Optocoupler.
-Default pin `18`.
+Default pin `17`.
 
 ### Trigger
 Trigger is an impulse read from GPIO.
-Default pin `21`.
+Default pin `14`.
+
+## API
+
+Configure delays, Pins from REST-API: `http://<server>/swagger`
+Check `openAPI.json`
