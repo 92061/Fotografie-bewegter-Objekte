@@ -11,14 +11,31 @@
       <NuxtImg
         :src="`${useRuntimeConfig().public.openFetch.api.baseURL}/Camera/LatestPhoto?${key}`"
       />
-      <UButton
-        icon="i-lucide-refresh-cw"
-        size="sm"
-        color="neutral"
-        variant="soft"
-        class="absolute top-0 m-2 right-0"
-        @click="refresh"
-      />
+      <div class="absolute top-0 m-2 right-0 flex flex-row gap-2">
+        <UButton
+          icon="i-lucide-refresh-cw"
+          size="sm"
+          color="neutral"
+          variant="soft"
+
+          @click="refresh"
+        />
+
+        <UModal :ui="{ content: 'w-7/8 max-w-full h-7/8 max-h-full' }">
+          <UButton
+            icon="i-lucide-expand"
+            size="sm"
+            color="neutral"
+            variant="soft"
+          />
+
+          <template #content>
+            <NuxtImg
+              :src="`${useRuntimeConfig().public.openFetch.api.baseURL}/Camera/LatestPhoto?${key}`"
+            />
+          </template>
+        </UModal>
+      </div>
     </div>
   </UPageCard>
 </template>
