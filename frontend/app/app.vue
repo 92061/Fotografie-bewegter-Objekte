@@ -1,21 +1,26 @@
 <template>
   <UApp>
-    <UHeader>
-      <ULink
-        :to="`${useRuntimeConfig().public.openFetch.api.baseURL}/swagger`"
-        target="_blank"
-      >Swagger</ULink>
+    <UHeader title="Photography">
+      <template #right>
+        <UButton
+          icon="i-lucide-text-search"
+          color="neutral"
+          variant="ghost"
+          :to="`${useRuntimeConfig().public.openFetch.api.baseURL}/swagger`"
+          target="_blank"
+          :ui="{
+            leadingIcon: 'text-primary'
+          }"
+          label="Swagger"
+        />
+      </template>
     </UHeader>
 
     <UMain>
-      <UPageBody>
-        <NuxtLayout>
-          <NuxtPage />
-        </NuxtLayout>
-      </UPageBody>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
     </UMain>
-
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
 
     <UFooter>
       <template #left>
