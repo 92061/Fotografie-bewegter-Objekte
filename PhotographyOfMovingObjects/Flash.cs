@@ -13,7 +13,7 @@ public static class Flash
     private static GpioPin _flashPin;
     private const int FlashHighTimeoutMs = 50;
 
-    public static int FlashPinNumber => _flashPin.PinNumber;
+    public static int PinNumber => _flashPin.PinNumber;
 
     static Flash()
     {

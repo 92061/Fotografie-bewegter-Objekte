@@ -1,6 +1,10 @@
 using System.Reflection;
 using PhotographyOfMovingObjects;
 
+Console.WriteLine($"Trigger GPIO Pin: {Trigger.PinNumber}");
+Console.WriteLine($"Flash GPIO Pin: {Flash.PinNumber}");
+Console.WriteLine($"Camera app: {Camera.DefaultCameraApp}");
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

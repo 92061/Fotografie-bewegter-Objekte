@@ -80,7 +80,7 @@ public class ConfigurationController : ControllerBase
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public IActionResult GetFlashGpioPin()
     {
-        return Ok(Flash.FlashPinNumber);
+        return Ok(Flash.PinNumber);
     }
 
     /// <summary>
