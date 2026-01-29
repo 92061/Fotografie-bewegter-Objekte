@@ -20,6 +20,7 @@ public static class Camera
         if (!AdbServer.Instance.GetStatus().IsRunning)
             AdbServer.StartServer("/usr/bin/adb", false);
         AdbClient.Connect(IPAddress.Loopback);
+        Connect();
     }
 
     public static bool Connect()
