@@ -13,19 +13,6 @@
       :disabled="busy"
     >
       <UPageColumns class="column-1 md:columns-2 lg:columns-2">
-        <UFormField label="Camera Mode">
-          <template #description>
-            <div class="flex flex-row gap-2">
-              <ULink to="https://www.raspberrypi.com/documentation/accessories/camera.html#hardware-specification">Hardware</ULink>
-              <ULink to="https://www.raspberrypi.com/documentation/computers/camera_software.html#mode">Software</ULink>
-            </div>
-          </template>
-          <UInput
-            v-model="state.mode"
-            placeholder="Set this if you know what you are doing"
-            class="w-full"
-          />
-        </UFormField>
         <UFormField label="Output resolution">
           <div class="flex flex-row gap-2">
             <UInputNumber
@@ -57,6 +44,15 @@
             v-model="state.encoding"
             :items="['Jpeg', 'Png', 'Rgb', 'Bmp', 'Yuv420']"
             class="w-full"
+          />
+        </UFormField>
+        <UFormField label="Quality">
+          <UInputNumber
+            v-model="state.quality"
+            placeholder="JPG Quality"
+            class="w-full"
+            :min="0"
+            :max="100"
           />
         </UFormField>
         <UFormField label="Shutter Speed">
@@ -185,16 +181,20 @@
             />
           </div>
         </UFormField>
-        <UFormField label="Quality">
-          <UInputNumber
-            v-model="state.quality"
-            placeholder="JPG Quality"
-            class="w-full"
-            :min="0"
-            :max="100"
-          />
-        </UFormField>
       </UPageColumns>
+      <UFormField label="Camera Mode">
+        <template #description>
+          <div class="flex flex-row gap-2">
+            <ULink to="https://www.raspberrypi.com/documentation/accessories/camera.html#hardware-specification">Hardware</ULink>
+            <ULink to="https://www.raspberrypi.com/documentation/computers/camera_software.html#mode">Software</ULink>
+          </div>
+        </template>
+        <UInput
+          v-model="state.mode"
+          placeholder="Set this if you know what you are doing"
+          class="w-full"
+        />
+      </UFormField>
     </UForm>
 
     <template #footer>
