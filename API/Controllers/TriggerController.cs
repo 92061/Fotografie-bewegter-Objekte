@@ -1,3 +1,4 @@
+using System.Device.Gpio;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using PhotographyOfMovingObjects;
@@ -28,6 +29,28 @@ public class TriggerController : ControllerBase
     public Ok SetTriggerGpioPin([FromBody]int pinNumber)
     {
         Trigger.SetTriggerPin(pinNumber);
+        return TypedResults.Ok();
+    }
+    
+    
+    /// <summary>
+    /// Get the Flank on which the trigger executes
+    /// </summary>
+    [HttpGet("Flank")]
+    [ProducesResponseType<PinEventTypes>(StatusCodes.Status200OK)]
+    public Ok<PinEventTypes> SetTriggerGpioPin()
+    {
+        return TypedResults.Ok(Photography.OnTriggerFlank);
+    }
+    
+    /// <summary>
+    /// Sets the Flank on which the trigger should execute
+    /// </summary>
+    [HttpPatch("Flank")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public Ok SetTriggerGpioPin([FromBody]PinEventTypes flank)
+    {
+        Photography.OnTriggerFlank = flank;
         return TypedResults.Ok();
     }
 }

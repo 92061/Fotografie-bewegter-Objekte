@@ -9,8 +9,10 @@
   "trigger": {
     "title": "Trigger",
     "pin": "GPIO pin number",
+    "flank": "Signal flank on which to trigger",
     "toasts": {
-      "pinSet": "GPIO pin number updated!"
+      "pinSet": "GPIO pin number updated!",
+      "flankSet": "Flank set!"
     }
   },
   "flash": {

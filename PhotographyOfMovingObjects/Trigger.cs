@@ -49,7 +49,6 @@ public static class Trigger
         {
             _triggerPin.Close();
             _triggerPin.Dispose();
-            GpioController.UnregisterCallbackForPinValueChangedEvent(_triggerPin.PinNumber, OnPinValueChanged);
         }
         
         _triggerPin = GpioController.OpenPin(pinNumber, mode);

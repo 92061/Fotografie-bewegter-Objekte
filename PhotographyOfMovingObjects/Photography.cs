@@ -42,7 +42,7 @@ public static class Photography
     /// <summary>
     /// On which flank of the GPIO input do we Trigger
     /// </summary>
-    public static PinEventTypes TriggerOn = PinEventTypes.Rising;
+    public static PinEventTypes OnTriggerFlank = PinEventTypes.Rising;
 
     private static Task _takePicture = new (async void () =>
     {
@@ -60,16 +60,16 @@ public static class Photography
     
     static Photography()
     {
-        Trigger.Triggered += Triggered;
+        Trigger.Triggered += TriggerTriggered;
     }
 
     /// <summary>
     /// Handles the GPIO Trigger event
     /// </summary>
     /// <param name="type"></param>
-    private static void Triggered(PinEventTypes type)
+    private static void TriggerTriggered(PinEventTypes type)
     {
-        if (type != TriggerOn)
+        if (type != OnTriggerFlank)
         {
             Console.WriteLine("Wrong flank!");
             return;

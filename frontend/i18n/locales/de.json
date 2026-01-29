@@ -9,8 +9,10 @@
   "trigger": {
     "title": "Auslöser",
     "pin": "GPIO Pinnummer",
+    "flank": "Flankenseite auf der ausgelöst werden soll.",
     "toasts": {
-      "pinSet": "GPIO Pinnummer gesetzt!"
+      "pinSet": "GPIO Pinnummer gesetzt!",
+      "flankSet": "Auslöser-flanke gesetzt!"
     }
   },
   "flash": {

@@ -8,18 +8,30 @@
         :class="['size-5 shrink-0 text-primary', triggered ? 'animate-wiggle' : '']"
       />
     </template>
-    <UFormField>
-      <template #label>
-        <ULink to="https://pinout.xyz/">{{ $t('trigger.pin') }}</ULink>
-      </template>
-      <USelect
-        v-model="pinNumber"
-        :items="gpioPins"
-        :disabled="busy"
-        :loading="statusPin !== 'success'"
-        class="w-full"
-      />
-    </UFormField>
+
+    <UPageColumns class="*:mb-0 column-1 md:columns-2 lg:columns-2">
+      <UFormField>
+        <template #label>
+          <ULink to="https://pinout.xyz/">{{ $t('trigger.pin') }}</ULink>
+        </template>
+        <USelect
+          v-model="pinNumber"
+          :items="gpioPins"
+          :disabled="busy"
+          :loading="statusPin !== 'success'"
+          class="w-full"
+        />
+      </UFormField>
+      <UFormField :label="$t('trigger.flank')">
+        <USelect
+          v-model="flank"
+          :items="['Rising', 'Falling']"
+          :disabled="busy"
+          :loading="statusFlank !== 'success'"
+          class="w-full"
+        />
+      </UFormField>
+    </UPageColumns>
   </UPageCard>
 </template>
 
@@ -45,11 +57,11 @@ const busy = ref(false)
  * PinNumber data
  */
 const {
-  data: pin,
+  data: pinData,
   status: statusPin,
   refresh: refreshPin
 } = await useApi('/Trigger/PinNumber')
-const pinNumber = ref(pin.value)
+const pinNumber = ref(pinData.value)
 
 const gpioPins: SelectMenuItem[] = [...Array(27).keys()].map((i) => {
   return {
@@ -79,6 +91,38 @@ watch(pinNumber, async (newValue) => {
       title: 'Error',
       description: (e as Error).message,
       color: 'error'
+    })
+  } finally {
+    busy.value = false
+  }
+})
+
+const {
+  data: flankData,
+  status: statusFlank,
+  refresh: refreshFlank
+} = await useApi('/Trigger/Flank')
+const flank = ref(flankData.value)
+watch(flank, async (newValue) => {
+  if (!newValue)
+    return
+  busy.value = true
+  try {
+    await $api('/Trigger/Flank', {
+      method: 'PATCH',
+      body: newValue
+    })
+    await refreshFlank()
+    toast.add({
+      icon: 'i-lucide-siren',
+      title: t('trigger.toasts.flankSet'),
+      color: 'success'
+    })
+  } catch (e) {
+    toast.add({
+      icon: 'i-lucide-siren',
+      title: 'Error',
+      description: (e as Error).message
     })
   } finally {
     busy.value = false
