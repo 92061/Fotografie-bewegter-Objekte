@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Reduce margins on form-fields">
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Add i18n base">
+      <change beforePath="$PROJECT_DIR$/frontend/app/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/i18n/locales/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/i18n/locales/de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/i18n/locales/en.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769663604938</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Add i18n base">
+      <option name="closed" value="true" />
+      <created>1769664613222</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1769664613222</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +353,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add openapi-ts" />
     <MESSAGE value="Flash Card" />
     <MESSAGE value="app description and seo" />
     <MESSAGE value="Icon for toast" />
@@ -370,6 +377,7 @@
     <MESSAGE value="Add toasts to signalR" />
     <MESSAGE value="Change order of Camera Settings" />
     <MESSAGE value="Reduce margins on form-fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reduce margins on form-fields" />
+    <MESSAGE value="Add i18n base" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add i18n base" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 <template>
   <UApp>
-    <UHeader title="Photography">
+    <UHeader :title="$t('title')">
       <template #right>
         <UButton
           icon="i-lucide-text-search"
@@ -14,6 +14,11 @@
           label="Swagger"
         />
           <UColorModeSelect />
+          <ULocaleSelect
+              :model-value="locale"
+              :locales="[en, de]"
+              @update:model-value="setLocale($event)"
+          />
       </template>
     </UHeader>
 
@@ -30,7 +35,7 @@
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+            {{ $t('builtWithNuxtUi') }} • © {{ new Date().getFullYear() }}
         </p>
       </template>
     </UFooter>
@@ -38,6 +43,10 @@
 </template>
 
 <script setup>
+import { en, de } from '@nuxt/ui/locale'
+
+const { locale, setLocale } = useI18n()
+
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [{ rel: 'icon', href: '/favicon.ico' }],
@@ -46,13 +55,10 @@ useHead({
   }
 })
 
-const title = 'Photography'
-const description = 'Frontend of Photography'
+const title = "Photography of moving objects"
 
 useSeoMeta({
   title,
-  description,
   ogTitle: title,
-  ogDescription: description
 })
 </script>
