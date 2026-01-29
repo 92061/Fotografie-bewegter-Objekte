@@ -35,7 +35,7 @@ const signalRUrl = useRuntimeConfig().public.openFetch.api.baseURL + '/notificat
 
 const signalRConnection = new HubConnectionBuilder()
   .withUrl(signalRUrl, {
-      withCredentials: false,
+    withCredentials: false
   })
   .configureLogging(LogLevel.Information)
   .build()

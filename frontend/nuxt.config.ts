@@ -31,8 +31,7 @@ export default defineNuxtConfig({
     clients: {
       api: {
         baseURL: 'http://192.168.0.133:5000',
-        schema: 'http://192.168.0.133:5000/swagger/v1/swagger.json',
-        headers: {}
+        schema: 'http://192.168.0.133:5000/swagger/v1/swagger.json'
       }
     }
   }

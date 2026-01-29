@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Fix Camera TakePicture in filemode not finishing writing before Getting Picture">
+    <list default="true" id="d7601e89-093a-490f-8762-636ce4b72d07" name="Changes" comment="Fix CORS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraPreview.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/CameraSettings.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/components/FlashSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/FlashSettings.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/components/TriggerSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/components/TriggerSettings.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +102,7 @@
       <workItem from="1769506276001" duration="592000" />
       <workItem from="1769538148569" duration="2000000" />
       <workItem from="1769540154032" duration="8654000" />
-      <workItem from="1769557003295" duration="10083000" />
+      <workItem from="1769557003295" duration="11068000" />
     </task>
     <task id="LOCAL-00001" summary="Remove extraneous data">
       <option name="closed" value="true" />
@@ -222,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769566705817</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fix CORS">
+      <option name="closed" value="true" />
+      <created>1769567718273</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1769567718273</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +266,7 @@
     <MESSAGE value="Fix Preview" />
     <MESSAGE value="Use SignalR for Realtime Communication" />
     <MESSAGE value="Fix Camera TakePicture in filemode not finishing writing before Getting Picture" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Camera TakePicture in filemode not finishing writing before Getting Picture" />
+    <MESSAGE value="Fix CORS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix CORS" />
   </component>
 </project>

@@ -6,6 +6,10 @@
         :disabled="busy"
         :loading="statusDelay !== 'success'"
         :min="0"
+        :format-options="{
+          style: 'unit',
+          unit: 'millisecond'
+        }"
         class="w-full"
       />
     </UFormField>
@@ -54,15 +58,13 @@ const busy = ref(false)
 /**
  * Camera delay data
  */
-const delayMs = ref(0)
 const {
   data: delay,
   status: statusDelay,
   refresh: refreshDelay
 } = await useApi('/Camera/Delay')
-watch(delay, (data) => {
-  if (data) delayMs.value = data
-})
+const delayMs = ref(delay.value)
+
 watch(delayMs, async (newValue) => {
   busy.value = true
   try {

@@ -29,15 +29,12 @@ const busy = ref(false)
 /**
  * PinNumber data
  */
-const pinNumber = ref(0)
 const {
   data: pin,
   status: statusPin,
   refresh: refreshPin
 } = await useApi('/Trigger/PinNumber')
-watch(pin, (data) => {
-  if (data) pinNumber.value = data
-})
+const pinNumber = ref(pin.value)
 
 const gpioPins: SelectMenuItem[] = [...Array(27).keys()].map((i) => {
   return {
