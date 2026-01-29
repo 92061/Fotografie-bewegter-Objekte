@@ -14,6 +14,9 @@ public static class Trigger
     
     public static int PinNumber => _triggerPin.PinNumber;
 
+    private static readonly TimeSpan EventTimeout = TimeSpan.FromMilliseconds(500);
+    private static DateTime _lastEventTime = DateTime.Now;
+
     public static event TriggeredEvent? Triggered;
     public delegate void TriggeredEvent(PinEventTypes type);
     
@@ -21,7 +24,7 @@ public static class Trigger
     {
         _triggerPin = GpioController.OpenPin(DefaultTriggerPinNumber, PinMode.InputPullUp);
         GpioController.RegisterCallbackForPinValueChangedEvent(DefaultTriggerPinNumber, 
-            PinEventTypes.Rising | PinEventTypes.Falling,
+            PinEventTypes.Rising,
             OnPinValueChanged);
     }
     
@@ -38,7 +41,12 @@ public static class Trigger
 
     private static void OnPinValueChanged(object sender, PinValueChangedEventArgs e)
     {
-        Triggered?.Invoke(e.ChangeType);
-        Console.WriteLine($"Trigger! {e}");
+        if (DateTime.Now - _lastEventTime > EventTimeout)
+        {
+            Triggered?.Invoke(e.ChangeType);
+            Console.WriteLine("Trigger!");
+            _lastEventTime = DateTime.Now;
+        }else
+            Console.WriteLine("Detected, but below timeout-threshold.");
     }
 }

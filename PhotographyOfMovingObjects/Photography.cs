@@ -27,9 +27,12 @@ public class Photography
 
     private static void Triggered(PinEventTypes type)
     {
+        if (type is not PinEventTypes.Rising)
+            return;
         Thread.Sleep(FallDelay);
         _takePicture.Start();
         _triggerFlash.Start();
+        Console.WriteLine("Trigger received. Fall delay...");
         while(_takePicture.IsCompleted == false && _triggerFlash.IsCompleted == false)
             Thread.Sleep(10);
         ResetTasks();
