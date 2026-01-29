@@ -11,6 +11,8 @@ public static class Trigger
     private static readonly GpioController GpioController = new();
     private const int DefaultTriggerPinNumber = 21; 
     private static GpioPin _triggerPin;
+    
+    public static int PinNumber => _triggerPin.PinNumber;
 
     public static event TriggeredEvent? Triggered;
     public delegate void TriggeredEvent(PinEventTypes type);

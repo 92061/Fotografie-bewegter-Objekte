@@ -13,6 +13,8 @@ public static class Flash
     private static GpioPin _flashPin;
     private const int FlashHighTimeoutMs = 50;
 
+    public static int FlashPinNumber => _flashPin.PinNumber;
+
     static Flash()
     {
         _flashPin = GpioController.OpenPin(DefaultFlashPinNumber, PinMode.Output);

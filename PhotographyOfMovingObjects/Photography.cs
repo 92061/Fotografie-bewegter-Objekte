@@ -5,11 +5,11 @@ using ImpulseReader;
 
 namespace PhotographyOfMovingObjects;
 
-class Program
+public class Photography
 {
     static void Main(string[] args)
     {
-        _ = new Program();
+        _ = new Photography();
     }
     
     public static TimeSpan DelayCamera { get; private set; } = TimeSpan.FromMilliseconds(0);
@@ -19,7 +19,7 @@ class Program
     private static Task<bool> _takePicture = Camera.TakePicture(DelayCamera);
     private static Task _triggerFlash = Flash.Trigger(DelayFlash);
     
-    public Program()
+    public Photography()
     {
         Trigger.Triggered += Triggered;
         Thread.Sleep(Timeout.Infinite); //TODO Add Program-Exit
