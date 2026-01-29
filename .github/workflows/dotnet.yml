@@ -25,4 +25,4 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.6.2
       with:
-        path: "**/publish/**/release_linux-arm"
+        path: "publish/bin/API/release_linux-arm/*"
