@@ -1,4 +1,6 @@
+using CameraTrigger;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Project.Controllers;
 
@@ -26,6 +28,23 @@ public class ActionController : ControllerBase
     }
 
     /// <summary>
+    /// Opens the camera app
+    /// </summary>
+    /// <response code="200">App started</response>
+    /// <response code="500">Task failed!</response>
+    [HttpPost("StartCamera")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult StartCamera([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)]string? appName = null)
+    {
+        bool success = appName is not null ? Camera.StartCameraApp(appName) : Camera.StartCameraApp();
+        if (success)
+            return Ok();
+        else
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+    }
+
+    /// <summary>
     /// Takes a photo.
     /// </summary>
     /// <response code="200">Photo taken</response>
@@ -35,7 +54,7 @@ public class ActionController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public IActionResult TakePhoto()
     {
-        Task<bool> takePhoto = CameraTrigger.Camera.TakePicture(TimeSpan.Zero);
+        Task<bool> takePhoto = Camera.TakePicture(TimeSpan.Zero);
         takePhoto.Start();
         takePhoto.Wait();
         if (takePhoto.IsCompletedSuccessfully)
