@@ -2,6 +2,10 @@
 
 namespace FlashTrigger;
 
+/*
+ * https://learn.microsoft.com/en-us/dotnet/iot/tutorials/blink-led
+ */
+
 public static class Flash
 {
     private static readonly GpioController GpioController = new();
