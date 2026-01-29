@@ -9,7 +9,7 @@ namespace FlashTrigger;
 public static class Flash
 {
     private static readonly GpioController GpioController = new();
-    private const int DefaultFlashPinNumber = 18; 
+    private const int DefaultFlashPinNumber = 17; 
     private static GpioPin _flashPin;
     private const int FlashHighTimeoutMs = 50;
 

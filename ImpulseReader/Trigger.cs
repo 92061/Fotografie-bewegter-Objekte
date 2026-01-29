@@ -9,7 +9,7 @@ namespace ImpulseReader;
 public static class Trigger
 {
     private static readonly GpioController GpioController = new();
-    private const int DefaultTriggerPinNumber = 21; 
+    private const int DefaultTriggerPinNumber = 14; 
     private static GpioPin _triggerPin;
     
     public static int PinNumber => _triggerPin.PinNumber;
