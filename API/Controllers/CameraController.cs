@@ -15,6 +15,7 @@ public class CameraController : ControllerBase
     /// <summary>
     /// Returns the configured "Camera Delay".
     /// </summary>
+    /// <response code="200">Returns the delay (in ms) of the camera after the trigger is triggered.</response>
     [HttpGet("Delay")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetCameraDelayMs()
@@ -23,9 +24,9 @@ public class CameraController : ControllerBase
     }
     
     /// <summary>
-    /// Sets the "Camera Delay"
+    /// Sets the "Camera Delay".
     /// </summary>
-    /// <param name="delayMs">Milliseconds</param>
+    /// <param name="delayMs">The delay of the camera (in ms).</param>
     [HttpPatch("Delay")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetCameraDelayMs([FromBody]int delayMs)
@@ -37,7 +38,6 @@ public class CameraController : ControllerBase
     /// <summary>
     /// Takes a photo.
     /// </summary>
-    /// <response code="200">Photo taken</response>
     [HttpPost("TakePicture")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok TakePicture()
@@ -47,9 +47,9 @@ public class CameraController : ControllerBase
     }
     
     /// <summary>
-    /// Gets the latest captured Image
+    /// Gets the latest captured Image.
     /// </summary>
-    /// <response code="200">Latest photo</response>
+    /// <response code="200">Returns the latest captured Photo.</response>
     [HttpGet("LatestPhoto")]
     [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
     public FileContentHttpResult LatestImage()
@@ -58,9 +58,9 @@ public class CameraController : ControllerBase
     }
 
     /// <summary>
-    /// Change the settings of the camera
+    /// Change the settings of the camera.
     /// </summary>
-    /// <response code="200">Settings changed</response>
+    /// <param name="settings">The Camera settings that are requested to being changed. <seealso cref="CameraSettings"/></param>
     [HttpPost("Settings")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok ChangeSettings([FromBody] CameraSettings settings)

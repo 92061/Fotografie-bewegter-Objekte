@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.SignalR;
@@ -64,6 +63,7 @@ try
     Console.WriteLine($"Flash GPIO Pin: {Flash.PinNumber}");
     Console.WriteLine($"Delay Camera: {Photography.DelayCamera} Delay Flash: {Photography.DelayFlash}");
 
+    // Set-up SignalR notifications
     Camera.PictureTaken += async () =>
     {
         if (app.Services.GetService<IHubContext<NotificationHub>>() is not { } hub)

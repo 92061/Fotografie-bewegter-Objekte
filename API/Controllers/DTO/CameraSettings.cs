@@ -1,4 +1,5 @@
 using PiCamera;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace Project.Controllers.DTO;
 
@@ -123,4 +124,5 @@ public sealed record CameraSettings
 /// <summary>
 /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.AutofocusWindow" path="/summary" />
 /// </summary>
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed record AutofocusWindow(float x, float y, float w, float h);

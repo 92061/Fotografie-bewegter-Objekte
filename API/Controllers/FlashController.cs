@@ -11,6 +11,7 @@ public class FlashController : ControllerBase
     /// <summary>
     /// Returns the configured "Flash Delay".
     /// </summary>
+    /// <response code="200">Returns the delay (in ms) of the flash after the trigger is triggered.</response>
     [HttpGet("Delay")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashDelayMs()
@@ -19,9 +20,9 @@ public class FlashController : ControllerBase
     }
     
     /// <summary>
-    /// Sets the "Flash Delay"
+    /// Sets the "Flash Delay".
     /// </summary>
-    /// <param name="delayMs">Milliseconds</param>
+    /// <param name="delayMs">The delay of the flash (in ms).</param>
     [HttpPatch("Delay")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetFlashDelayMs([FromBody]int delayMs)
@@ -31,8 +32,9 @@ public class FlashController : ControllerBase
     }
 
     /// <summary>
-    /// Returns the GPIO Pin-Number of the Flash
+    /// Returns the GPIO Pin-Number of the Flash.
     /// </summary>
+    /// <response code="200">Returns the GPIO Pin-Number of the Flash. <seealso href="https://pinout.xyz/"/></response>
     [HttpGet("PinNumber")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashGpioPin()
@@ -41,9 +43,9 @@ public class FlashController : ControllerBase
     }
 
     /// <summary>
-    /// Sets the GPIO Pin-Number of the Flash
+    /// Sets the GPIO Pin-Number of the Flash.
     /// </summary>
-    /// <param name="pinNumber"></param>
+    /// <param name="pinNumber">GPIO Pin-Number of the Flash. <seealso href="https://pinout.xyz/"/></param>
     [HttpPatch("PinNumber")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetFlashGpioPin([FromBody]int pinNumber)
@@ -55,7 +57,6 @@ public class FlashController : ControllerBase
     /// <summary>
     /// Triggers the flash.
     /// </summary>
-    /// <response code="200">Flash triggered</response>
     [HttpPost("Flash")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok Trigger()
