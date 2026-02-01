@@ -48,3 +48,8 @@ Run `dotnet API.dll`
 - [Nuxt](https://nuxt.com/)
   - [Nuxt UI](https://ui.nuxt.com/)
   - [NuxtOpenFetch](https://nuxt-open-fetch.norbiros.dev/)
+
+# Taking a picture
+
+
+![image](API/Taking-A-Picture.svg)
