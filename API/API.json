@@ -10,6 +10,7 @@
         "tags": [
           "Camera"
         ],
+        "description": "Returns the configured \"Camera Delay\".",
         "responses": {
           "200": {
             "description": "OK",
@@ -28,22 +29,29 @@
         "tags": [
           "Camera"
         ],
+        "description": "Sets the \"Camera Delay\".",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
+                "maximum": 2147483647,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "text/json": {
               "schema": {
+                "maximum": 2147483647,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "application/*+json": {
               "schema": {
+                "maximum": 2147483647,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
@@ -63,6 +71,7 @@
         "tags": [
           "Camera"
         ],
+        "description": "Takes a photo.",
         "responses": {
           "200": {
             "description": "OK"
@@ -75,6 +84,7 @@
         "tags": [
           "Camera"
         ],
+        "description": "Gets the latest captured Image.",
         "responses": {
           "200": {
             "description": "OK",
@@ -104,6 +114,7 @@
         "tags": [
           "Camera"
         ],
+        "description": "Change the settings of the camera.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -136,6 +147,7 @@
         "tags": [
           "Flash"
         ],
+        "description": "Returns the configured \"Flash Delay\".",
         "responses": {
           "200": {
             "description": "OK",
@@ -154,22 +166,29 @@
         "tags": [
           "Flash"
         ],
+        "description": "Sets the \"Flash Delay\".",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
+                "maximum": 2147483647,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "text/json": {
               "schema": {
+                "maximum": 2147483647,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "application/*+json": {
               "schema": {
+                "maximum": 2147483647,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
@@ -189,6 +208,7 @@
         "tags": [
           "Flash"
         ],
+        "description": "Returns the GPIO Pin-Number of the Flash.",
         "responses": {
           "200": {
             "description": "OK",
@@ -207,22 +227,29 @@
         "tags": [
           "Flash"
         ],
+        "description": "Sets the GPIO Pin-Number of the Flash.",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
+                "maximum": 27,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "text/json": {
               "schema": {
+                "maximum": 27,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "application/*+json": {
               "schema": {
+                "maximum": 27,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
@@ -242,6 +269,7 @@
         "tags": [
           "Flash"
         ],
+        "description": "Triggers the flash.",
         "responses": {
           "200": {
             "description": "OK"
@@ -254,6 +282,7 @@
         "tags": [
           "Trigger"
         ],
+        "description": "Returns the GPIO Pin-Number of the Trigger.",
         "responses": {
           "200": {
             "description": "OK",
@@ -272,22 +301,29 @@
         "tags": [
           "Trigger"
         ],
+        "description": "Sets the GPIO Pin-Number of the Trigger.",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
+                "maximum": 27,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "text/json": {
               "schema": {
+                "maximum": 27,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
             },
             "application/*+json": {
               "schema": {
+                "maximum": 27,
+                "minimum": 0,
                 "type": "integer",
                 "format": "int32"
               }
@@ -307,6 +343,7 @@
         "tags": [
           "Trigger"
         ],
+        "description": "Get the Flank on which the trigger executes.",
         "responses": {
           "200": {
             "description": "OK",
@@ -334,6 +371,7 @@
         "tags": [
           "Trigger"
         ],
+        "description": "Sets the Flank on which the trigger should execute.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -400,11 +438,15 @@
             "nullable": true
           },
           "width": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
           "height": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -422,11 +464,14 @@
             "nullable": true
           },
           "shutterSpeed": {
+            "maximum": 2147483647,
+            "minimum": 0,
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
           "gain": {
+            "minimum": 0,
             "type": "number",
             "format": "float",
             "nullable": true
@@ -438,6 +483,8 @@
             "$ref": "#/components/schemas/NullableOfExposureMode"
           },
           "ev": {
+            "maximum": 10,
+            "minimum": -10,
             "type": "number",
             "format": "float",
             "nullable": true
@@ -446,21 +493,26 @@
             "$ref": "#/components/schemas/NullableOfAwbMode"
           },
           "brightness": {
+            "maximum": 1,
+            "minimum": -1,
             "type": "number",
             "format": "float",
             "nullable": true
           },
           "contrast": {
+            "minimum": 0,
             "type": "number",
             "format": "float",
             "nullable": true
           },
           "saturation": {
+            "minimum": 0,
             "type": "number",
             "format": "float",
             "nullable": true
           },
           "sharpness": {
+            "minimum": 0,
             "type": "number",
             "format": "float",
             "nullable": true
@@ -478,6 +530,8 @@
             "$ref": "#/components/schemas/AutofocusWindow"
           },
           "quality": {
+            "maximum": 100,
+            "minimum": 0,
             "type": "integer",
             "format": "int32",
             "nullable": true

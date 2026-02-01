@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PhotographyOfMovingObjects;
 
 namespace Project.Controllers;
@@ -13,6 +15,7 @@ public class FlashController : ControllerBase
     /// </summary>
     /// <response code="200">Returns the delay (in ms) of the flash after the trigger is triggered.</response>
     [HttpGet("Delay")]
+    [EndpointDescription("Returns the configured \"Flash Delay\".")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashDelayMs()
     {
@@ -24,8 +27,9 @@ public class FlashController : ControllerBase
     /// </summary>
     /// <param name="delayMs">The delay of the flash (in ms).</param>
     [HttpPatch("Delay")]
+    [EndpointDescription("Sets the \"Flash Delay\".")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public Ok SetFlashDelayMs([FromBody]int delayMs)
+    public Ok SetFlashDelayMs([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)][Range(0, int.MaxValue)]int delayMs)
     {
         Photography.DelayFlash = TimeSpan.FromMilliseconds(delayMs);
         return TypedResults.Ok();
@@ -36,6 +40,7 @@ public class FlashController : ControllerBase
     /// </summary>
     /// <response code="200">Returns the GPIO Pin-Number of the Flash. <seealso href="https://pinout.xyz/"/></response>
     [HttpGet("PinNumber")]
+    [EndpointDescription("Returns the GPIO Pin-Number of the Flash.")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashGpioPin()
     {
@@ -47,8 +52,9 @@ public class FlashController : ControllerBase
     /// </summary>
     /// <param name="pinNumber">GPIO Pin-Number of the Flash. <seealso href="https://pinout.xyz/"/></param>
     [HttpPatch("PinNumber")]
+    [EndpointDescription("Sets the GPIO Pin-Number of the Flash.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public Ok SetFlashGpioPin([FromBody]int pinNumber)
+    public Ok SetFlashGpioPin([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)][Range(0, 27)]int pinNumber)
     {
         Flash.PinNumber = pinNumber;
         return TypedResults.Ok();
@@ -58,6 +64,7 @@ public class FlashController : ControllerBase
     /// Triggers the flash.
     /// </summary>
     [HttpPost("Flash")]
+    [EndpointDescription("Triggers the flash.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok Trigger()
     {

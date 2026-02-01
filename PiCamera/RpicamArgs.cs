@@ -72,7 +72,7 @@ public static class RpicamArgsBuilder
     /// Specifies the exposure time, using the shutter, in microseconds. <br />
     /// Gain can still vary when you use this option. <br />
     /// If the camera runs at a framerate so fast it does not allow for the specified exposure time (for instance, a framerate of 1fps and an exposure time of 10000 microseconds), the sensor will use the maximum exposure time allowed by the framerate. <br />
-    /// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#rotation"/>
+    /// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#shutter"/>
     /// </summary>
     public static void ShutterSpeed(this RpicamArgs builder, TimeSpan microseconds) => builder.AddArgument($"--shutter {microseconds.TotalMicroseconds}");
     
