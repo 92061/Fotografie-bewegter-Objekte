@@ -16,6 +16,7 @@ public class FlashController : ControllerBase
     /// <response code="200">Returns the delay (in ms) of the flash after the trigger is triggered.</response>
     [HttpGet("Delay")]
     [EndpointDescription("Returns the configured \"Flash Delay\".")]
+    [EndpointSummary("Returns the configured \"Flash Delay\".")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashDelayMs()
     {
@@ -28,6 +29,7 @@ public class FlashController : ControllerBase
     /// <param name="delayMs">The delay of the flash (in ms).</param>
     [HttpPatch("Delay")]
     [EndpointDescription("Sets the \"Flash Delay\".")]
+    [EndpointSummary("Sets the \"Flash Delay\".")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetFlashDelayMs([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)][Range(0, int.MaxValue)]int delayMs)
     {
@@ -41,6 +43,7 @@ public class FlashController : ControllerBase
     /// <response code="200">Returns the GPIO Pin-Number of the Flash. <seealso href="https://pinout.xyz/"/></response>
     [HttpGet("PinNumber")]
     [EndpointDescription("Returns the GPIO Pin-Number of the Flash.")]
+    [EndpointSummary("Returns the GPIO Pin-Number of the Flash.")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetFlashGpioPin()
     {
@@ -53,6 +56,7 @@ public class FlashController : ControllerBase
     /// <param name="pinNumber">GPIO Pin-Number of the Flash. <seealso href="https://pinout.xyz/"/></param>
     [HttpPatch("PinNumber")]
     [EndpointDescription("Sets the GPIO Pin-Number of the Flash.")]
+    [EndpointSummary("Sets the GPIO Pin-Number of the Flash.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetFlashGpioPin([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)][Range(0, 27)]int pinNumber)
     {
@@ -65,6 +69,7 @@ public class FlashController : ControllerBase
     /// </summary>
     [HttpPost("Flash")]
     [EndpointDescription("Triggers the flash.")]
+    [EndpointSummary("Triggers the flash.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok Trigger()
     {

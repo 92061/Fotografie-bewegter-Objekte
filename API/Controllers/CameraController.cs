@@ -20,6 +20,7 @@ public class CameraController : ControllerBase
     /// <response code="200">Returns the delay (in ms) of the camera after the trigger is triggered.</response>
     [HttpGet("Delay")]
     [EndpointDescription("Returns the configured \"Camera Delay\".")]
+    [EndpointSummary("Returns the configured \"Camera Delay\".")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetCameraDelayMs()
     {
@@ -32,6 +33,7 @@ public class CameraController : ControllerBase
     /// <param name="delayMs">The delay of the camera (in ms).</param>
     [HttpPatch("Delay")]
     [EndpointDescription("Sets the \"Camera Delay\".")]
+    [EndpointSummary("Sets the \"Camera Delay\".")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetCameraDelayMs([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)][Range(0, int.MaxValue)]int delayMs)
     {
@@ -44,6 +46,7 @@ public class CameraController : ControllerBase
     /// </summary>
     [HttpPost("TakePicture")]
     [EndpointDescription("Takes a photo.")]
+    [EndpointSummary("Takes a photo.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok TakePicture()
     {
@@ -57,6 +60,7 @@ public class CameraController : ControllerBase
     /// <response code="200">Returns the latest captured Photo.</response>
     [HttpGet("LatestPhoto")]
     [EndpointDescription("Gets the latest captured Image.")]
+    [EndpointSummary("Gets the latest captured Image.")]
     [ProducesResponseType<FileContentHttpResult>(StatusCodes.Status200OK)]
     public FileContentHttpResult LatestImage()
     {
@@ -69,6 +73,7 @@ public class CameraController : ControllerBase
     /// <param name="settings">The Camera settings that are requested to being changed. <seealso cref="CameraSettings"/></param>
     [HttpPost("Settings")]
     [EndpointDescription("Change the settings of the camera.")]
+    [EndpointSummary("Change the settings of the camera.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok ChangeSettings([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)]CameraSettings settings)
     {

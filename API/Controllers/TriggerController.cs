@@ -18,6 +18,7 @@ public class TriggerController : ControllerBase
     /// <response code="200">Returns the GPIO Pin-Number of the Trigger. <seealso href="https://pinout.xyz/"/></response>
     [HttpGet("PinNumber")]
     [EndpointDescription("Returns the GPIO Pin-Number of the Trigger.")]
+    [EndpointSummary("Returns the GPIO Pin-Number of the Trigger.")]
     [ProducesResponseType<int>(StatusCodes.Status200OK, "text/plain")]
     public Ok<int> GetTriggerGpioPin()
     {
@@ -30,6 +31,7 @@ public class TriggerController : ControllerBase
     /// <param name="pinNumber">GPIO Pin-Number of the Trigger. <seealso href="https://pinout.xyz/"/></param>
     [HttpPatch("PinNumber")]
     [EndpointDescription("Sets the GPIO Pin-Number of the Trigger.")]
+    [EndpointSummary("Sets the GPIO Pin-Number of the Trigger.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetTriggerGpioPin([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)][Range(0, 27)]int pinNumber)
     {
@@ -44,6 +46,7 @@ public class TriggerController : ControllerBase
     /// <response code="200">Returns the Flank on which the Trigger will trigger. <seealso cref="PinEventTypes"/></response>
     [HttpGet("Flank")]
     [EndpointDescription("Get the Flank on which the trigger executes.")]
+    [EndpointSummary("Get the Flank on which the trigger executes.")]
     [ProducesResponseType<PinEventTypes>(StatusCodes.Status200OK)]
     public Ok<PinEventTypes> GetTriggerFlank()
     {
@@ -56,6 +59,7 @@ public class TriggerController : ControllerBase
     /// <param name="flank">Flank on which the Trigger should trigger. <seealso cref="PinEventTypes"/></param>
     [HttpPatch("Flank")]
     [EndpointDescription("Sets the Flank on which the trigger should execute.")]
+    [EndpointSummary("Sets the Flank on which the trigger should execute.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public Ok SetTriggerFlank([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Disallow)]PinEventTypes flank)
     {

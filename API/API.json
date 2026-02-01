@@ -10,6 +10,7 @@
         "tags": [
           "Camera"
         ],
+        "summary": "Returns the configured \"Camera Delay\".",
         "description": "Returns the configured \"Camera Delay\".",
         "responses": {
           "200": {
@@ -29,6 +30,7 @@
         "tags": [
           "Camera"
         ],
+        "summary": "Sets the \"Camera Delay\".",
         "description": "Sets the \"Camera Delay\".",
         "requestBody": {
           "content": {
@@ -71,6 +73,7 @@
         "tags": [
           "Camera"
         ],
+        "summary": "Takes a photo.",
         "description": "Takes a photo.",
         "responses": {
           "200": {
@@ -84,6 +87,7 @@
         "tags": [
           "Camera"
         ],
+        "summary": "Gets the latest captured Image.",
         "description": "Gets the latest captured Image.",
         "responses": {
           "200": {
@@ -114,6 +118,7 @@
         "tags": [
           "Camera"
         ],
+        "summary": "Change the settings of the camera.",
         "description": "Change the settings of the camera.",
         "requestBody": {
           "content": {
@@ -147,6 +152,7 @@
         "tags": [
           "Flash"
         ],
+        "summary": "Returns the configured \"Flash Delay\".",
         "description": "Returns the configured \"Flash Delay\".",
         "responses": {
           "200": {
@@ -166,6 +172,7 @@
         "tags": [
           "Flash"
         ],
+        "summary": "Sets the \"Flash Delay\".",
         "description": "Sets the \"Flash Delay\".",
         "requestBody": {
           "content": {
@@ -208,6 +215,7 @@
         "tags": [
           "Flash"
         ],
+        "summary": "Returns the GPIO Pin-Number of the Flash.",
         "description": "Returns the GPIO Pin-Number of the Flash.",
         "responses": {
           "200": {
@@ -227,6 +235,7 @@
         "tags": [
           "Flash"
         ],
+        "summary": "Sets the GPIO Pin-Number of the Flash.",
         "description": "Sets the GPIO Pin-Number of the Flash.",
         "requestBody": {
           "content": {
@@ -269,6 +278,7 @@
         "tags": [
           "Flash"
         ],
+        "summary": "Triggers the flash.",
         "description": "Triggers the flash.",
         "responses": {
           "200": {
@@ -282,6 +292,7 @@
         "tags": [
           "Trigger"
         ],
+        "summary": "Returns the GPIO Pin-Number of the Trigger.",
         "description": "Returns the GPIO Pin-Number of the Trigger.",
         "responses": {
           "200": {
@@ -301,6 +312,7 @@
         "tags": [
           "Trigger"
         ],
+        "summary": "Sets the GPIO Pin-Number of the Trigger.",
         "description": "Sets the GPIO Pin-Number of the Trigger.",
         "requestBody": {
           "content": {
@@ -343,6 +355,7 @@
         "tags": [
           "Trigger"
         ],
+        "summary": "Get the Flank on which the trigger executes.",
         "description": "Get the Flank on which the trigger executes.",
         "responses": {
           "200": {
@@ -371,6 +384,7 @@
         "tags": [
           "Trigger"
         ],
+        "summary": "Sets the Flank on which the trigger should execute.",
         "description": "Sets the Flank on which the trigger should execute.",
         "requestBody": {
           "content": {
