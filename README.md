@@ -29,6 +29,8 @@ To debug locally, set Environment-Variable `NUXT_PUBLIC_OPEN_FETCH_API_BASE_URL=
 
 - [ASP.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 
+Install on Raspberry Pi or other ARM SBC with [`curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel STS`](https://learn.microsoft.com/en-us/dotnet/iot/deployment)
+
 #### Start
 
 Execute the generated `API.dll` with `dotnet API.dll`. The program will provide a static Webserver at `0.0.0.0:5000` and a Swagger Endpoint definition overview at `/swagger`.
