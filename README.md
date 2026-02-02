@@ -41,6 +41,7 @@ Execute the generated `API.dll` with `dotnet API.dll`. The program will provide 
 - [System.Device.Gpio](https://github.com/dotnet/iot) Wrapper for GPIO
 - [Openur.Mono.Unix](https://github.com/mono/mono.posix) POSIX signals for `rpicamera-still`
 - [Microsoft.AspNetCore.OpenApi](https://github.com/Microsoft/OpenAPI.NET) Auto generates [`API/API.json`](API/API.json)
+- [SignalR](https://learn.microsoft.com/en-us/aspnet/signalr/) Notifications
 - [node.js](https://nodejs.org/en)
 - [npm](https://www.npmjs.com/)
 - [Swashbuckle.AspNetCore.SwaggerUI](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) Webinterface for [`API/API.json`](API/API.json)
@@ -51,5 +52,8 @@ Execute the generated `API.dll` with `dotnet API.dll`. The program will provide 
 
 # Taking a picture
 
+The program creates a new process to start [`rpicam-still`](https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-still) with specified arguments.
+When a SIGUSR1 signal is received by the process, a picture is taken and saved to disk.
+When the picture has finished writing, SignalR publishes a `picture` message.
 
 ![image](API/Taking-A-Picture.svg)
