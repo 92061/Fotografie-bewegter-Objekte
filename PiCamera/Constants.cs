@@ -16,7 +16,7 @@ public enum RpiCameraApp
 public enum MeteringMode
 {
     /// <summary>
-    /// centre weighted metering
+    /// centre weighted metering (default)
     /// </summary>
     Center,
     /// <summary>
@@ -37,13 +37,13 @@ public enum MeteringMode
 public enum ExposureMode
 {
     /// <summary>
+    /// normal exposure, normal gains (default)
+    /// </summary>
+    Normal,
+    /// <summary>
     /// short exposure, larger gains
     /// </summary>
     Sport,
-    /// <summary>
-    /// normal exposure, normal gains
-    /// </summary>
-    Normal,
     /// <summary>
     /// long exposure, smaller gains
     /// </summary>
@@ -58,7 +58,7 @@ public enum ExposureMode
 public enum AwbMode
 {
     /// <summary>
-    /// 2500K to 8000K
+    /// 2500K to 8000K (default)
     /// </summary>
     Auto,
     /// <summary>
@@ -95,7 +95,7 @@ public enum AwbMode
 public enum DenoiseMode
 {
     /// <summary>
-    /// Enables standard spatial denoise. Uses extra-fast color denoise for video, and high-quality color denoise for images. Enables no extra color denoise in the preview window.
+    /// Enables standard spatial denoise. Uses extra-fast color denoise for video, and high-quality color denoise for images. Enables no extra color denoise in the preview window. (default)
     /// </summary>
     Auto,
     /// <summary>
@@ -124,7 +124,7 @@ public enum DenoiseMode
 public enum AutoFocusMode
 {
     /// <summary>
-    /// Puts the camera into continuous autofocus mode unless lens-position or autofocus-on-capture override the mode to manual
+    /// Puts the camera into continuous autofocus mode unless lens-position or autofocus-on-capture override the mode to manual (default)
     /// </summary>
     Default,
     /// <summary>
@@ -149,7 +149,7 @@ public enum AutoFocusMode
 public enum AutoFocusRange
 {
     /// <summary>
-    /// Focuses from reasonably close to infinity
+    /// Focuses from reasonably close to infinity (default)
     /// </summary>
     Normal,
     /// <summary>
@@ -162,9 +162,19 @@ public enum AutoFocusRange
     Full
 }
 
+/// <summary>
+/// Not used...
+/// <seealso href="https://www.raspberrypi.com/documentation/computers/camera_software.html#autofocus-speed"/>
+/// </summary>
 public enum AutoFocusSpeed
 {
+    /// <summary>
+    /// changes the lens position at normal speed (default)
+    /// </summary>
     Normal,
+    /// <summary>
+    /// changes the lens position quickly
+    /// </summary>
     Fast
 }
 
@@ -175,7 +185,7 @@ public enum AutoFocusSpeed
 public enum Encoding
 {
     /// <summary>
-    /// JPEG
+    /// JPEG (default)
     /// </summary>
     Jpeg,
     /// <summary>
@@ -203,13 +213,13 @@ public enum Encoding
 public enum Output
 {
     /// <summary>
+    /// Include the %d directive in the file name to replace the directive with a count that increments for each opened file. This directive supports standard C format directive modifiers. (default)
+    /// </summary>
+    File,
+    /// <summary>
     /// write to stdout
     /// </summary>
     Stream,
-    /// <summary>
-    /// Include the %d directive in the file name to replace the directive with a count that increments for each opened file. This directive supports standard C format directive modifiers.
-    /// </summary>
-    File,
     /// <summary>
     /// A network address for UDP or TCP streaming.
     /// </summary>

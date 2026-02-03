@@ -416,6 +416,21 @@
   },
   "components": {
     "schemas": {
+      "AutoFocusMode": {
+        "enum": [
+          "Default",
+          "Auto",
+          "Manual",
+          "Continous"
+        ]
+      },
+      "AutoFocusRange": {
+        "enum": [
+          "Normal",
+          "Macro",
+          "Full"
+        ]
+      },
       "AutofocusWindow": {
         "required": [
           "x",
@@ -443,6 +458,17 @@
           }
         },
         "nullable": true
+      },
+      "AwbMode": {
+        "enum": [
+          "Auto",
+          "Incandescent",
+          "Tungsten",
+          "Fluorescent",
+          "Indoor",
+          "Daylight",
+          "Cloudy"
+        ]
       },
       "CameraSettings": {
         "type": "object",
@@ -491,10 +517,10 @@
             "nullable": true
           },
           "metering": {
-            "$ref": "#/components/schemas/NullableOfMeteringMode"
+            "$ref": "#/components/schemas/MeteringMode"
           },
           "exposure": {
-            "$ref": "#/components/schemas/NullableOfExposureMode"
+            "$ref": "#/components/schemas/ExposureMode"
           },
           "ev": {
             "maximum": 10,
@@ -504,7 +530,7 @@
             "nullable": true
           },
           "awb": {
-            "$ref": "#/components/schemas/NullableOfAwbMode"
+            "$ref": "#/components/schemas/AwbMode"
           },
           "brightness": {
             "maximum": 1,
@@ -532,13 +558,13 @@
             "nullable": true
           },
           "denoise": {
-            "$ref": "#/components/schemas/NullableOfDenoiseMode"
+            "$ref": "#/components/schemas/DenoiseMode"
           },
           "autofocusMode": {
-            "$ref": "#/components/schemas/NullableOfAutoFocusMode"
+            "$ref": "#/components/schemas/AutoFocusMode"
           },
           "autofocusRange": {
-            "$ref": "#/components/schemas/NullableOfAutoFocusRange"
+            "$ref": "#/components/schemas/AutoFocusRange"
           },
           "autofocusWindow": {
             "$ref": "#/components/schemas/AutofocusWindow"
@@ -551,13 +577,31 @@
             "nullable": true
           },
           "encoding": {
-            "$ref": "#/components/schemas/NullableOfEncoding"
+            "$ref": "#/components/schemas/Encoding"
           },
           "raw": {
             "type": "boolean",
             "nullable": true
           }
         }
+      },
+      "DenoiseMode": {
+        "enum": [
+          "Auto",
+          "Off",
+          "CdnOff",
+          "CdnFast",
+          "CdnHq"
+        ]
+      },
+      "Encoding": {
+        "enum": [
+          "Jpeg",
+          "Png",
+          "Rgb",
+          "Bmp",
+          "Yuv420"
+        ]
       },
       "EntityTagHeaderValue": {
         "type": "object",
@@ -570,6 +614,13 @@
           }
         },
         "nullable": true
+      },
+      "ExposureMode": {
+        "enum": [
+          "Normal",
+          "Sport",
+          "Long"
+        ]
       },
       "FileContentHttpResult": {
         "type": "object",
@@ -602,77 +653,12 @@
           }
         }
       },
-      "NullableOfAutoFocusMode": {
-        "enum": [
-          "Default",
-          "Auto",
-          "Manual",
-          "Continous",
-          null
-        ],
-        "nullable": true
-      },
-      "NullableOfAutoFocusRange": {
-        "enum": [
-          "Normal",
-          "Macro",
-          "Full",
-          null
-        ],
-        "nullable": true
-      },
-      "NullableOfAwbMode": {
-        "enum": [
-          "Auto",
-          "Incandescent",
-          "Tungsten",
-          "Fluorescent",
-          "Indoor",
-          "Daylight",
-          "Cloudy",
-          null
-        ],
-        "nullable": true
-      },
-      "NullableOfDenoiseMode": {
-        "enum": [
-          "Auto",
-          "Off",
-          "CdnOff",
-          "CdnFast",
-          "CdnHq",
-          null
-        ],
-        "nullable": true
-      },
-      "NullableOfEncoding": {
-        "enum": [
-          "Jpeg",
-          "Png",
-          "Rgb",
-          "Bmp",
-          "Yuv420",
-          null
-        ],
-        "nullable": true
-      },
-      "NullableOfExposureMode": {
-        "enum": [
-          "Sport",
-          "Normal",
-          "Long",
-          null
-        ],
-        "nullable": true
-      },
-      "NullableOfMeteringMode": {
+      "MeteringMode": {
         "enum": [
           "Center",
           "Spot",
-          "Average",
-          null
-        ],
-        "nullable": true
+          "Average"
+        ]
       },
       "PinEventTypes": {
         "type": "string"

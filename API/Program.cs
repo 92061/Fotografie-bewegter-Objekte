@@ -7,17 +7,16 @@ using Project;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers()
-    .AddJsonOptions(opts =>
-    {
-        opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
-
-builder.Services.AddOpenApi().ConfigureHttpJsonOptions(opts =>
+builder.Services.ConfigureHttpJsonOptions(opts =>
 {
     opts.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
+builder.Services.AddControllers().AddJsonOptions(opts =>
+{
+    opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+
+builder.Services.AddOpenApi();
 
 builder.Services.AddCors(options =>
 {

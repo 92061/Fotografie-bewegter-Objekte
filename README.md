@@ -20,7 +20,7 @@ Both flash and camera are set off on a configurable delay after trigger.
 
 Use the provided [`build.sh`](build.sh) script.
 
-The script will generate the current OpenApi definition ([`API/API.json`](API/API.json)), build the website and generate the executable.
+The script will generate the current OpenApi definition ([`API/API.json`](API.md)), build the website and generate the executable.
 
 To debug locally, set Environment-Variable `NUXT_PUBLIC_OPEN_FETCH_API_BASE_URL=http://127.0.0.1:5000/` (or where API is hosted, see [OpenFetch](https://nuxt-open-fetch.norbiros.dev/setup/configuration)).
 

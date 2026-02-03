@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using PiCamera;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -53,12 +54,12 @@ public sealed record CameraSettings
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Metering" path="/summary" />
     /// </summary>
-    public MeteringMode? Metering { get; init; }
+    public MeteringMode Metering { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Exposure" path="/summary" />
     /// </summary>
-    public ExposureMode? Exposure { get; init; }
+    public ExposureMode Exposure { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Ev" path="/summary" />
@@ -69,7 +70,7 @@ public sealed record CameraSettings
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Awb" path="/summary" />
     /// </summary>
-    public AwbMode? Awb { get; init; }
+    public AwbMode Awb { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Brightness" path="/summary" />
@@ -98,17 +99,17 @@ public sealed record CameraSettings
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Denoise" path="/summary" />
     /// </summary>
-    public DenoiseMode? Denoise { get; init; }
+    public DenoiseMode Denoise { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.AutofocusMode" path="/summary" />
     /// </summary>
-    public AutoFocusMode? AutofocusMode { get; init; }
+    public AutoFocusMode AutofocusMode { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.AutofocusRange" path="/summary" />
     /// </summary>
-    public AutoFocusRange? AutofocusRange { get; init; }
+    public AutoFocusRange AutofocusRange { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="AutofocusWindow" path="/summary" />
@@ -124,7 +125,7 @@ public sealed record CameraSettings
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Encoding" path="/summary" />
     /// </summary>
-    public Encoding? Encoding { get; init; }
+    public Encoding Encoding { get; init; }
     
     /// <summary>
     /// <inheritdoc cref="PiCamera.RpicamArgsBuilder.Raw" path="/summary" />

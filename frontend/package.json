@@ -11,8 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "nuxt typecheck",
-    "prettier": "prettier . --check",
-    "prettier:fix": "prettier . --write"
+    "openApiMd": "openapi-to-md ../API/API.json ../API.md"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.87",
@@ -28,7 +27,7 @@
     "@nuxt/eslint": "^1.13.0",
     "eslint": "^9.39.2",
     "nuxt-open-fetch": "^0.13.7",
-    "prettier": "^3.8.1",
+    "openapi-to-md": "^1.1.1",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.2.4"
   },
